@@ -22,7 +22,6 @@ router.post('/login', async function (req, res, next) {
     let respuesta_JWT = (response.data);
     if (respuesta_JWT.success == true) {
       req.session.token = respuesta_JWT.result;
-      console.log(respuesta_JWT.token);
       res.redirect('/home');
     }
     else {
@@ -37,11 +36,15 @@ router.post('/login', async function (req, res, next) {
   }
 });
 
+router.post('/mostrar_saldos_inventario', async function (req, res, next) {
+  let data = Object.assign({}, req.body);
+
+  res.redirect('/home');
+});
+
 
 router.get('/home', async function (req, res, next) {
-  console.log(req.session.token);
   let token = "Bearer " + req.session.token;
-  console.log(token);
   const URL = 'http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/080509';
   const response = await axios.get(URL, {
     headers: {
@@ -49,8 +52,14 @@ router.get('/home', async function (req, res, next) {
     }
   });
   let Respuesta_Accesos = response.data;
+  let Lineas_Autorizado = Respuesta_Accesos[0].lineas;
+  let Locales_Autorizado = Respuesta_Accesos[0].locales;
+  console.log("-----------------------------------------------------------------------")
+  console.log(Lineas_Autorizado);
+  console.log(Locales_Autorizado);
+  console.log("-----------------------------------------------------------------------")
 
-  res.render('Saldo_Inventario', { title: 'Express' });
+  res.render('Saldo_Inventario', {title:"Saldo de Inventario", Lineas: Lineas_Autorizado , Locales: Locales_Autorizado});
 });
 
 

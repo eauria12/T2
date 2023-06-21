@@ -216,3 +216,17 @@ a.article:hover {
         display: none;
     }
 }
+
+.form_busqueda{
+    display: flex;
+    align-items: flex-start;
+}
+
+.scrollable-list {
+    height: 200px; /* Establece la altura deseada */
+    overflow-y: scroll; /* Habilita el desplazamiento vertical */
+  }
+  
+  .scrollable-content {
+    padding-right: 15px; /* Añade un espacio para el desplazamiento vertical */
+  }
