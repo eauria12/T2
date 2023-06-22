@@ -45,21 +45,19 @@ router.post('/mostrar_saldos_inventario', async function (req, res, next) {
 
 router.get('/home', async function (req, res, next) {
   let token = "Bearer " + req.session.token;
-  const URL = 'http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/080509';
-  const response = await axios.get(URL, {
-    headers: {
-      'Authorization': token
-    }
-  });
-  let Respuesta_Accesos = response.data;
+  const Url_Validacion_Seguridad = 'http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/080509';
+  const Url_Lista_Locales = 'http://oasysweb.saia.com.ec/andina/api/info/local/lista';
+  const Url_Lista_lineas = 'http://oasysweb.saia.com.ec/andina/api/info/linea/lista';
+  const response_seguridad = await axios.get(Url_Validacion_Seguridad, {headers: {'Authorization': token}});
+  const response_locales = await axios.get(Url_Lista_Locales, {headers: {'Authorization': token}});
+  const response_lineas = await axios.get(Url_Lista_lineas, {headers: {'Authorization': token}});
+  let Respuesta_Accesos = response_seguridad.data;
   let Lineas_Autorizado = Respuesta_Accesos[0].lineas;
   let Locales_Autorizado = Respuesta_Accesos[0].locales;
-  console.log("-----------------------------------------------------------------------")
-  console.log(Lineas_Autorizado);
-  console.log(Locales_Autorizado);
-  console.log("-----------------------------------------------------------------------")
+  let Respuesta_Locales = response_locales.data;
+  let Respuesta_Lineas = response_lineas.data;
 
-  res.render('Saldo_Inventario', {title:"Saldo de Inventario", Lineas: Lineas_Autorizado , Locales: Locales_Autorizado});
+  res.render('Saldo_Inventario', {title:"Saldo de Inventario", Lineas: Lineas_Autorizado , Locales: Locales_Autorizado, Completo_Lineas: Respuesta_Lineas, Completo_Locales: Respuesta_Locales});
 });
 
 

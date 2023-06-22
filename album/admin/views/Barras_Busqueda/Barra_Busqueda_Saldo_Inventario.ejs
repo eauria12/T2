@@ -6,10 +6,10 @@
         <%- include("../Elementos_Barras_Busqueda/Tipo_Nivel") -%>
       </div>
       <div class="col-sm-4">
-        <%- include("../Elementos_Barras_Busqueda/Lineas") -%>
+        <%- include("../Elementos_Barras_Busqueda/Lineas", {Lineas_Habilitadas: Lineas_Autorizado, Lineas: Lineas_Completo}) -%>
       </div>
       <div class="col-sm-4">
-        <%- include("../Elementos_Barras_Busqueda/Locales") -%>
+        <%- include("../Elementos_Barras_Busqueda/Locales", {Locales_Habilitados: Locales_Autorizado, Locales: Locales_Completo }) -%>
       </div>
       <div class="pt-1 mb-4 d-flex justify-content-between">
         <button class="btn btn-outline-success btn-lg btn-block" type="submit">Aceptar</button>
