@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { AuthenticationService } from 'src/app/authentication.service';
+
 import {
   ApexChart,
   ChartComponent,
@@ -131,11 +133,13 @@ const ELEMENT_DATA: productsData[] = [
   encapsulation: ViewEncapsulation.None,
 })
 export class AppDashboardComponent {
-  @ViewChild('chart') chart: ChartComponent = Object.create(null);
+
+    @ViewChild('chart') chart: ChartComponent = Object.create(null);
 
   public salesOverviewChart!: Partial<salesOverviewChart> | any;
   public yearlyChart!: Partial<yearlyChart> | any;
   public monthlyChart!: Partial<monthlyChart> | any;
+  token: string|null;
 
   displayedColumns: string[] = ['assigned', 'name', 'priority', 'budget'];
   dataSource = ELEMENT_DATA;
@@ -221,7 +225,7 @@ export class AppDashboardComponent {
     },
   ];
 
-  constructor() {
+  constructor(private authenticationService: AuthenticationService) {
     // sales overview chart
     this.salesOverviewChart = {
       series: [
@@ -400,5 +404,9 @@ export class AppDashboardComponent {
         },
       },
     };
+  }
+
+  obtenerToken() {
+    this.token = this.authenticationService.getToken();
   }
 }
