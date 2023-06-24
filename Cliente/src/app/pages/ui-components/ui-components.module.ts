@@ -18,7 +18,6 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ListaLocalesComponent } from './lists/lista-locales/lista-locales.component';
-import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
 
 @NgModule({
   imports: [
@@ -37,7 +36,6 @@ import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.co
     AppMenuComponent,
     AppTooltipsComponent,
     ListaLocalesComponent,
-    SaldoInventarioComponent,
   ],
 })
 export class UicomponentsModule {}

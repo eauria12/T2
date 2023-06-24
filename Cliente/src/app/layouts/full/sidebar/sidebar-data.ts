@@ -2,12 +2,15 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Vistas',
+    navCap: 'Home',
   },
   {
-    displayName: 'Saldo de Inventarios',
+    displayName: 'Dashboard',
     iconName: 'layout-dashboard',
     route: '/dashboard',
+  },
+  {
+    navCap: 'Menu Principal',
   },
   {
     displayName: 'Badge',
@@ -37,7 +40,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Saldo de Inventario',
     iconName: 'clipboard-copy',
-    route: '/ui-components/saldo-inventario',
+    route: '/saldo-inventario',
   },
   /*{
     navCap: 'Auth',

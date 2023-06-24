@@ -44,6 +44,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },
+      {
+        path: 'saldo-inventario',
+        canActivate: [AuthGuard] ,
+        loadChildren: () =>
+          import('./pages/pages.module').then((m) => m.PagesModule),
+      },
+      
     ],
   },
 ];

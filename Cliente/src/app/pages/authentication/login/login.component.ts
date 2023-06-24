@@ -27,7 +27,7 @@ export class AppSideLoginComponent {
         console.log(response.result)
         this.authenticationService.storeToken(response.result);
 
-        this.router.navigate(['/ui-components/badge']); // Redirigir al usuario a la ruta deseada /ui-components/badge
+        this.router.navigate(['/dashboard']); // Redirigir al usuario a la ruta deseada /ui-components/badge
 
         // Redireccionar a la página principal o a otra ruta deseada
       }),

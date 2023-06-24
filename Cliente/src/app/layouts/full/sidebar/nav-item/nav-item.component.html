@@ -12,5 +12,10 @@
   class="menu-list-item"
   *ngIf="!item.navCap"
 >
+  <i-tabler
+    class="routeIcon"
+    name="{{ item.iconName }}"
+    matListItemIcon
+  ></i-tabler>
   <span class="hide-menu">{{ item.displayName }}</span>
 </a>

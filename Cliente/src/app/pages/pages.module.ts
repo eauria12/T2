@@ -9,9 +9,10 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
+import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
 
 @NgModule({
-  declarations: [AppDashboardComponent],
+  declarations: [AppDashboardComponent, SaldoInventarioComponent],
   imports: [
     CommonModule,
     MaterialModule,
