@@ -10,9 +10,15 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
+import { TablasComponent} from './ui-components/tablas/tablas.component';
+import { ListaLocalesComponent } from './ui-components/lists/lista-locales/lista-locales.component';
 
 @NgModule({
-  declarations: [AppDashboardComponent, SaldoInventarioComponent],
+  declarations: [AppDashboardComponent, 
+    SaldoInventarioComponent,
+    TablasComponent,
+    ListaLocalesComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -21,6 +27,6 @@ import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.co
     RouterModule.forChild(PagesRoutes),
     TablerIconsModule.pick(TablerIcons),
   ],
-  exports: [TablerIconsModule],
+  exports: [TablerIconsModule,TablasComponent,ListaLocalesComponent],
 })
 export class PagesModule {}

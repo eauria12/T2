@@ -17,7 +17,8 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ListaLocalesComponent } from './lists/lista-locales/lista-locales.component';
+//import { ListaLocalesComponent } from './lists/lista-locales/lista-locales.component';
+
 
 @NgModule({
   imports: [
@@ -35,7 +36,9 @@ import { ListaLocalesComponent } from './lists/lista-locales/lista-locales.compo
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
-    ListaLocalesComponent,
+    //ListaLocalesComponent,
+    
   ],
+  
 })
 export class UicomponentsModule {}
