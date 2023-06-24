@@ -1,16 +1,16 @@
 import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
-  {
+  /*{
     navCap: 'Home',
   },
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
     route: '/dashboard',
-  },
+  },*/
   {
-    navCap: 'Ui Components',
+    navCap: 'Menu Principal',
   },
   {
     displayName: 'Badge',
@@ -37,7 +37,7 @@ export const navItems: NavItem[] = [
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
   },
-  {
+  /*{
     navCap: 'Auth',
   },
   {
@@ -62,5 +62,5 @@ export const navItems: NavItem[] = [
     displayName: 'Sample Page',
     iconName: 'aperture',
     route: '/extra/sample-page',
-  },
+  },*/
 ];
