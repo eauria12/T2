@@ -22,12 +22,12 @@ export class AppSideLoginComponent {
   login() {
     this.authenticationService.login(this.usuarioId, this.clave,1,this.localId,"","RALCIVAR").pipe(
       tap(response => {
-        // Realizar acciones adicionales según la respuesta del recurso externo
+        // Realizar acciones adicionales según la respuesta del recurso externo  
         this.authenticationService.setIsAuthenticated(true); // Actualizar estado de autenticación
         console.log(response.result)
         this.authenticationService.storeToken(response.result);
 
-        this.router.navigate(['/dashboard']); // Redirigir al usuario a la ruta deseada
+        this.router.navigate(['/ui-components/badge']); // Redirigir al usuario a la ruta deseada /ui-components/badge
 
         // Redireccionar a la página principal o a otra ruta deseada
       }),

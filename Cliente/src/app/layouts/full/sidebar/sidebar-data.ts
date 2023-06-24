@@ -34,6 +34,11 @@ export const navItems: NavItem[] = [
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
   },
+  {
+    displayName: 'Saldo de Inventario',
+    iconName: 'clipboard-copy',
+    route: '/ui-components/saldo-inventario',
+  },
   /*{
     navCap: 'Auth',
   },
