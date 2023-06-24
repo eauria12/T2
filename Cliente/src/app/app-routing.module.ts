@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './auth.guard';
+import { SaldoInventarioComponent } from './pages/saldo-inventario/saldo-inventario.component';
 const routes: Routes = [
   {
     path: '',
@@ -47,8 +48,7 @@ const routes: Routes = [
       {
         path: 'saldo-inventario',
         canActivate: [AuthGuard] ,
-        loadChildren: () =>
-          import('./pages/pages.module').then((m) => m.PagesModule),
+        component:SaldoInventarioComponent
       },
       
     ],

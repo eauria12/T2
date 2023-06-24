@@ -5,9 +5,16 @@ import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.co
 export const PagesRoutes: Routes = [
   {
     path: '',
-    component: SaldoInventarioComponent,
+    component: AppDashboardComponent,
     data: {
       title: 'Starter Page',
+    },
+  },
+  {
+    path: 'saldo-inventario',
+    component: SaldoInventarioComponent,
+    data: {
+      title: 'Saldo inventario Page',
     },
   },
   
