@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { TablasComponent } from '../ui-components/tablas/tablas.component';
+
+
 
 @Component({
   selector: 'app-saldo-inventario',
   templateUrl: './saldo-inventario.component.html',
-  styleUrls: ['./saldo-inventario.component.scss']
+  styleUrls: ['./saldo-inventario.component.scss'] 
 })
 export class SaldoInventarioComponent {
 
