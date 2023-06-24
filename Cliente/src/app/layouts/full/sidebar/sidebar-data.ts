@@ -34,7 +34,7 @@ export const navItems: NavItem[] = [
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
   },
-  {
+  /*{
     navCap: 'Auth',
   },
   {
@@ -59,5 +59,5 @@ export const navItems: NavItem[] = [
     displayName: 'Sample Page',
     iconName: 'aperture',
     route: '/extra/sample-page',
-  },
+  },*/
 ];
