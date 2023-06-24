@@ -1,0 +1,16 @@
+<mat-card class="b-1 shadow-none">
+    <mat-card-header>
+      <mat-card-title>Locales </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <mat-selection-list #localesElegidos>
+        <mat-list-option *ngFor="let local of locales">
+          {{ local.nombreLargo }}
+        </mat-list-option>
+      </mat-selection-list>
+
+      <p class="mat-subtitle-2 f-w-600 p-16 bg-light-primary rounded">
+        Options selected: {{ localesElegidos.selectedOptions.selected }}
+      </p>
+    </mat-card-content>
+  </mat-card>
