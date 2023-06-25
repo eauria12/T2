@@ -26,28 +26,17 @@
                 </div>
 
                 <div class="col-sm-3">
-                    <!--form-outline mb-4-->
-                    <mat-card-title>Locales</mat-card-title>
-                    <mat-selection-list #locales class="lista-container">
-                        <mat-list-option *ngFor="let linea of optionLinea">
-                            {{ linea }}
-                        </mat-list-option>
-                    </mat-selection-list>
+                    <app-lista-locales (localesSeleccionados)="handleLocalesSeleccionados($event)" ></app-lista-locales>
                 </div>
 
 
                 <div class="col-sm-3 buttons">
-                    <button mat-flat-button color="warn" class="w-100" (click)="imprimirLocales()">
+                    <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirLocales()">
                         Buscar
                     </button>
                     <button mat-flat-button color="accent" class="w-100">
                         Limpiar
                     </button>
-                </div>
-
-                <div class="col-sm-3 buttons">
-                    <app-lista-locales (localesSeleccionados)="handleLocalesSeleccionados($event)" ></app-lista-locales>
-                    
                 </div>
 
             </div>

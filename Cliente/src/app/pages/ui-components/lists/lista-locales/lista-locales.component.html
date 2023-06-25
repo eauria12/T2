@@ -1,13 +1,8 @@
-<mat-card class="b-1 shadow-none">
-    <mat-card-header>
-      <mat-card-title>Locales </mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="b-t-1">
-      <mat-selection-list #localesElegidos class="lista-container" (selectionChange)="onLocalesSeleccionados(localesElegidos)">
-        <mat-list-option *ngFor="let local of locales" [value]="local.id">
-          {{ local.nombre }}
-        </mat-list-option>
-      </mat-selection-list>
+<mat-card-title>Locales </mat-card-title>
 
-    </mat-card-content>
-  </mat-card>
+<mat-selection-list #localesElegidos class="lista-container"
+  (selectionChange)="onLocalesSeleccionados(localesElegidos)">
+  <mat-list-option *ngFor="let local of locales" [value]="local.id">
+    {{ local.nombre }}
+  </mat-list-option>
+</mat-selection-list>
