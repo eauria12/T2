@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +41,7 @@ import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existenci
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
@@ -51,6 +51,8 @@ import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existenci
   bootstrap: [AppComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    
+    
   ]
 })
 export class AppModule {}

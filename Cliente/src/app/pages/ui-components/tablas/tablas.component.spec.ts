@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatCardModule } from '@angular/material/card';
 import { TablasComponent } from './tablas.component';
 
 describe('TablasComponent', () => {
@@ -8,10 +8,10 @@ describe('TablasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TablasComponent ]
+      imports: [MatCardModule],
+      declarations: [TablasComponent],
     })
-    .compileComponents();
-
+    
     fixture = TestBed.createComponent(TablasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

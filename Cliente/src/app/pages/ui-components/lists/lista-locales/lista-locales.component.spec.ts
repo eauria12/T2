@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListaLocalesComponent } from './lista-locales.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 describe('ListaLocalesComponent', () => {
   let component: ListaLocalesComponent;
@@ -8,6 +11,7 @@ describe('ListaLocalesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatListModule, MatCardModule],
       declarations: [ ListaLocalesComponent ]
     })
     .compileComponents();
