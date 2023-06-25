@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { ObtenerListasService } from 'src/app/services/obtener-listas.service';
+import { Local } from 'src/app/interfaces/local';
 
 @Component({
   selector: 'app-lista-locales',
@@ -8,7 +9,7 @@ import { ObtenerListasService } from 'src/app/services/obtener-listas.service';
 })
 export class ListaLocalesComponent implements OnInit {
 
-  protected locales:any =[];
+  protected locales:Local[] =[];
 
   @Output() localesSeleccionados = new EventEmitter<any[]>();
 

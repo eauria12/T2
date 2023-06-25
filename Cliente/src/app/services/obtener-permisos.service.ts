@@ -1,15 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators'
 import { of } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication.service'
+import { Permiso } from 'src/app/interfaces/permiso';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObtenerPermisosService {
 
+  private listaPermisos: Permiso[] = [];
+  private listaLineas: number[] = [];
+  private listaLocales: number[] = [];
+
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
+
+  async permisosDisponibles(servicio: String) {
+    this.listaPermisos = await this.getPermisosSafe(servicio);
+    let codigoPermiso = this.listaPermisos.map(permiso => this.obtenerCodigoPermiso(permiso.nivelId));
+    return codigoPermiso;
+  }
+
+  async localesDisponibles(servicio: String) {
+    this.listaPermisos = await this.getPermisosSafe(servicio);
+    let listaLocalestemp = this.listaPermisos[0].locales;
+    this.listaLocales = listaLocalestemp.split(",").map(numero => Number(numero));
+  }
+
+  async lineasDisponibles(servicio: String) {
+    this.listaPermisos = await this.getPermisosSafe(servicio);
+    let listaLineastemp = this.listaPermisos[0].lineas;
+    this.listaLineas = listaLineastemp.split(",").map(numero => Number(numero));
+  }
 
   async getPermisosSafe(servicio: String) {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
@@ -23,6 +46,11 @@ export class ObtenerPermisosService {
             resolve(res);
         });
     });
+  }
+
+  private obtenerCodigoPermiso(nivelId: string): string {
+    const ultimosNumeros = nivelId.slice(-2);
+    return ultimosNumeros.toString();
   }
 
 }

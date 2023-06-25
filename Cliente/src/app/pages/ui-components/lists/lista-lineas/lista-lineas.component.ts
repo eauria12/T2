@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { ObtenerListasService } from 'src/app/services/obtener-listas.service';
+import { Linea } from 'src/app/interfaces/linea'
 
 @Component({
   selector: 'app-lista-lineas',
@@ -8,7 +9,7 @@ import { ObtenerListasService } from 'src/app/services/obtener-listas.service';
 })
 export class ListaLineasComponent {
 
-  protected locales:any =[];
+  protected lineas: Linea[] =[];
 
   @Output() lineasSeleccionadas = new EventEmitter<any[]>();
 
@@ -17,12 +18,12 @@ export class ListaLineasComponent {
   }
 
   async ngOnInit() {
-    this.locales  = await this.servicioListas.getListaLineasSafe();
-    console.log(this.locales);
+    this.lineas  = await this.servicioListas.getListaLineasSafe();
+    console.log(this.lineas);
   }
 
-  onLocalesSeleccionados(localesElegidos: any) {
-    const opcionesSeleccionadas = localesElegidos.selectedOptions.selected.map((option:any) => option.value);
+  onLineasSeleccionadas(lineasSeleccionadas: any) {
+    const opcionesSeleccionadas = lineasSeleccionadas.selectedOptions.selected.map((option:any) => option.value);
     this.lineasSeleccionadas.emit(opcionesSeleccionadas);
   }
 

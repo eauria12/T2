@@ -3,9 +3,9 @@
       <mat-card-title>Locales </mat-card-title>
     </mat-card-header>
     <mat-card-content class="b-t-1">
-      <mat-selection-list #localesElegidos class="lista-container" (selectionChange)="onLocalesSeleccionados(localesElegidos)">
-        <mat-list-option *ngFor="let local of locales" [value]="local.id">
-          {{ local.nombre }}
+      <mat-selection-list #lineasElegidas class="lista-container" (selectionChange)="onLineasSeleccionadas(lineasElegidas)">
+        <mat-list-option *ngFor="let linea of lineas" [value]="linea.id">
+          {{ linea.codigoNombre }}
         </mat-list-option>
       </mat-selection-list>
 
