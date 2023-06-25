@@ -10,11 +10,22 @@ import { TablasComponent } from '../ui-components/tablas/tablas.component';
 })
 export class SaldoInventarioComponent {
 
+  localesSeleccionados: any[] = [];
+
   constructor() { }
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   optionLinea: string[] = ['Nacional', 'Zona', 'Local', 'Nacional', 'Zona', 'Local'];
 
   ngOnInit(): void {
+    
+  }
+
+  imprimirLocales(){
+    console.log(this.localesSeleccionados);
+  }
+
+  handleLocalesSeleccionados(locales: any[]) {
+    this.localesSeleccionados = locales;
   }
 
 }
