@@ -17,5 +17,4 @@ export const PagesRoutes: Routes = [
       title: 'Saldo inventario Page',
     },
   },
-  
 ];
