@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatCardModule } from '@angular/material/card';
 import { SaldoInventarioComponent } from './saldo-inventario.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { ListaLocalesComponent } from '../ui-components/lists/lista-locales/lista-locales.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TablasComponent } from '../ui-components/tablas/tablas.component';
 
 describe('SaldoInventarioComponent', () => {
   let component: SaldoInventarioComponent;
@@ -8,7 +13,8 @@ describe('SaldoInventarioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SaldoInventarioComponent ]
+      imports: [MatCardModule, MatIconModule, MatListModule, HttpClientModule],
+      declarations: [ SaldoInventarioComponent, ListaLocalesComponent, TablasComponent]
     })
     .compileComponents();
 

@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { ObtenerPermisosService } from './obtener-permisos.service';
 
 describe('ObtenerPermisosService', () => {
   let service: ObtenerPermisosService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+    }).compileComponents();
     service = TestBed.inject(ObtenerPermisosService);
   });
 

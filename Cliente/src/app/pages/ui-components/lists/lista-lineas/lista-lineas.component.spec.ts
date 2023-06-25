@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListaLineasComponent } from './lista-lineas.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 describe('ListaLineasComponent', () => {
   let component: ListaLineasComponent;
@@ -8,6 +11,7 @@ describe('ListaLineasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatCardModule, MatListModule],
       declarations: [ ListaLineasComponent ]
     })
     .compileComponents();
