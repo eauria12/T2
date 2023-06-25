@@ -24,6 +24,7 @@ import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthInterceptor } from './auth.interceptor';
     HeaderComponent,
     BrandingComponent,
     AppNavItemComponent,
+    ListaPreciosExistenciaComponent,
   ],
   imports: [
     BrowserModule,
