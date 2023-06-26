@@ -16,9 +16,16 @@ export class SaldoInventarioComponent {
   listaPermisos: Permiso[] = [];
   codigoServicio: String = "080509";
   ListaPermisos = [
-    { nombre: "Elemento 1", valor: 10 },
-    { nombre: "Elemento 2", valor: 20 },
-    { nombre: "Elemento 3", valor: 30 }
+    { nombre: "09", valor: "Saldo de inventarios" },
+    { nombre: "04", valor: "Refrescar" },
+    { nombre: "08", valor: "Imprimir" },
+    { nombre: "14", valor: "Excel" },
+    { nombre: "15", valor: "Word" },
+    { nombre: "15", valor: "PDF" },
+    { nombre: "50", valor: "Nacional" },
+    { nombre: "51", valor: "Local" },
+    { nombre: "54", valor: "Zona" },
+    { nombre: "60", valor: "Costo Unitario" }
   ];
 
   constructor(private permisos: ObtenerPermisosService) { }

@@ -17,7 +17,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ListaLineasComponent } from './lists/lista-lineas/lista-lineas.component';
+//import { ListaLineasComponent } from './lists/lista-lineas/lista-lineas.component';
 //import { ListaLocalesComponent } from './lists/lista-locales/lista-locales.component';
 
 
@@ -37,7 +37,7 @@ import { ListaLineasComponent } from './lists/lista-lineas/lista-lineas.componen
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
-    ListaLineasComponent,
+    //ListaLineasComponent,
     //ListaLocalesComponent,
     
   ],

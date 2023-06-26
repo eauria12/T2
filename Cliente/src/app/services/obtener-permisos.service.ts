@@ -11,7 +11,6 @@ import { Permiso } from 'src/app/interfaces/permiso';
 export class ObtenerPermisosService {
 
   private listaPermisos: Permiso[] = [];
-  private listaLineas: number[] = [];
   private listaLocales: number[] = [];
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
@@ -26,12 +25,14 @@ export class ObtenerPermisosService {
     this.listaPermisos = await this.getPermisosSafe(servicio);
     let listaLocalestemp = this.listaPermisos[0].locales;
     this.listaLocales = listaLocalestemp.split(",").map(numero => Number(numero));
+    return this.listaLocales
   }
 
   async lineasDisponibles(servicio: String) {
     this.listaPermisos = await this.getPermisosSafe(servicio);
     let listaLineastemp = this.listaPermisos[0].lineas;
-    this.listaLineas = listaLineastemp.split(",").map(numero => Number(numero));
+    return listaLineastemp;
+    
   }
 
   async getPermisosSafe(servicio: String) {

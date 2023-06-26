@@ -12,12 +12,14 @@ import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
 import { TablasComponent} from './ui-components/tablas/tablas.component';
 import { ListaLocalesComponent } from './ui-components/lists/lista-locales/lista-locales.component';
+import { ListaLineasComponent } from './ui-components/lists/lista-lineas/lista-lineas.component';
 
 @NgModule({
   declarations: [AppDashboardComponent, 
     SaldoInventarioComponent,
     TablasComponent,
-    ListaLocalesComponent
+    ListaLocalesComponent,
+    ListaLineasComponent,
   ],
   imports: [
     CommonModule,
