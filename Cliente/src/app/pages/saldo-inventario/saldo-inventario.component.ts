@@ -13,7 +13,10 @@ import {ObtenerPermisosService} from 'src/app/services/obtener-permisos.service'
 export class SaldoInventarioComponent {
 
   localesSeleccionados: any[] = [];
+  lineasSeleccionadas: any[] = [];
   listaPermisos: Permiso[] = [];
+  lineasDisponibles: String = "";
+  localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
   ListaPermisos = [
     { nombre: "09", valor: "Saldo de inventarios" },
@@ -34,13 +37,18 @@ export class SaldoInventarioComponent {
   optionLinea: string[] = ['Nacional', 'Zona', 'Local', 'Nacional', 'Zona', 'Local'];
 
   async ngOnInit() {
-    let codigos = this.permisos.permisosDisponibles(this.codigoServicio);
-    console.log(codigos);
+    let codigos = await this.permisos.permisosDisponibles(this.codigoServicio);
+    this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
+    this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
   }
 
 
   handleLocalesSeleccionados(locales: any[]) {
     this.localesSeleccionados = locales;
+  }
+
+  handleLineasSeleccionadas(lineas: any[]) {
+    this.lineasSeleccionadas = lineas;
   }
 
   //borrar despues solo para pruebas

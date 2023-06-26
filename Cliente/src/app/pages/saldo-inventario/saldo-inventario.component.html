@@ -17,16 +17,11 @@
                     </mat-selection-list>
                 </div>
                 <div class="col-sm-3">
-                    <mat-card-title>Lineas</mat-card-title>
-                    <mat-selection-list #lineas class="lista-container">
-                        <mat-list-option *ngFor="let linea of optionLinea">
-                            {{ linea }}
-                        </mat-list-option>
-                    </mat-selection-list>
+                    <app-lista-lineas (lineasSeleccionadas)="handleLineasSeleccionadas($event)" [lineasDisponibles]="lineasDisponibles" ></app-lista-lineas>
                 </div>
 
                 <div class="col-sm-3">
-                    <app-lista-locales (localesSeleccionados)="handleLocalesSeleccionados($event)" ></app-lista-locales>
+                    <app-lista-locales (localesSeleccionados)="handleLocalesSeleccionados($event)" [localesDisponibles]="localesDisponibles" ></app-lista-locales>
                 </div>
 
 
