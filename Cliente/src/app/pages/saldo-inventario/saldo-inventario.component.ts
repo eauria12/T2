@@ -35,7 +35,9 @@ export class SaldoInventarioComponent {
   constructor(private permisos: ObtenerPermisosService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
-  optionLinea: string[] = ['Nacional', 'Zona', 'Local', 'Nacional', 'Zona', 'Local'];
+  presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
+  lineArticulo: string[] = ['Por Código', 'Por línea'];
+  zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
 
   async ngOnInit() {
     let codigos = await this.permisos.permisosDisponibles(this.codigoServicio);
@@ -53,12 +55,14 @@ export class SaldoInventarioComponent {
   }
 
   buscarLocales() {
-    this.buscarClicked = true;
+    //this.buscarClicked = true;
   }
 
   //borrar despues solo para pruebas
 
-  imprimirLocales(){
+  imprimirTabla(){
+    this.buscarClicked = true;
+    console.log("hola again");
     console.log(this.localesSeleccionados);
     console.log(this.lineasSeleccionadas);
   }

@@ -1,6 +1,7 @@
 import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
+  /*
   {
     navCap: 'Home',
   },
@@ -9,9 +10,23 @@ export const navItems: NavItem[] = [
     iconName: 'layout-dashboard',
     route: '/dashboard',
   },
+  */
   {
     navCap: 'Menu Principal',
   },
+  {
+    displayName: 'Saldo de Inventario',
+    iconName: 'clipboard-copy',
+    route: '/saldo-inventario',
+  },
+
+  {
+    displayName: 'Linea de Precios y Existencias',
+    iconName: 'businessplan',
+    route: '/precio-existencia',
+  },
+
+  /*
   {
     displayName: 'Badge',
     iconName: 'rosette',
@@ -37,12 +52,8 @@ export const navItems: NavItem[] = [
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
   },
+
   {
-    displayName: 'Saldo de Inventario',
-    iconName: 'clipboard-copy',
-    route: '/saldo-inventario',
-  },
-  /*{
     navCap: 'Auth',
   },
   {

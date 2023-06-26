@@ -22,6 +22,7 @@ export class TablasComponent {
       this.locales = [...this.localesMostrar];
       this.lineas = [...this.lineasMostrar];
       this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales,this.lineas);
+      console.log("hola");
       console.log(this.SaldosInventario);
     }
   }
