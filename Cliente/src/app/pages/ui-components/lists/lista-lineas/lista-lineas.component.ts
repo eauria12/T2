@@ -11,6 +11,7 @@ import { Linea } from 'src/app/interfaces/linea'
 export class ListaLineasComponent {
 
   protected lineas: Linea[] =[];
+  
 
   @Output() lineasSeleccionadas = new EventEmitter<any[]>();
   @Input() lineasDisponibles: String;
@@ -32,5 +33,6 @@ export class ListaLineasComponent {
     const opcionesSeleccionadas = lineasSeleccionadas.selectedOptions.selected.map((option:any) => option.value);
     this.lineasSeleccionadas.emit(opcionesSeleccionadas);
   }
+
 
 }

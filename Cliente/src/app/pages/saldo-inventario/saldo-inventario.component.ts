@@ -12,6 +12,7 @@ import {ObtenerPermisosService} from 'src/app/services/obtener-permisos.service'
 })
 export class SaldoInventarioComponent {
 
+  protected buscarClicked: boolean = false;
   localesSeleccionados: any[] = [];
   lineasSeleccionadas: any[] = [];
   listaPermisos: Permiso[] = [];
@@ -51,10 +52,16 @@ export class SaldoInventarioComponent {
     this.lineasSeleccionadas = lineas;
   }
 
+  buscarLocales() {
+    this.buscarClicked = true;
+  }
+
   //borrar despues solo para pruebas
 
   imprimirLocales(){
     console.log(this.localesSeleccionados);
+    console.log(this.lineasSeleccionadas);
   }
+
 
 }

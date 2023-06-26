@@ -26,10 +26,10 @@
 
 
                 <div class="col-sm-3 buttons">
-                    <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirLocales()">
+                    <button mat-flat-button color="warn" class="m-t-8" (click)="buscarLocales()">
                         Buscar
                     </button>
-                    <button mat-flat-button color="accent" class="w-100">
+                    <button mat-flat-button color="accent" class="w-100" (click)="imprimirLocales()">
                         Limpiar
                     </button>
                 </div>
@@ -40,4 +40,4 @@
     </mat-card-content>
 </mat-card>
 
-<app-tablas></app-tablas>
+<app-tablas *ngIf="buscarClicked" [localesMostrar]="localesSeleccionados" [lineasMostrar]="lineasSeleccionadas" ></app-tablas>
