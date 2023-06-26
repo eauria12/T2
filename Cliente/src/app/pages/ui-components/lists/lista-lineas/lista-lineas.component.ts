@@ -18,7 +18,7 @@ export class ListaLineasComponent {
   }
 
   async ngOnInit() {
-    let lineasDisponibles = await this.servicioListas.;// aqui iria el que trae todas las listas si es que elo que retorna tiene longitud 0 se usa la funcion de abajo 
+    let lineasDisponibles = await this.servicioListas;// aqui iria el que trae todas las listas si es que elo que retorna tiene longitud 0 se usa la funcion de abajo 
     this.lineas  = await this.servicioListas.getListaLineasSafe();
     console.log(this.lineas);
   }
