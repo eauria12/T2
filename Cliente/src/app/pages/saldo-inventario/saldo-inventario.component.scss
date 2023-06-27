@@ -12,15 +12,15 @@
     margin-right: 10px;
 }
 
-.lista-container {
-    height: 200px; /* Establece la altura deseada */
-    overflow: auto; /* Añade scroll cuando sea necesario */
-}
-
 .buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+    padding: 30px;
     
+}
+
+.filter {
+    padding-bottom: 20px;
 }

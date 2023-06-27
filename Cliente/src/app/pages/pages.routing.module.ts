@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
+import { ListaPreciosExistenciaComponent } from './lista-precios-existencia/lista-precios-existencia.component';
 
 export const PagesRoutes: Routes = [
   {
@@ -15,6 +16,13 @@ export const PagesRoutes: Routes = [
     component: SaldoInventarioComponent,
     data: {
       title: 'Saldo inventario Page',
+    },
+  },
+  {
+    path: 'precio-existencia',
+    component: ListaPreciosExistenciaComponent,
+    data: {
+      title: 'Precio Existencia Page',
     },
   },
 ];

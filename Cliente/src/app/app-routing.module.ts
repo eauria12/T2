@@ -4,6 +4,8 @@ import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './auth.guard';
 import { SaldoInventarioComponent } from './pages/saldo-inventario/saldo-inventario.component';
+import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -49,6 +51,11 @@ const routes: Routes = [
         path: 'saldo-inventario',
         canActivate: [AuthGuard] ,
         component:SaldoInventarioComponent
+      },
+      {
+        path: 'precio-existencia',
+        canActivate: [AuthGuard] ,
+        component:ListaPreciosExistenciaComponent
       },
       
     ],

@@ -12,8 +12,12 @@ import {ObtenerPermisosService} from 'src/app/services/obtener-permisos.service'
 })
 export class SaldoInventarioComponent {
 
+  protected buscarClicked: boolean = false;
   localesSeleccionados: any[] = [];
+  lineasSeleccionadas: any[] = [];
   listaPermisos: Permiso[] = [];
+  lineasDisponibles: String = "";
+  localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
   ListaPermisos = [
     { nombre: "09", valor: "Saldo de inventarios" },
@@ -31,11 +35,14 @@ export class SaldoInventarioComponent {
   constructor(private permisos: ObtenerPermisosService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
-  optionLinea: string[] = ['Nacional', 'Zona', 'Local', 'Nacional', 'Zona', 'Local'];
+  presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
+  lineArticulo: string[] = ['Por Código', 'Por línea'];
+  zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
 
   async ngOnInit() {
-    let codigos = this.permisos.permisosDisponibles(this.codigoServicio);
-    console.log(codigos);
+    let codigos = await this.permisos.permisosDisponibles(this.codigoServicio);
+    this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
+    this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
   }
 
 
@@ -43,10 +50,22 @@ export class SaldoInventarioComponent {
     this.localesSeleccionados = locales;
   }
 
+  handleLineasSeleccionadas(lineas: any[]) {
+    this.lineasSeleccionadas = lineas;
+  }
+
+  buscarLocales() {
+    //this.buscarClicked = true;
+  }
+
   //borrar despues solo para pruebas
 
-  imprimirLocales(){
+  imprimirTabla(){
+    this.buscarClicked = true;
+    console.log("hola again");
     console.log(this.localesSeleccionados);
+    console.log(this.lineasSeleccionadas);
   }
+
 
 }
