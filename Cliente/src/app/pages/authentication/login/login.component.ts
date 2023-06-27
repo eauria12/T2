@@ -15,6 +15,7 @@ export class AppSideLoginComponent {
   localId:number;
   equipoIP:"";
   equipoNombre:"RALCIVAR";
+  acceso: boolean = false;
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router
@@ -26,13 +27,14 @@ export class AppSideLoginComponent {
         this.authenticationService.setIsAuthenticated(true); // Actualizar estado de autenticación
         console.log(response.result)
         this.authenticationService.storeToken(response.result);
-
+        this.acceso = true;
         this.router.navigate(['/saldo-inventario']); // Redirigir al usuario a la ruta deseada /ui-components/badge
 
         // Redireccionar a la página principal o a otra ruta deseada
       }),
       catchError(error => {
         // Manejar el error de inicio de sesión
+        this.acceso = false;
         console.error('Error de inicio de sesión:', error);
         return of(null);
       })
