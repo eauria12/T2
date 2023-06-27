@@ -24,7 +24,7 @@ _Roberto Alcívar García_
 _Eliana Lilibeth Auria Perez_  
 _Kevin Paul Valle Soledispa_  
 > **date and time**: 16/06/23 16:30  
--  [Meeting 3](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Mails/Meeting%202.jpeg).  
+-  [Meeting 3](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Mails/Client%20Acceptance%20Form.jpeg).  
 > **Name file**: Client Acceptance Form  
 > **Description**:  After the sprint retrospective, we according to mail the acceptance form to be signed.  
 > **File type**: JPEG  
@@ -44,7 +44,7 @@ _Eliana Lilibeth Auria Perez_
 _Carlos Alejandro Loor Barragan_  
 _Kevin Paul Valle Soledispa_  
 > **date and time**: 24/05/23, 14:00 - 21/06/23, 17:05  
--  [Zoom link sprint retrospective](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Mails/Meeting%202.jpeg).  
+-  [Zoom link sprint retrospective](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Whatsapp/Sprint%20retrospective.png).  
 > **Name file**: Sprint retrospective   
 > **Description**: It gave rise to sprint retrospectives where development progress on the web platform was reviewed and customer feedback was obtained.    
 > **File type**: PNG  
