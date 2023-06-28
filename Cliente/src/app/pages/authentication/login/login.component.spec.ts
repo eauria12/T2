@@ -4,12 +4,14 @@ import { MatCardModule } from '@angular/material/card';
 import { AppSideLoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { HeaderComponent } from 'src/app/layouts/full/header/header.component';
 import { RouteConfigLoadStart } from '@angular/router';
 
 describe('TablasComponent', () => {
   let component: AppSideLoginComponent;
   let authService: AuthenticationService;
   let fixture: ComponentFixture<AppSideLoginComponent>;
+  let headers: HeaderComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,8 +22,13 @@ describe('TablasComponent', () => {
 
     fixture = TestBed.createComponent(AppSideLoginComponent);
     component = fixture.componentInstance;
-    authService = TestBed.inject(AuthenticationService); // Inicializar authService
+    authService = TestBed.inject(AuthenticationService);
+    //headers = TestBed.inject(HeaderComponent); // Inicializar authService
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    //headers.cerrarSesion();
   });
 
   it('should create', () => {
