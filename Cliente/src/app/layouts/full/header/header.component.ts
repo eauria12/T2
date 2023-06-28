@@ -23,4 +23,7 @@ export class HeaderComponent {
   showFiller = false;
 
   constructor(public dialog: MatDialog) {}
+  cerrarSesion() {
+    // Elimina el token almacenado en el almacenamiento local
+    localStorage.removeItem('token');}
 }
