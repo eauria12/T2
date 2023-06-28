@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { AppSideLoginComponent } from './login.component'
+import { FormsModule } from '@angular/forms';
 
 describe('TablasComponent', () => {
   let component: AppSideLoginComponent;
@@ -8,7 +10,7 @@ describe('TablasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatCardModule],
+      imports: [MatCardModule, HttpClientModule,FormsModule],
       declarations: [AppSideLoginComponent],
     })
     
@@ -21,7 +23,11 @@ describe('TablasComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Inciar sesion correctamente ', waitForAsync(() => {
-    expect(component).toBeTruthy();
-  }));
+  it('Inciar sesion correctamente ',() => {
+    (<HTMLInputElement>document.getElementById('user')).value = 'RALCIVAR';
+    (<HTMLInputElement>document.getElementById('pass')).value = 'ra2012';
+    (<HTMLInputElement>document.getElementById('local')).value = '80';
+    component.login();
+    expect(component.acceso).toBe(true);
+  });
 });

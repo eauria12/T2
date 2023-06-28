@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { ListaLocalesComponent } from '../ui-components/lists/lista-locales/lista-locales.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TablasComponent } from '../ui-components/tablas/tablas.component';
+import { ListaLineasComponent } from '../ui-components/lists/lista-lineas/lista-lineas.component';
 
 describe('SaldoInventarioComponent', () => {
   let component: SaldoInventarioComponent;
@@ -14,7 +15,7 @@ describe('SaldoInventarioComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MatCardModule, MatIconModule, MatListModule, HttpClientModule],
-      declarations: [ SaldoInventarioComponent, ListaLocalesComponent, TablasComponent]
+      declarations: [ SaldoInventarioComponent, ListaLocalesComponent, TablasComponent, ListaLineasComponent]
     })
     .compileComponents();
 
