@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { TablasComponent } from './tablas.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('TablasComponent', () => {
   let component: TablasComponent;
@@ -8,7 +10,7 @@ describe('TablasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatCardModule],
+      imports: [MatCardModule, HttpClientModule, FormsModule],
       declarations: [TablasComponent],
     })
     
