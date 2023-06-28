@@ -20,7 +20,9 @@ export class AppSideLoginComponent {
   constructor(private authenticationService: AuthenticationService,
     private router: Router
     ) {}
-  login() {
+
+
+   login() {
     this.authenticationService.login(this.usuarioId, this.clave,1,this.localId,"","RALCIVAR").pipe(
       tap(response => {
         // Realizar acciones adicionales según la respuesta del recurso externo  
@@ -40,5 +42,9 @@ export class AppSideLoginComponent {
     )
     .subscribe();
     
+    
   }
+
+
+
 }

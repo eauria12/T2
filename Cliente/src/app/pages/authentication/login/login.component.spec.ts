@@ -1,21 +1,26 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import { AppSideLoginComponent } from './login.component'
+import { AppSideLoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from 'src/app/authentication.service';
+import { RouteConfigLoadStart } from '@angular/router';
 
 describe('TablasComponent', () => {
   let component: AppSideLoginComponent;
+  let authService: AuthenticationService;
   let fixture: ComponentFixture<AppSideLoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatCardModule, HttpClientModule,FormsModule],
+      imports: [MatCardModule, HttpClientModule, FormsModule],
       declarations: [AppSideLoginComponent],
-    })
-    
+      providers: [AuthenticationService],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AppSideLoginComponent);
     component = fixture.componentInstance;
+    authService = TestBed.inject(AuthenticationService); // Inicializar authService
     fixture.detectChanges();
   });
 
@@ -23,11 +28,34 @@ describe('TablasComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Inciar sesion correctamente ',() => {
-    (<HTMLInputElement>document.getElementById('user')).value = 'RALCIVAR';
-    (<HTMLInputElement>document.getElementById('pass')).value = 'ra2012';
-    (<HTMLInputElement>document.getElementById('local')).value = '80';
+  it('Iniciar sesion correctamente', () => {
+    component.usuarioId = 'RALCIVAR';
+    component.clave = 'ra2012';
+    component.localId = 80;
     component.login();
-    expect(component.acceso).toBe(true);
+    console.log('Iniciar sesion correctamente-----------------')
+    console.log(authService.getToken()?.toString)
+    expect(authService.getToken()).not.toBe(null); // Llamar al método getIsAuthenticated()
   });
+
+  it('Inicio incorrecto: Usuario Incorrecto', () => {
+    component.usuarioId = 'RALCIVA';
+    component.clave = 'ra2012';
+    component.localId = 80;
+    component.login();
+    console.log('Inicio incorrecto: Usuario Incorrecto-----------------')
+    console.log(authService.getToken()?.toString)
+    expect(authService.getToken()).toBe(null); // Llamar al método getIsAuthenticated()
+  });
+
+  it('Inicio incorrecto: Clave Incorrecta', () => {
+    component.usuarioId = 'RALCIVAR';
+    component.clave = 'r2012';
+    component.localId = 80;
+    component.login();
+    console.log('Inicio incorrecto: Clave Incorrecta-----------------')
+    console.log(authService.getToken()?.toString)
+    expect(authService.getToken()).toBe(null); // Llamar al método getIsAuthenticated()
+  });
+
 });
