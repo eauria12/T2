@@ -1,0 +1,35 @@
+/*
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "xo",
+    "overrides": [
+        {
+            "extends": [
+                "xo-typescript"
+            ],
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ]
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+      "for-direction":"warn",
+      "array-bracket-spacing": "warn",
+      "block-spacing": "warn",
+      "array-bracket-newline": "warn",
+      "array-element-newline": "warn",
+      "arrow-spacing": "warn",
+      "callback-return": "warn",
+      "indent": "warn",
+      "no-undef": "warn"
+    }
+}
+*/

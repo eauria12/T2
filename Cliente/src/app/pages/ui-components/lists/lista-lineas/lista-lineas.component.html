@@ -1,0 +1,7 @@
+<mat-card-title>Lineas </mat-card-title>
+
+<mat-selection-list #lineasElegidas class="lista-container" (selectionChange)="onLineasSeleccionadas(lineasElegidas)">
+  <mat-list-option *ngFor="let linea of lineas" [value]="linea.id">
+    {{ linea.codigoNombre }}
+  </mat-list-option>
+</mat-selection-list>

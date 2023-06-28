@@ -1,0 +1,26 @@
+.icon-title {
+    background-color: #faac36;
+    color: white;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    
+}
+
+.filter {
+    padding-bottom: 20px;
+}

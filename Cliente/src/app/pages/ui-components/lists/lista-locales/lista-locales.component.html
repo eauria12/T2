@@ -1,0 +1,8 @@
+<mat-card-title>Locales </mat-card-title>
+
+<mat-selection-list #localesElegidos class="lista-container"
+  (selectionChange)="onLocalesSeleccionados(localesElegidos)">
+  <mat-list-option *ngFor="let local of locales" [value]="local.id">
+    {{ local.nombre }}
+  </mat-list-option>
+</mat-selection-list>

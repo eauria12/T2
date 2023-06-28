@@ -1,0 +1,76 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header class="icon-title">
+        <mat-card-title class="m-b-0 title">
+            <mat-icon class="icon">search</mat-icon><span>Filtros de Búsqueda</span>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="b-t-1">
+        <form>
+            <div class="row">
+                <div class="col-sm-3 filter">
+                    <mat-card-title>Nivel</mat-card-title>
+                    <mat-selection-list #nivel [multiple]="false">
+                        <mat-list-option *ngFor="let nivel of typesOfNivel" [value]="nivel">
+                            {{ nivel }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+
+                <div class="col-sm-3 filter">
+                    <app-lista-lineas (lineasSeleccionadas)="handleLineasSeleccionadas($event)"
+                        [lineasDisponibles]="lineasDisponibles"></app-lista-lineas>
+                </div>
+
+                <div class="col-sm-3 filter">
+                    <app-lista-locales (localesSeleccionados)="handleLocalesSeleccionados($event)"
+                        [localesDisponibles]="localesDisponibles"></app-lista-locales>
+                </div>
+
+                <div class="col-sm-3 buttons">
+                    <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirTabla()">
+                        <!--(click)="buscarLocales()"-->
+                        Buscar
+                    </button>
+                    <button mat-flat-button color="accent" class="m-t-8" (click)="buscarLocales()">
+                        Limpiar
+                    </button>
+                </div>
+
+                <div class="col-sm-3 filter">
+                    <mat-card-title>Zonas </mat-card-title>
+
+                    <mat-selection-list #zon>
+                        <mat-list-option *ngFor="let zon of zona">
+                            {{ zon }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+
+                <div class="col-sm-3 filter">
+                    <mat-card-title>Presentación</mat-card-title>
+                    <mat-selection-list #present [multiple]="false">
+                        <mat-list-option *ngFor="let pr of presentacion" [value]="presentacion">
+                            {{ pr }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+
+                <div class="col-sm-3">
+                    <mat-card-title>Articulo</mat-card-title>
+                    <mat-selection-list #lineArt [multiple]="false">
+                        <mat-list-option *ngFor="let linArt of lineArticulo" [value]="lineArticulo">
+                            {{ linArt }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+
+
+            </div>
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
+<app-tablas *ngIf="buscarClicked" [localesMostrar]="localesSeleccionados" [lineasMostrar]="lineasSeleccionadas">
+</app-tablas>

@@ -1,0 +1,26 @@
+.icon-title {
+    background-color: #faac36;
+    color: white;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.lista-container {
+    height: 200px; /* Establece la altura deseada */
+    overflow: auto; /* Añade scroll cuando sea necesario */
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    
+}
