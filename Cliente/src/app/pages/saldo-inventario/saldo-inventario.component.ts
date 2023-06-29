@@ -38,11 +38,13 @@ export class SaldoInventarioComponent {
   presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
   lineArticulo: string[] = ['Por Código', 'Por línea'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
+  acceso: boolean = false
 
   async ngOnInit() {
     let codigos = await this.permisos.permisosDisponibles(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
+    this.acceso = true;
   }
 
 
