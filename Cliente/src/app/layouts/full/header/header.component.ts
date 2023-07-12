@@ -6,6 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog) {}
-  cerrarSesion() {
-    // Elimina el token almacenado en el almacenamiento local
-    localStorage.removeItem('token');}
+  constructor(public dialog: MatDialog,private authService: AuthService) {}
+  onLogout(): void {
+    this.authService.logout();
+    // Realiza cualquier otra acción necesaria después de cerrar sesión, como redirigir al componente de inicio de sesión
+  }
 }
