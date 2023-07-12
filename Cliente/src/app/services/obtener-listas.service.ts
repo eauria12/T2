@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
 import { catchError } from 'rxjs/operators'
 import { of } from 'rxjs';
-import { AuthenticationService } from 'src/app/authentication.service'
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/authentication.service'
 })
 export class ObtenerListasService {
 
-  constructor(private http: HttpClient, private auth: AuthenticationService) {   }
+  constructor(private http: HttpClient, private auth: AuthService) {   }
 
   async getListaLocalesSafe() {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());

@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { AuthenticationService } from 'src/app/authentication.service';
 
 import {
   ApexChart,
@@ -225,7 +224,7 @@ export class AppDashboardComponent {
     },
   ];
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor() {
     // sales overview chart
     this.salesOverviewChart = {
       series: [
@@ -406,7 +405,4 @@ export class AppDashboardComponent {
     };
   }
 
-  obtenerToken() {
-    this.token = this.authenticationService.getToken();
-  }
 }

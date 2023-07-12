@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './services/authentication/AuthGuard/auth.guard';
 import { SaldoInventarioComponent } from './pages/saldo-inventario/saldo-inventario.component';
 import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
 

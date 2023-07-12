@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators'
 import { of } from 'rxjs';
-import { AuthenticationService } from 'src/app/authentication.service'
+import { AuthService } from 'src/app/services/authentication/auth.service';
 import { Permiso } from 'src/app/interfaces/permiso';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ObtenerPermisosService {
   private listaPermisos: Permiso[] = [];
   private listaLocales: number[] = [];
 
-  constructor(private http: HttpClient, private auth: AuthenticationService) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   async permisosDisponibles(servicio: String) {
     this.listaPermisos = await this.getPermisosSafe(servicio);

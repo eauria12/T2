@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError } from 'rxjs/operators'
 import { of } from 'rxjs';
-import { AuthenticationService } from 'src/app/authentication.service'
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObtenerSaldosInventarioService {
 
-  constructor(private http: HttpClient, private auth: AuthenticationService) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   async getSaldosInventarioSafe(LocalesEscogidos: number[], LineasEscogidas: number[]) {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
