@@ -15,12 +15,19 @@
 .buttons {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    //justify-content: center;
     gap: 20px;
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
     
 }
 
 .filter {
     padding-bottom: 20px;
+}
+
+.listCard{
+    padding-left: 20px;
+    padding-right: 20px;
 }

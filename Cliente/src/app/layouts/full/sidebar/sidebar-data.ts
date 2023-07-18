@@ -26,7 +26,7 @@ export const navItems: NavItem[] = [
     route: '/precio-existencia',
   },
 
-  /*
+  
   {
     displayName: 'Badge',
     iconName: 'rosette',
@@ -52,7 +52,7 @@ export const navItems: NavItem[] = [
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
   },
-
+/*
   {
     navCap: 'Auth',
   },
@@ -79,4 +79,5 @@ export const navItems: NavItem[] = [
     iconName: 'aperture',
     route: '/extra/sample-page',
   },*/
+
 ];
