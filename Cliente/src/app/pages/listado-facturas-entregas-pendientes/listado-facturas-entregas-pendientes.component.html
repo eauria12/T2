@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-sm-12">
+      <mat-card class="cardWithShadow theme-card">
+        <mat-card-header class="icon-title">
+          <mat-card-title class="m-b-0 title">
+            <mat-icon class="icon">search</mat-icon
+            ><span>Filtros de Búsqueda</span>
+          </mat-card-title>
+        </mat-card-header>
+  
+        <mat-card-content class="b-t-1">
+          <form>
+            <div class="row">
+              <div class="col-md-2 filter">
+                    <mat-card-title>Nivel</mat-card-title>
+                    <mat-selection-list #nivel [multiple]="false">
+                      <mat-list-option
+                        *ngFor="let nivel of typesOfNivel"
+                        [value]="nivel">
+                        {{ nivel }}
+                      </mat-list-option>
+                    </mat-selection-list>
+            </div>
+            <div class="col-md-4">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Tittle example</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="example">
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker1">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker2">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+            </div>
+
+
+              <div class="col-sm-3">
+                <div class="buttons">
+                  <button
+                    mat-flat-button
+                    color="warn"
+                    class="m-t-8"
+                    >
+                    <!--(click)="buscarLocales()"-->
+                    Buscar
+                  </button>
+                  <button
+                    mat-flat-button
+                    color="accent"
+                    class="m-t-8"
+                   >
+                    Limpiar
+                  </button>
+                </div>
+            </div>
+
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+     
+    </div>
+  </div>
+  

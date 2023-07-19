@@ -5,7 +5,7 @@ import { FullComponent } from './layouts/full/full.component';
 import { AuthGuard } from './services/authentication/AuthGuard/auth.guard';
 import { SaldoInventarioComponent } from './pages/saldo-inventario/saldo-inventario.component';
 import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
-
+import {ListadoFacturasEntregasPendientesComponent} from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component'
 const routes: Routes = [
   {
     path: '',
@@ -56,6 +56,11 @@ const routes: Routes = [
         path: 'precio-existencia',
         canActivate: [AuthGuard] ,
         component:ListaPreciosExistenciaComponent
+      },
+      {
+        path: 'listado-facturas-entregas-pendientes',
+        canActivate: [AuthGuard] ,
+        component:ListadoFacturasEntregasPendientesComponent
       },
       
     ],

@@ -25,6 +25,10 @@ import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
+import { ListadoFacturasEntregasPendientesComponent } from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component';
+
+//extra
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existenci
     BrandingComponent,
     AppNavItemComponent,
     ListaPreciosExistenciaComponent,
+    ListadoFacturasEntregasPendientesComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,8 @@ import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existenci
     ReactiveFormsModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
+    MatNativeDateModule,
+    
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],

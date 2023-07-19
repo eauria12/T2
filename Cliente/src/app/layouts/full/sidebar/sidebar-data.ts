@@ -52,6 +52,12 @@ export const navItems: NavItem[] = [
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
   },
+  {
+    displayName: 'Listado facturas entregas pendientes',
+    iconName: 'businessplan',
+    route: '/listado-facturas-entregas-pendientes',
+  },
+
 /*
   {
     navCap: 'Auth',
