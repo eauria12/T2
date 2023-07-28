@@ -43,7 +43,7 @@ export class ObtenerPermisosService {
       if (ultimosDosDigitos === "50" ) {
         booleanos[0]=true;
       }
-      if (ultimosDosDigitos === "52" ) {
+      if (ultimosDosDigitos === "51" ) {
         booleanos[1]=true;
       }
       if (ultimosDosDigitos === "54" ) {

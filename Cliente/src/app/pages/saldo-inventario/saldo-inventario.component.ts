@@ -1,36 +1,29 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, ViewChild } from '@angular/core';
+import { MatSelectionList } from '@angular/material/list';
 import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
-import {ObtenerPermisosService} from 'src/app/services/obtener-permisos.service'
+import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 
 
 
 @Component({
   selector: 'app-saldo-inventario',
   templateUrl: './saldo-inventario.component.html',
-  styleUrls: ['./saldo-inventario.component.scss'] 
+  styleUrls: ['./saldo-inventario.component.scss']
 })
 export class SaldoInventarioComponent {
+
+  @ViewChild('nivel') nivelList: MatSelectionList;
 
   protected buscarClicked: boolean = false;
   localesSeleccionados: any[] = [];
   lineasSeleccionadas: any[] = [];
+  NivelLocal: String = "";
   listaPermisos: Permiso[] = [];
+  opcionesNivel: boolean[] = []
   lineasDisponibles: String = "";
   localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
-  //ListaPermisos = [
-//    { nombre: "09", valor: "Saldo de inventarios" },
-//    { nombre: "04", valor: "Refrescar" },
-//    { nombre: "08", valor: "Imprimir" },
-//    { nombre: "14", valor: "Excel" },
-//    { nombre: "15", valor: "Word" },
-//    { nombre: "15", valor: "PDF" },
-//    { nombre: "50", valor: "Nacional" },
-//    { nombre: "51", valor: "Local" },
-//    { nombre: "54", valor: "Zona" },
-//    { nombre: "60", valor: "Costo Unitario" }
-//  ];
 
   constructor(private permisos: ObtenerPermisosService) { }
 
@@ -42,6 +35,9 @@ export class SaldoInventarioComponent {
 
   async ngOnInit() {
     this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio);
+    this.opcionesNivel = await this.permisos.permisosNivel(this.codigoServicio);
+    console.log("Las opciones");
+    console.log(this.opcionesNivel);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
@@ -56,13 +52,29 @@ export class SaldoInventarioComponent {
     this.lineasSeleccionadas = lineas;
   }
 
+  handleNivelSeleccionado() {
+    // Verificamos si "Nacional" está seleccionado
+    if (this.nivelList.selectedOptions.selected.length > 0) {
+      if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[0]) {
+        this.NivelLocal = "Nacional";
+        console.log("Seleccione nacional");
+      } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
+        this.NivelLocal = "Zona";
+        console.log("Seleccione Zona");
+      } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
+        this.NivelLocal = "Local";
+        console.log("Seleccione Local");
+      }
+    }
+  }
+
   buscarLocales() {
     //this.buscarClicked = true;
   }
 
   //borrar despues solo para pruebas
 
-  imprimirTabla(){
+  imprimirTabla() {
     this.buscarClicked = true;
     console.log("hola again");
     console.log(this.localesSeleccionados);
