@@ -19,18 +19,18 @@ export class SaldoInventarioComponent {
   lineasDisponibles: String = "";
   localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
-  ListaPermisos = [
-    { nombre: "09", valor: "Saldo de inventarios" },
-    { nombre: "04", valor: "Refrescar" },
-    { nombre: "08", valor: "Imprimir" },
-    { nombre: "14", valor: "Excel" },
-    { nombre: "15", valor: "Word" },
-    { nombre: "15", valor: "PDF" },
-    { nombre: "50", valor: "Nacional" },
-    { nombre: "51", valor: "Local" },
-    { nombre: "54", valor: "Zona" },
-    { nombre: "60", valor: "Costo Unitario" }
-  ];
+  //ListaPermisos = [
+//    { nombre: "09", valor: "Saldo de inventarios" },
+//    { nombre: "04", valor: "Refrescar" },
+//    { nombre: "08", valor: "Imprimir" },
+//    { nombre: "14", valor: "Excel" },
+//    { nombre: "15", valor: "Word" },
+//    { nombre: "15", valor: "PDF" },
+//    { nombre: "50", valor: "Nacional" },
+//    { nombre: "51", valor: "Local" },
+//    { nombre: "54", valor: "Zona" },
+//    { nombre: "60", valor: "Costo Unitario" }
+//  ];
 
   constructor(private permisos: ObtenerPermisosService) { }
 
@@ -41,7 +41,7 @@ export class SaldoInventarioComponent {
   acceso: boolean = false
 
   async ngOnInit() {
-    let codigos = await this.permisos.permisosDisponibles(this.codigoServicio);
+    this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
