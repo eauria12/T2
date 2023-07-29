@@ -11,6 +11,8 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 //Se importan las ventanas
 import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
+import { ListaPreciosExistenciaComponent } from './lista-precios-existencia/lista-precios-existencia.component';
+import { ListadoFacturasEntregasPendientesComponent } from './listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component';
 import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
 
 //Se importan los componentes
@@ -24,14 +26,17 @@ import { SelectZonaComponent} from './ui-components/select-zona/select-zona.comp
 @NgModule({
   declarations: [AppDashboardComponent, 
     SaldoInventarioComponent,
+    ListaPreciosExistenciaComponent,
     ComprobantesElectronicosComponent,
+    ListadoFacturasEntregasPendientesComponent,
+
     TablasComponent,
     ListaLocalesComponent,
     ListaLineasComponent,
     SelectLocalesComponent,
     SelectZonaComponent,
     FiltroFechaComponent,
-    
+
   ],
   imports: [
     CommonModule,
