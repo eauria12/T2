@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./comprobantes-electronicos.component.scss']
 })
 export class ComprobantesElectronicosComponent {
+  typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
 
 }

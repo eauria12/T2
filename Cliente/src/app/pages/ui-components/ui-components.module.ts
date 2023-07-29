@@ -17,6 +17,9 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
+//import { FiltroFechaComponent } from '../../filtro-fecha/filtro-fecha.component';
+//import { SelectZonaComponent } from '../../select-zona/select-zona.component';
+//import { SelectLocalesComponent } from '../../select-locales/select-locales.component';
 //import { ListaLineasComponent } from './lists/lista-lineas/lista-lineas.component';
 //import { ListaLocalesComponent } from './lists/lista-locales/lista-locales.component';
 
@@ -37,6 +40,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
+    //FiltroFechaComponent,
+    //SelectZonaComponent,
+    //SelectLocalesComponent,
     //ListaLineasComponent,
     //ListaLocalesComponent,
     

@@ -26,6 +26,8 @@ import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
 import { ListadoFacturasEntregasPendientesComponent } from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component';
+//import { ComprobantesElectronicosComponent } from './pages/comprobantes-electronicos/comprobantes-electronicos.component';
+
 
 //extra
 import { MatNativeDateModule } from '@angular/material/core';
@@ -41,6 +43,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppNavItemComponent,
     ListaPreciosExistenciaComponent,
     ListadoFacturasEntregasPendientesComponent,
+    //ComprobantesElectronicosComponent,
   ],
   imports: [
     BrowserModule,

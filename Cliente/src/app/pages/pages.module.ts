@@ -9,19 +9,29 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
+//Se importan las ventanas
 import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
+import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
+
+//Se importan los componentes
 import { TablasComponent} from './ui-components/tablas/tablas.component';
 import { ListaLocalesComponent } from './ui-components/lists/lista-locales/lista-locales.component';
 import { ListaLineasComponent } from './ui-components/lists/lista-lineas/lista-lineas.component';
-import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
+import { SelectLocalesComponent} from './ui-components/select-locales/select-locales.component';
+import { FiltroFechaComponent } from './ui-components/filtro-fecha/filtro-fecha.component';
+import { SelectZonaComponent} from './ui-components/select-zona/select-zona.component';
 
 @NgModule({
   declarations: [AppDashboardComponent, 
     SaldoInventarioComponent,
+    ComprobantesElectronicosComponent,
     TablasComponent,
     ListaLocalesComponent,
     ListaLineasComponent,
-    ComprobantesElectronicosComponent,
+    SelectLocalesComponent,
+    SelectZonaComponent,
+    FiltroFechaComponent,
+    
   ],
   imports: [
     CommonModule,

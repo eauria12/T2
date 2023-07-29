@@ -64,7 +64,7 @@ export class ListaLocalesComponent implements OnInit {
       const todasLasOpciones = this.localesElegidosList.options.toArray();
       todasLasOpciones.forEach(opcion => {
         const zonaIdOpcion = opcion.value.zonaId; // Obtener el valor del zonaId de la opción
-        if (zonaIdOpcion === this.zonaIdSeleccionada) {
+        if (zonaIdOpcion === this.zonaId) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
           opcion._setSelected(true); // Seleccionar la opción si el zonaId coincide
         } else {
           opcion._setSelected(false); // Des-seleccionar la opción si el zonaId no coincide
@@ -72,7 +72,7 @@ export class ListaLocalesComponent implements OnInit {
       });
     const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value);
     this.localesSeleccionados.emit(opcionesSeleccionadas);
+    }
   }
-
 
 }

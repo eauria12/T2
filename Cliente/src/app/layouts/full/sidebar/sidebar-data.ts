@@ -21,7 +21,7 @@ export const navItems: NavItem[] = [
   },
 
   {
-    displayName: 'Linea de Precios y Existencias',
+    displayName: 'Lista de Precios y Existencias',
     iconName: 'businessplan',
     route: '/precio-existencia',
   },
