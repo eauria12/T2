@@ -1,4 +1,5 @@
 import { Component,NgModule } from '@angular/core';
+import { LocalIdService } from 'src/app/services/resources/local.service';
 
 
 @Component({
@@ -13,4 +14,14 @@ export class ListadoFacturasEntregasPendientesComponent {
   lineArticulo: string[] = ['Por Código', 'Por línea'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
   acceso: boolean = false
+
+  localId:string | null;
+  constructor(private LocalIdService: LocalIdService) { }
+
+  mostrarLocalId(): void {
+    this.localId=this.LocalIdService.getLocalId();
+    console.log("imprimmiendo en otra pagina");
+
+    console.log(this.localId);
+  }
 }

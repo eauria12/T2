@@ -3,6 +3,7 @@ import { MatSelectionList } from '@angular/material/list';
 import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
+import { LocalIdService } from 'src/app/services/resources/local.service';
 
 
 
@@ -24,8 +25,8 @@ export class SaldoInventarioComponent {
   lineasDisponibles: String = "";
   localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
-
-  constructor(private permisos: ObtenerPermisosService) { }
+  localId:string | null;
+  constructor(private permisos: ObtenerPermisosService,private LocalIdService: LocalIdService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
@@ -41,6 +42,8 @@ export class SaldoInventarioComponent {
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
+    this.localId = this.LocalIdService.getLocalId();
+  
   }
 
 
@@ -81,5 +84,11 @@ export class SaldoInventarioComponent {
     console.log(this.lineasSeleccionadas);
   }
 
+
+  mostrarLocalId(): void {
+    this.localId=this.LocalIdService.getLocalId();//aqui esta guardado, en el servicio this.LocalIdService.getLocalId()
+    console.log(this.localId);
+    // Puedes usar el valor de localId según tus necesidades.
+  }
 
 }
