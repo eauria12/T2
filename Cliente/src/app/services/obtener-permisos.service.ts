@@ -54,7 +54,6 @@ export class ObtenerPermisosService {
   }
 
   async getPermisosSafe(servicio: String) {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
     return new Promise<any>((resolve, reject) => {
       this.http.get("http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/" + servicio)
         .pipe(catchError((error) => of(error)))

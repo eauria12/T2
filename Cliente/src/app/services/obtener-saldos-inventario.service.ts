@@ -12,7 +12,6 @@ export class ObtenerSaldosInventarioService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   async getSaldosInventarioSafe(LocalesEscogidos: number[], LineasEscogidas: number[]) {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
     const bodyenvio = {
       "locales": this.StringLocales(LocalesEscogidos),
       "lineas": this.StringLineas(LineasEscogidas),

@@ -43,7 +43,6 @@ export class SaldoInventarioComponent {
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
-  
   }
 
 
@@ -82,13 +81,6 @@ export class SaldoInventarioComponent {
     console.log("hola again");
     console.log(this.localesSeleccionados);
     console.log(this.lineasSeleccionadas);
-  }
-
-
-  mostrarLocalId(): void {
-    this.localId=this.LocalIdService.getLocalId();//aqui esta guardado, en el servicio this.LocalIdService.getLocalId()
-    console.log(this.localId);
-    // Puedes usar el valor de localId según tus necesidades.
   }
 
 }
