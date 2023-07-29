@@ -6,6 +6,8 @@ import { AuthGuard } from './services/authentication/AuthGuard/auth.guard';
 import { SaldoInventarioComponent } from './pages/saldo-inventario/saldo-inventario.component';
 import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
 import {ListadoFacturasEntregasPendientesComponent} from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component'
+import { ComprobantesElectronicosComponent } from './pages/comprobantes-electronicos/comprobantes-electronicos.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -61,6 +63,11 @@ const routes: Routes = [
         path: 'listado-facturas-entregas-pendientes',
         canActivate: [AuthGuard] ,
         component:ListadoFacturasEntregasPendientesComponent
+      },
+      {
+        path: 'comprobantes-electronicos',
+        canActivate: [AuthGuard] ,
+        component:ComprobantesElectronicosComponent
       },
       
     ],

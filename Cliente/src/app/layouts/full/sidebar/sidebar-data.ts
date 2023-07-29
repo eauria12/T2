@@ -26,7 +26,18 @@ export const navItems: NavItem[] = [
     route: '/precio-existencia',
   },
 
-  
+  {
+    displayName: 'Listado de Facturas con Entregas Pendientes',
+    iconName: 'list-details',
+    route: '/listado-facturas-entregas-pendientes',
+  },
+
+  {
+    displayName: 'Comprobantes Electrónicos',
+    iconName: 'file-invoice',
+    route: '/comprobantes-electronicos',
+  },
+ 
   {
     displayName: 'Badge',
     iconName: 'rosette',
@@ -51,11 +62,6 @@ export const navItems: NavItem[] = [
     displayName: 'Tooltips',
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
-  },
-  {
-    displayName: 'Listado facturas entregas pendientes',
-    iconName: 'businessplan',
-    route: '/listado-facturas-entregas-pendientes',
   },
 
 /*

@@ -2,7 +2,9 @@ import { Routes } from '@angular/router';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.component';
 import { ListaPreciosExistenciaComponent } from './lista-precios-existencia/lista-precios-existencia.component';
-import {ListadoFacturasEntregasPendientesComponent} from './listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component'
+import { ListadoFacturasEntregasPendientesComponent } from './listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component'
+import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
+
 
 export const PagesRoutes: Routes = [
   {
@@ -28,9 +30,17 @@ export const PagesRoutes: Routes = [
   },
   {
     path: 'listado-facturas-entregas-pendientes',
-    component: ListaPreciosExistenciaComponent,
+    component: ListadoFacturasEntregasPendientesComponent,
     data: {
       title: 'Listado facturas entregas pendientes Page',
     },
   },
+  {
+    path: 'comprobantes-electronicos',
+    component: ComprobantesElectronicosComponent,
+    data: {
+      title: 'Comprobantes  Page',
+    },
+  },
+  
 ];

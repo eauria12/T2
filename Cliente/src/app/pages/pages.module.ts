@@ -13,6 +13,7 @@ import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.co
 import { TablasComponent} from './ui-components/tablas/tablas.component';
 import { ListaLocalesComponent } from './ui-components/lists/lista-locales/lista-locales.component';
 import { ListaLineasComponent } from './ui-components/lists/lista-lineas/lista-lineas.component';
+import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
 
 @NgModule({
   declarations: [AppDashboardComponent, 
@@ -20,6 +21,7 @@ import { ListaLineasComponent } from './ui-components/lists/lista-lineas/lista-l
     TablasComponent,
     ListaLocalesComponent,
     ListaLineasComponent,
+    ComprobantesElectronicosComponent,
   ],
   imports: [
     CommonModule,

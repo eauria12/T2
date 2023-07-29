@@ -1,0 +1,33 @@
+.icon-title {
+    background-color: #faac36;
+    color: white;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    gap: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    
+}
+
+.filter {
+    padding-bottom: 20px;
+}
+
+.listCard{
+    padding-left: 20px;
+    padding-right: 20px;
+}
