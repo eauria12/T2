@@ -10,12 +10,16 @@ export class ObtenerLocalInfoService {
 
   constructor(private http: HttpClient) { }
 
-  async getLocalZona(local: number) {
+  async getLocalZona(local: string | null) {
     let LocalInfotemp = await this.getLocalInfoSafe(local);
+    console.log(LocalInfotemp);
+    console.log(LocalInfotemp.zonaId);
     return LocalInfotemp.zonaId;
+    //let LocalInfo = LocalInfotemp[0].zonaId;
+    //return LocalInfo;
   }
 
-  async getLocalInfoSafe(local: number) {
+  async getLocalInfoSafe(local: string | null) {
     return new Promise<any>((resolve, reject) => {
       this.http.get("http://oasysweb.saia.com.ec/andina/api/info/local/" + local)
         .pipe(catchError((error) => of(error)))

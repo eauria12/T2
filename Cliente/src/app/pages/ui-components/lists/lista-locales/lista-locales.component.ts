@@ -27,7 +27,7 @@ export class ListaLocalesComponent implements OnInit {
 
   async ngOnInit() {
     this.localId = this.LocalIdService.getLocalId();
-    //this.zonaId = this.localInfo.getLocalZona(this.localId)
+    this.zonaId = await this.localInfo.getLocalZona(this.localId);
     this.locales = await this.servicioListas.getListaLocalesSafe();
     if (this.localesDisponibles.length > 0) {
       this.locales = this.locales.filter(elemento => this.localesDisponibles.includes(elemento.id));
@@ -40,13 +40,15 @@ export class ListaLocalesComponent implements OnInit {
       if (this.NivelLocal == "Nacional"){
         this.seleccionarNivelNacional();
       } else if (this.NivelLocal == "Zona"){
-        this.seleccionarNivelNacional();
+        this.seleccionarNivelZona();
+      } else if (this.NivelLocal == "Local"){
+        this.seleccionarNivelLocal();
       }
     }
   }
 
   onLocalesSeleccionados(localesElegidos: any) {
-    const opcionesSeleccionadas = localesElegidos.selectedOptions.selected.map((option: any) => option.value);
+    const opcionesSeleccionadas = localesElegidos.selectedOptions.selected.map((option: any) => option.value.id);
     this.localesSeleccionados.emit(opcionesSeleccionadas);
   }
 
@@ -55,22 +57,40 @@ export class ListaLocalesComponent implements OnInit {
       const todasLasOpciones = this.localesElegidosList.options.toArray();
       todasLasOpciones.forEach(opcion => opcion._setSelected(true));
     }
-    const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value);
+    const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value.id);
     this.localesSeleccionados.emit(opcionesSeleccionadas);
   }
 
   seleccionarNivelZona() {
     if (this.localesElegidosList) {
       const todasLasOpciones = this.localesElegidosList.options.toArray();
+      console.log(todasLasOpciones);
       todasLasOpciones.forEach(opcion => {
-        const zonaIdOpcion = opcion.value.zonaId; // Obtener el valor del zonaId de la opción
+        const zonaIdOpcion = opcion.value.zonaId;
+        console.log(zonaIdOpcion);
         if (zonaIdOpcion === this.zonaId) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
           opcion._setSelected(true); // Seleccionar la opción si el zonaId coincide
         } else {
           opcion._setSelected(false); // Des-seleccionar la opción si el zonaId no coincide
         }
       });
-    const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value);
+    const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value.id);
+    this.localesSeleccionados.emit(opcionesSeleccionadas);
+    }
+  }
+
+  seleccionarNivelLocal() {
+    if (this.localesElegidosList) {
+      const todasLasOpciones = this.localesElegidosList.options.toArray();
+      todasLasOpciones.forEach(opcion => {
+        const localActual = opcion.value.id; 
+        if (localActual == this.localId) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
+          opcion._setSelected(true); // Seleccionar la opción si el zonaId coincide
+        } else {
+          opcion._setSelected(false); // Des-seleccionar la opción si el zonaId no coincide
+        }
+      });
+    const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value.id);
     this.localesSeleccionados.emit(opcionesSeleccionadas);
     }
   }
