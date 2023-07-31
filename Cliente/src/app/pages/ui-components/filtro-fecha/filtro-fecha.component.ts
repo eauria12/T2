@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filtro-fecha',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./filtro-fecha.component.scss']
 })
 export class FiltroFechaComponent {
+  @Input() datedesde: Date;
+  @Input() datehasta: Date;
+
+  @Output() datedesdeChange = new EventEmitter<Date>();
+  @Output() datehastaChange = new EventEmitter<Date>();
+
+  onDesdeChange() {
+    this.datedesdeChange.emit(this.datedesde);
+  }
+
+  onHastaChange() {
+    this.datehastaChange.emit(this.datehasta);
+  }
 
 }
