@@ -1,9 +1,11 @@
-<mat-form-field>
-    <!--<mat-label>Select an option</mat-label>-->
-    <mat-select>
-        <mat-option value="1">Nacional</mat-option>
-        <mat-option value="2">Zona Centro-Norte</mat-option>
-        <mat-option value="3">Zona Sur</mat-option>
-    </mat-select>
-</mat-form-field>
-
+<form>
+    <ng-select
+      [items]="zonaId"
+      bindLabel="nombre"
+      bindValue="id" 
+      name="nombre"
+      [(ngModel)]="selectZona"
+      (ngModelChange)="onSelectChange()"
+      >
+    </ng-select>
+  </form>
