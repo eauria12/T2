@@ -9,6 +9,7 @@ export class FiltroFechaComponent {
   /*Manejo de fechas vivi, si te causa conflicto luego modifico, esta cambiado tbm el html jeje */
   @Input() datedesde: Date;
   @Input() datehasta: Date;
+  @Input() disabled: boolean;
 
   @Output() datedesdeChange = new EventEmitter<Date>();
   @Output() datehastaChange = new EventEmitter<Date>();

@@ -16,17 +16,23 @@ export class TablasComponent {
   @Input() fechaInicio: Date;
   locales: number[];
   lineas: number[];
-  SaldosInventario : Saldolistar[] = [];
+  SaldosInventario: Saldolistar[] = [];
   SaldosInventarioSeparadoLocal: { [localId: number]: Saldolistar[] } = {};
+  DatosMostrar: boolean = false;
 
-  constructor(private obtenerSaldos: ObtenerSaldosInventarioService) {}
+  constructor(private obtenerSaldos: ObtenerSaldosInventarioService) { }
 
   async ngOnChanges(changes: SimpleChanges) {
-    if (changes['localesMostrar'] || changes['lineasMostrar'] ) {
+    if (changes['localesMostrar'] || changes['lineasMostrar']) {
       this.locales = [...this.localesMostrar];
       this.lineas = [...this.lineasMostrar];
-      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales,this.lineas);
-      this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(this.SaldosInventario);
+      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales, this.lineas);
+      if (this.locales.length == 0 || this.lineas.length == 0 || this.SaldosInventario.length == 0) {
+        this.DatosMostrar = false;
+      } else {
+        this.DatosMostrar = true;
+        this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(this.SaldosInventario);
+      }
     }
   }
 
@@ -42,6 +48,6 @@ export class TablasComponent {
     }
     return resultado;
   }
-  
+
 
 }

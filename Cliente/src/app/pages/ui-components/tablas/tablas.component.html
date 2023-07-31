@@ -18,8 +18,8 @@
                         <th>Dias</th>
                     </tr>
                 </thead>
-                <tbody class="tabla_Cab">
-                    <ng-container *ngFor="let locales of SaldosInventarioSeparadoLocal | keyvalue">
+                <tbody class="tabla_Cab" *ngIf="DatosMostrar">
+                    <ng-container *ngFor="let locales of SaldosInventarioSeparadoLocal | keyvalue" >
                         <!-- Iterar sobre los elementos agrupados por localId -->
                         <tr>
                             <td>Local {{ locales.key }}</td> <!-- Mostrar el localId -->
@@ -42,6 +42,9 @@
                             <td>{{ elemento.dias }}</td>
                         </tr>
                     </ng-container>
+                </tbody>
+                <tbody class="tabla_Cab" *ngIf="!DatosMostrar">
+                    No hay elementos
                 </tbody>
             </table>
         </div>

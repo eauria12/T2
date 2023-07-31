@@ -21,6 +21,7 @@ export class ListaLocalesComponent implements OnInit {
   @Input() NivelLocal: String;
   @ViewChild('localesElegidos') localesElegidosList: MatSelectionList;
 
+
   constructor(private servicioListas: ObtenerListasService,private LocalIdService: LocalIdService, private localInfo: ObtenerLocalInfoService) {
 
   }

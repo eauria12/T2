@@ -23,13 +23,9 @@
                     <mat-list-option [value]="typesOfNivel[2]" [disabled]="!opcionesNivel[2]"
                       (click)="handleNivelSeleccionado()">Local</mat-list-option>
                   </mat-selection-list>
-
                 </div>
-
                 <div class="col-sm-6 filter">
-                  <mat-card-header>
                     <mat-card-title> Zonas </mat-card-title>
-                  </mat-card-header>
                   <mat-selection-list #zon class="listCard" [disabled]="!zonaSelected" [multiple]="false">
                     <mat-list-option *ngFor="let zon of zona" [value]="zon" (click)="onZonaSeleccionada(zon)">
                       {{ zon }}
@@ -42,11 +38,11 @@
               <div class="row">
                 <div class="col-sm-4 filter">
                   <app-lista-lineas (lineasSeleccionadas)="handleLineasSeleccionadas($event)"
-                    [lineasDisponibles]="lineasDisponibles">
+                    [lineasDisponibles]="lineasDisponibles" [disabled]="!mostrarListaLineas">
                   </app-lista-lineas>
                 </div>
 
-                <div class="col-sm-8 filter">
+                <div class="col-sm-8 filter" >
                   <app-lista-locales #localesElegidos (localesSeleccionados)="handleLocalesSeleccionados($event)"
                     [localesDisponibles]="localesDisponibles" [NivelLocal]="NivelLocal">
                   </app-lista-locales>
@@ -56,9 +52,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-3">
-              <mat-card-title>Fecha</mat-card-title>
-              <app-filtro-fecha #fechasElegidas (fechaInicioEnvio)="handleFechaInicio($event)" (fechaFinEnvio)="handleFechaFin($event)"></app-filtro-fecha>
+            <div class="col-sm-5">
+              <mat-card-title>Fecha</mat-card-title>   asi se usa el componente fecha   
+              <app-filtro-fecha #fechasElegidas (fechaInicioEnvio)="handleFechaInicio($event)" (fechaFinEnvio)="handleFechaFin($event)" [disabled]="!mostrarFiltroCodigo"></app-filtro-fecha>
             </div>
             <div class="col-sm-3 filter">
               <mat-card-title>Presentación</mat-card-title>
@@ -71,19 +67,20 @@
             <div class="col-sm-2">
               <mat-card-title>Articulo</mat-card-title>
               <mat-selection-list #lineArt [multiple]="false">
-                <mat-list-option *ngFor="let linArt of lineArticulo" [value]="lineArticulo">
+                <mat-list-option *ngFor="let linArt of lineArticulo" [value]="linArt" (click)="filtraArticulos(linArt)">
                   {{ linArt }}
                 </mat-list-option>
               </mat-selection-list>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <div class="buttons">
                 <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirTabla()">
                   <!--(click)="buscarLocales()"-->
                   Buscar
                 </button>
                 <button mat-flat-button color="accent" class="m-t-8" (click)="buscarLocales()">
-                  Limpiar
+                  <a href="/saldo-inventario">  Limpiar</a>
+                  
                 </button>
               </div>
             </div>

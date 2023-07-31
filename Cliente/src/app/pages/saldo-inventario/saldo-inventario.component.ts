@@ -16,7 +16,8 @@ export class SaldoInventarioComponent {
 
   @ViewChild('nivel') nivelList: MatSelectionList;
   @ViewChild('zon') zonaList: MatSelectionList;
-
+  @ViewChild('lineArt') lineArt: MatSelectionList;
+  
   protected buscarClicked: boolean = false;
   fechaInicio: Date = new Date(1900, 1, 1);
   fechaFin: Date = new Date(2200, 31, 12);
@@ -30,8 +31,11 @@ export class SaldoInventarioComponent {
   localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
   permisoCostoUnitario: boolean;
-  localId:string | null;
-  constructor(private permisos: ObtenerPermisosService,private LocalIdService: LocalIdService) { }
+  localId: string | null;
+  mostrarListaLineas:boolean = false;
+  mostrarFiltroCodigo:boolean = false;
+
+  constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
@@ -95,6 +99,23 @@ export class SaldoInventarioComponent {
       } else if (zon === this.zona[2]) {
         this.NivelLocal = "Zona 2";
         console.log("Seleccione Sur");
+      }
+    }
+  }
+
+
+  filtraArticulos(lineArticulo: string) {
+    console.log("Filtro ");
+    if (this.lineArt.selectedOptions.selected.length > 0) {
+      console.log("Evento Filtro ");
+      if (lineArticulo === this.lineArticulo[0]) {
+        this.mostrarListaLineas = false;
+        this.mostrarFiltroCodigo = true;
+        console.log("Filtro codigo");
+      } else if (lineArticulo === this.lineArticulo[1]) {
+        this.mostrarListaLineas = true;
+        this.mostrarFiltroCodigo = false;
+        console.log("Lista lineas");
       }
     }
   }
