@@ -28,6 +28,8 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
 //import { ListadoFacturasEntregasPendientesComponent } from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component';
 //import { ComprobantesElectronicosComponent } from './pages/comprobantes-electronicos/comprobantes-electronicos.component';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 //extra
 import { MatNativeDateModule } from '@angular/material/core';
@@ -51,6 +53,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     NoopAnimationsModule,
     FormsModule,
+    NgSelectModule,
     ReactiveFormsModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),

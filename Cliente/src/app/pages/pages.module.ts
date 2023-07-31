@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutes } from './pages.routing.module';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgApexchartsModule } from 'ng-apexcharts';
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
@@ -22,6 +23,10 @@ import { ListaLineasComponent } from './ui-components/lists/lista-lineas/lista-l
 import { SelectLocalesComponent} from './ui-components/select-locales/select-locales.component';
 import { FiltroFechaComponent } from './ui-components/filtro-fecha/filtro-fecha.component';
 import { SelectZonaComponent} from './ui-components/select-zona/select-zona.component';
+
+
+import { MatSelectionList } from '@angular/material/list';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [AppDashboardComponent, 
@@ -42,6 +47,8 @@ import { SelectZonaComponent} from './ui-components/select-zona/select-zona.comp
     CommonModule,
     MaterialModule,
     FormsModule,
+    NgSelectModule,
+    CalendarModule,
     NgApexchartsModule,
     RouterModule.forChild(PagesRoutes),
     TablerIconsModule.pick(TablerIcons),
