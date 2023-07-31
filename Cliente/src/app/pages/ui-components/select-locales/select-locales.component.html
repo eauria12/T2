@@ -1,8 +1,15 @@
-<mat-form-field>
-    <!--<mat-label>Select an option</mat-label>-->
-    <mat-select>
-        <mat-option value="1">Option 1</mat-option>
-        <mat-option value="2">Option 2</mat-option>
-        <mat-option value="3">Option 3</mat-option>
-    </mat-select>
-</mat-form-field>
+<form>
+  <ng-select
+    [items]="localId"
+    bindLabel="nombre"
+    bindValue="id" 
+    name="nombre"
+    [(ngModel)]="selectLocal"
+    (ngModelChange)="onSelectChange()"
+    >
+  </ng-select>
+</form>
+<!-- 
+      bindValue="id" 
+indica el valor que se recupera del ng-select para id o nombre, segun requiera la api
+ -->
