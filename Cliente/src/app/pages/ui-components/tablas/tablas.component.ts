@@ -10,8 +10,11 @@ import { Saldolistar } from 'src/app/interfaces/saldolistar';
 export class TablasComponent {
 
   @Input() localesMostrar: number[];
-  locales: number[];
   @Input() lineasMostrar: number[];
+  @Input() permisoCostoUnitario: boolean;
+  @Input() fechaFin: Date;
+  @Input() fechaInicio: Date;
+  locales: number[];
   lineas: number[];
   SaldosInventario : Saldolistar[] = [];
   SaldosInventarioSeparadoLocal: { [localId: number]: Saldolistar[] } = {};
@@ -24,23 +27,19 @@ export class TablasComponent {
       this.lineas = [...this.lineasMostrar];
       this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales,this.lineas);
       this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(this.SaldosInventario);
-  
     }
   }
 
   agruparPorLocalId(data: Saldolistar[]): { [localId: number]: Saldolistar[] } {
     const resultado: { [localId: number]: Saldolistar[] } = {};
-  
     for (const elemento of data) {
       const localId = elemento.localId;
-  
       if (resultado[localId]) {
         resultado[localId].push(elemento);
       } else {
         resultado[localId] = [elemento];
       }
     }
-  
     return resultado;
   }
   

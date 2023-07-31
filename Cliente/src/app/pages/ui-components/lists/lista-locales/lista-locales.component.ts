@@ -39,7 +39,7 @@ export class ListaLocalesComponent implements OnInit {
     if (changes['NivelLocal']) {
       if (this.NivelLocal == "Nacional"){
         this.seleccionarNivelNacional();
-      } else if (this.NivelLocal == "Zona"){
+      } else if ( (this.NivelLocal).slice(0, 4) == "Zona"){
         this.seleccionarNivelZona();
       } else if (this.NivelLocal == "Local"){
         this.seleccionarNivelLocal();
@@ -68,7 +68,8 @@ export class ListaLocalesComponent implements OnInit {
       todasLasOpciones.forEach(opcion => {
         const zonaIdOpcion = opcion.value.zonaId;
         console.log(zonaIdOpcion);
-        if (zonaIdOpcion === this.zonaId) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
+        console.log((this.NivelLocal).slice(-1));
+        if (zonaIdOpcion == (this.NivelLocal).slice(-1)) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
           opcion._setSelected(true); // Seleccionar la opción si el zonaId coincide
         } else {
           opcion._setSelected(false); // Des-seleccionar la opción si el zonaId no coincide

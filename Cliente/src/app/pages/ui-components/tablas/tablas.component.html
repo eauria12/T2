@@ -18,29 +18,30 @@
                         <th>Dias</th>
                     </tr>
                 </thead>
-                <tbody class="tabla_Cab" >
+                <tbody class="tabla_Cab">
                     <ng-container *ngFor="let locales of SaldosInventarioSeparadoLocal | keyvalue">
                         <!-- Iterar sobre los elementos agrupados por localId -->
                         <tr>
-                          <td>Local {{ locales.key }}</td> <!-- Mostrar el localId -->
+                            <td>Local {{ locales.key }}</td> <!-- Mostrar el localId -->
                         </tr>
                         <tr *ngFor="let elemento of locales.value">
-                          <!-- Iterar sobre los elementos del arreglo asociado al localId -->
-                          <td></td>
-                          <td>{{ elemento.itemId }}</td>
-                          <td>{{ elemento.itemNombre }}</td>
-                          <td>{{ elemento.paisNombre }}</td>
-                          <td>{{ elemento.unidadMedidaNombre }}</td>
-                          <td>{{ elemento.saldo }}</td>
-                          <td>{{ elemento.reservado }}</td>
-                          <td>{{ elemento.disponible }}</td>
-                          <td>{{ elemento.costoUnitario }}</td>
-                          <td>{{ elemento.ventasCantidad }}</td>
-                          <td>{{ elemento.ventasCantidad * elemento.costoUnitario }}</td>
-                          <td>{{ elemento.unidadMedidaConversion }}</td>
-                          <td>{{ elemento.dias }}</td>
+                            <!-- Iterar sobre los elementos del arreglo asociado al localId -->
+                            <td></td>
+                            <td>{{ elemento.itemId }}</td>
+                            <td>{{ elemento.itemNombre }}</td>
+                            <td>{{ elemento.paisNombre }}</td>
+                            <td>{{ elemento.unidadMedidaNombre }}</td>
+                            <td>{{ elemento.saldo }}</td>
+                            <td>{{ elemento.reservado }}</td>
+                            <td>{{ elemento.disponible }}</td>
+                            <td *ngIf="permisoCostoUnitario">{{ elemento.costoUnitario }}</td>
+                            <td *ngIf="!permisoCostoUnitario">No autorizado</td>
+                            <td>{{ elemento.ventasCantidad }}</td>
+                            <td>{{ elemento.ventasCantidad * elemento.costoUnitario | number: '.2' }}</td>
+                            <td>{{ elemento.unidadMedidaConversion }}</td>
+                            <td>{{ elemento.dias }}</td>
                         </tr>
-                      </ng-container>
+                    </ng-container>
                 </tbody>
             </table>
         </div>
