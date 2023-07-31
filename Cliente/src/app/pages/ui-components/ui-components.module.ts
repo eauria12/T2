@@ -17,7 +17,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { EmisionEstablComponent } from '../../emision-establ/emision-establ.component';
+//import { EmisionEstablComponent } from '../../emision-establ/emision-establ.component';
 //import { FiltroFechaComponent } from '../../filtro-fecha/filtro-fecha.component';
 //import { SelectZonaComponent } from '../../select-zona/select-zona.component';
 //import { SelectLocalesComponent } from '../../select-locales/select-locales.component';
@@ -41,7 +41,7 @@ import { EmisionEstablComponent } from '../../emision-establ/emision-establ.comp
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
-    EmisionEstablComponent,
+    //EmisionEstablComponent,
     //FiltroFechaComponent,
     //SelectZonaComponent,
     //SelectLocalesComponent,

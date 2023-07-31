@@ -22,6 +22,7 @@ import { ListaLineasComponent } from './ui-components/lists/lista-lineas/lista-l
 import { SelectLocalesComponent} from './ui-components/select-locales/select-locales.component';
 import { FiltroFechaComponent } from './ui-components/filtro-fecha/filtro-fecha.component';
 import { SelectZonaComponent} from './ui-components/select-zona/select-zona.component';
+import { EmisionEstablComponent } from './ui-components/emision-establ/emision-establ.component';
 
 @NgModule({
   declarations: [AppDashboardComponent, 
@@ -36,6 +37,7 @@ import { SelectZonaComponent} from './ui-components/select-zona/select-zona.comp
     SelectLocalesComponent,
     SelectZonaComponent,
     FiltroFechaComponent,
+    EmisionEstablComponent,
 
   ],
   imports: [
