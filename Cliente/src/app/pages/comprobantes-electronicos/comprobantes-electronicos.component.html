@@ -1,46 +1,49 @@
 <div class="row">
-    <div class="col-sm-12">
-        <mat-card class="cardWithShadow theme-card">
-            <mat-card-header class="icon-title">
-                <mat-card-title class="m-b-0 title">
-                    <mat-icon class="icon">search</mat-icon><span>Filtros de Búsqueda</span>
-                </mat-card-title>
-            </mat-card-header>
+  <div class="col-sm-12">
+    <mat-card class="cardWithShadow theme-card">
+      <mat-card-header class="icon-title">
+        <mat-card-title class="m-b-0 title">
+          <mat-icon class="icon">search</mat-icon>
+          <span>Filtros de Búsqueda</span>
+        </mat-card-title>
+      </mat-card-header>
 
-            <mat-card-content class="b-t-1">
-                <form>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="row">
+      <mat-card-content class="b-t-1">
+        <form>
+          <div class="row">
+            <div class="col-sm-3">
+              <mat-card-title>Establecimientos a Nivel</mat-card-title>
+              <mat-selection-list
+                #nivel
+                [multiple]="false"
+                (selectionChange)="onSelectionChange($event)">
+                <mat-list-option
+                  *ngFor="let nivel of typesOfNivel"
+                  [value]="nivel">
+                  {{ nivel }}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
 
-                                <div class="col-sm-6 filter">
-                                    <mat-selection-list #nivel [multiple]="false">
-                                        <mat-list-option [value]="typesOfNivel[0]"> Establecimientos a nivel
-                                            Nacional
-                                        </mat-list-option>
+            <div class="col-sm-4">
+              <div class="pt-5 filter"></div>
+              <div *ngIf="selected == 'Zona'" class="pt-4">
+                <app-select-zona
+                  (selectedValue)="onSelectedValue($event)"></app-select-zona>
+              </div>
+              <div class="pt-2 filter"></div>
 
-                                        <mat-list-option [value]="typesOfNivel[1]"> Establecimientos a nivel de Zona
-                                        </mat-list-option>
-                                        <!--Si la mat-list-option de arriba esta seleccionada, debe habilitarse lo q esta en div class="separator"-->
-                                        <div class="separator">
-                                            <app-select-zona></app-select-zona>
-                                        </div>
+              <div *ngIf="selected == 'Local'" class="pt-5">
+                <app-select-locales
+                  (selectedValue)="
+                    onSelectedValue($event)
+                  "></app-select-locales>
+              </div>
+            </div>
+            <div class="col-sm-4">
 
-                                        <mat-list-option [value]="typesOfNivel[2]"> Establecimientos a nivel Local
-                                        </mat-list-option>
-                                        <!--Si la mat-list-option de arriba esta seleccionada, debe habilitarse lo q esta en div class="separator"-->
-                                        <div class="separator">
-                                            <app-select-locales></app-select-locales>
-                                        </div>
-
-                                    </mat-selection-list>
-
-                                </div>
-                            </div>
-
-
-
-                        </div>
+            </div>
+            <!--
 
                         <div class="row">
                             <div class="col-sm-6 filter">
@@ -48,10 +51,14 @@
 
                             </div>
                         </div>
-
-                    </div>
-                </form>
-            </mat-card-content>
-        </mat-card>
-    </div>
+-->
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
+<div class="row">
+    <div class="col-sm-12"></div>
+  </div>
+  

@@ -1,81 +1,63 @@
 <div class="row">
-    <div class="col-sm-12">
-      <mat-card class="cardWithShadow theme-card">
-        <mat-card-header class="icon-title">
-          <mat-card-title class="m-b-0 title">
-            <mat-icon class="icon">search</mat-icon
-            ><span>Filtros de Búsqueda</span>
-          </mat-card-title>
-        </mat-card-header>
-  
-        <mat-card-content class="b-t-1">
-          <form>
-            <div class="row">
-              <div class="col-md-2 filter">
-                    <mat-card-title>Nivel</mat-card-title>
-                    <mat-selection-list #nivel [multiple]="false">
-                      <mat-list-option
-                        *ngFor="let nivel of typesOfNivel"
-                        [value]="nivel">
-                        {{ nivel }}
-                      </mat-list-option>
-                    </mat-selection-list>
+  <div class="col-sm-12">
+    <mat-card class="cardWithShadow theme-card">
+      <mat-card-header class="icon-title">
+        <mat-card-title class="m-b-0 title">
+          <mat-icon class="icon">search</mat-icon
+          ><span>Filtros de Búsqueda</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="b-t-1">
+        <form>
+          <div class="row">
+            <div class="col-sm-2">
+              <mat-card-title>Nivel</mat-card-title>
+              <mat-selection-list
+                #nivel
+                [multiple]="false"
+                (selectionChange)="onSelectionChange($event)">
+                <mat-list-option
+                  *ngFor="let nivel of typesOfNivel"
+                  [value]="nivel">
+                  {{ nivel }}
+                </mat-list-option>
+              </mat-selection-list>
             </div>
-            <div class="col-md-3">
-
-              <app-select-zona></app-select-zona> 
-              <app-select-locales></app-select-locales>
-            </div>
-
-           
             
-            <div class="col-md-4">
-              <mat-card-title>Fecha</mat-card-title>
-              <app-filtro-fecha></app-filtro-fecha>
-            </div>
-
-            <div class="col-md-2">
-              <mat-card-title>Cliente</mat-card-title>
-              <mat-form-field class="example-full-width">
-                  <mat-label>Tittle example</mat-label>
-                  <input matInput placeholder="Ex. Pizza" value="example">
-                </mat-form-field>
+            <div *ngIf="selected == 'Zona'" class="col-sm-4 mt-5">
+              <div class="mt-5">
               </div>
-
-
-              <div class="col-sm-3">
-                <div class="buttons">
-                  <button
-                    mat-flat-button
-                    color="warn"
-                    class="m-t-8"
-                    >
-                    <!--(click)="buscarLocales()"-->
-                    Buscar
-                  </button>
-                  <button
-                    mat-flat-button
-                    color="accent"
-                    class="m-t-8"
-                   >
-                    Limpiar
-                  </button>
-
-                  <button mat-flat-button color="accent" class="m-t-8" (click)="mostrarLocalId()">
-                    mira en el console               
-                   </button>
-                </div>
+                <app-select-zona
+                  (selectedValue)="onSelectedValue($event)"></app-select-zona>
             </div>
 
+
+            <div *ngIf="selected == 'Local'" class="col-sm-4 mt-auto">
+                <app-select-locales
+                  (selectedValue)="
+                    onSelectedValue($event)
+                  ">
+                </app-select-locales>
             </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
+
+            <div class="col-sm-2 mt-auto">
+              <app-filtro-fecha  [(datedesde)]="fechaDesde" [(datehasta)]="fechaHasta"></app-filtro-fecha>
+            </div>
+
+            <div class="col-sm-3 mt-auto">
+              <div class="buttons">
+                <button mat-flat-button color="warn" (click)="buscarLocales()">
+                  <!--(click)="buscarLocales()"-->
+                  Buscar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-     
-    </div>
-  </div>
-  
+</div>
+<div class="row">
+  <div class="col-sm-12"></div>
+</div>
