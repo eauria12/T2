@@ -31,27 +31,40 @@ export class ObtenerPermisosService {
   async lineasDisponibles(servicio: String) {
     this.listaPermisos = await this.getPermisosSafe(servicio);
     let listaLineastemp = this.listaPermisos[0].lineas;
-    return listaLineastemp; 
+    return listaLineastemp;
   }
 
   async permisosNivel(servicio: String) {
     this.listaPermisos = await this.getPermisosSafe(servicio);
-    const booleanos: boolean[] = [false,false,false];
+    const booleanos: boolean[] = [false, false, false];
     this.listaPermisos.forEach((elemento) => {
       const nivelId = elemento.nivelId.toString();
       const ultimosDosDigitos = nivelId.slice(-2);
-      if (ultimosDosDigitos === "50" ) {
-        booleanos[0]=true;
+      if (ultimosDosDigitos === "50") {
+        booleanos[0] = true;
       }
-      if (ultimosDosDigitos === "51" ) {
-        booleanos[1]=true;
+      if (ultimosDosDigitos === "51") {
+        booleanos[1] = true;
       }
-      if (ultimosDosDigitos === "54" ) {
-        booleanos[2]=true;
+      if (ultimosDosDigitos === "54") {
+        booleanos[2] = true;
       }
     });
     return booleanos;
   }
+
+  async permisoCostoUnitario(servicio: String) {
+    let permiso = false;
+    this.listaPermisos = await this.getPermisosSafe(servicio);
+    this.listaPermisos.forEach((elemento) => {
+      const nivelId = elemento.nivelId.toString();
+      const ultimosDosDigitos = nivelId.slice(-2);
+      if (ultimosDosDigitos === "60") {
+        permiso = true;
+      }
+    });
+   return permiso; 
+}
 
   async getPermisosSafe(servicio: String) {
     return new Promise<any>((resolve, reject) => {

@@ -1,25 +1,24 @@
 <div>
     <p>
-        <span>Desde:</span>
+      <span>Desde:</span>
     </p>
     <mat-form-field>
-        <!-- <mat-label>Choose a date</mat-label> -->
-        <input matInput [matDatepicker]="picker1">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+      <input matInput [matDatepicker]="picker1" (dateInput)="onDateChange($event, 'date1')" [(ngModel)]="fechaInicio">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-</div>
-
-<div>
+  </div>
+  
+  <div>
     <p>
-        <span>Hasta:</span>
+      <span>Hasta:</span>
     </p>
     <mat-form-field>
-        <!--<mat-label>Choose a date</mat-label> -->
-        <input matInput [matDatepicker]="picker2">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
+      <input matInput [matDatepicker]="picker2" (dateInput)="onDateChange($event, 'date2')" [(ngModel)]="fechaFin">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
-</div>
+  </div>
+  

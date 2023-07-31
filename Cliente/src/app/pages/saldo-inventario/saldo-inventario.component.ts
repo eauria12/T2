@@ -15,9 +15,13 @@ import { LocalIdService } from 'src/app/services/resources/local.service';
 export class SaldoInventarioComponent {
 
   @ViewChild('nivel') nivelList: MatSelectionList;
+  @ViewChild('zon') zonaList: MatSelectionList;
 
   protected buscarClicked: boolean = false;
+  fechaInicio: Date = new Date(1900, 1, 1);
+  fechaFin: Date = new Date(2200, 31, 12);
   localesSeleccionados: any[] = [];
+  zonaSelected: boolean = false;
   lineasSeleccionadas: any[] = [];
   NivelLocal: String = "";
   listaPermisos: Permiso[] = [];
@@ -25,6 +29,7 @@ export class SaldoInventarioComponent {
   lineasDisponibles: String = "";
   localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
+  permisoCostoUnitario: boolean;
   localId:string | null;
   constructor(private permisos: ObtenerPermisosService,private LocalIdService: LocalIdService) { }
 
@@ -37,8 +42,7 @@ export class SaldoInventarioComponent {
   async ngOnInit() {
     this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio);
     this.opcionesNivel = await this.permisos.permisosNivel(this.codigoServicio);
-    console.log("Las opciones");
-    console.log(this.opcionesNivel);
+    this.permisoCostoUnitario = await this.permisos.permisoCostoUnitario(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
@@ -54,18 +58,43 @@ export class SaldoInventarioComponent {
     this.lineasSeleccionadas = lineas;
   }
 
+  handleFechaInicio(Incio: Date) {
+    this.fechaInicio = Incio;
+  }
+
+  handleFechaFin(Fin: Date) {
+    this.fechaFin = Fin;
+  }
+
   handleNivelSeleccionado() {
     // Verificamos si "Nacional" está seleccionado
     if (this.nivelList.selectedOptions.selected.length > 0) {
       if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[0]) {
+        this.zonaSelected = false;
         this.NivelLocal = "Nacional";
         console.log("Seleccione nacional");
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
-        this.NivelLocal = "Zona";
+        this.zonaSelected = true;
         console.log("Seleccione Zona");
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
+        this.zonaSelected = false;
         this.NivelLocal = "Local";
         console.log("Seleccione Local");
+      }
+    }
+  }
+
+  onZonaSeleccionada(zon: string) {
+    if (this.zonaList.selectedOptions.selected.length > 0) {
+      if (zon === "Nacional") {
+        this.NivelLocal = "Nacional";
+        console.log("Seleccione nacional");
+      } else if (zon === this.zona[1]) {
+        this.NivelLocal = "Zona 1";
+        console.log("Seleccione Centro-Norte");
+      } else if (zon === this.zona[2]) {
+        this.NivelLocal = "Zona 2";
+        console.log("Seleccione Sur");
       }
     }
   }
