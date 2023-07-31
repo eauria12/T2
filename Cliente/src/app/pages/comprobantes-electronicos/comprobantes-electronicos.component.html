@@ -9,47 +9,65 @@
 
             <mat-card-content class="b-t-1">
                 <form>
+
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="row">
+                        <div class="col-md-2 filter">
+                            <mat-selection-list #nivel [multiple]="false">
+                                <mat-list-option [value]="typesOfNivel[0]"> Establecimientos a nivel
+                                    Nacional
+                                </mat-list-option>
 
-                                <div class="col-sm-6 filter">
-                                    <mat-selection-list #nivel [multiple]="false">
-                                        <mat-list-option [value]="typesOfNivel[0]"> Establecimientos a nivel
-                                            Nacional
-                                        </mat-list-option>
-
-                                        <mat-list-option [value]="typesOfNivel[1]"> Establecimientos a nivel de Zona
-                                        </mat-list-option>
-                                        <!--Si la mat-list-option de arriba esta seleccionada, debe habilitarse lo q esta en div class="separator"-->
-                                        <div class="separator">
-                                            <app-select-zona></app-select-zona>
-                                        </div>
-
-                                        <mat-list-option [value]="typesOfNivel[2]"> Establecimientos a nivel Local
-                                        </mat-list-option>
-                                        <!--Si la mat-list-option de arriba esta seleccionada, debe habilitarse lo q esta en div class="separator"-->
-                                        <div class="separator">
-                                            <app-select-locales></app-select-locales>
-                                        </div>
-
-                                    </mat-selection-list>
-
+                                <mat-list-option [value]="typesOfNivel[1]"> Establecimientos a nivel de Zona
+                                </mat-list-option>
+                                <!--Si la mat-list-option de arriba esta seleccionada, debe habilitarse lo q esta en div class="separator"-->
+                                <div class="separator">
+                                    <app-select-zona></app-select-zona>
                                 </div>
-                            </div>
 
+                                <mat-list-option [value]="typesOfNivel[2]"> Establecimientos a nivel Local
+                                </mat-list-option>
+                                <!--Si la mat-list-option de arriba esta seleccionada, debe habilitarse lo q esta en div class="separator"-->
+                                <div class="separator">
+                                    <app-select-locales></app-select-locales>
+                                </div>
 
+                            </mat-selection-list>
+
+                        </div>
+                        <div class="col-md-3">
 
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-6 filter">
-                                <app-filtro-fecha></app-filtro-fecha>
 
+                        <div class="col-md-4">
+                            <mat-card-title>Fecha</mat-card-title>
+                            <app-filtro-fecha></app-filtro-fecha>
+                        </div>
+
+                        <div class="col-md-2">
+                            <mat-card-title>Puntos de Emisión de Establecimiento</mat-card-title>
+                            <app-select-locales></app-select-locales>
+                        </div>
+
+
+                        <div class="col-sm-3">
+                            <div class="buttons">
+                                <button mat-flat-button color="warn" class="m-t-8">
+                                    <!--(click)="buscarLocales()"-->
+                                    Buscar
+                                </button>
+                                <button mat-flat-button color="accent" class="m-t-8">
+                                    Limpiar
+                                </button>
+
+                                <button mat-flat-button color="accent" class="m-t-8">
+                                    mira en el console
+                                </button>
                             </div>
                         </div>
 
                     </div>
+
                 </form>
             </mat-card-content>
         </mat-card>
