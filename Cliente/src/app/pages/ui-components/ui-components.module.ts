@@ -17,7 +17,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ConsolidadoComponent } from '../../consolidado/consolidado.component';
+//import { ConsolidadoComponent } from '../../consolidado/consolidado.component';
 //import { EmisionEstablComponent } from '../../emision-establ/emision-establ.component';
 //import { FiltroFechaComponent } from '../../filtro-fecha/filtro-fecha.component';
 //import { SelectZonaComponent } from '../../select-zona/select-zona.component';
@@ -42,7 +42,7 @@ import { ConsolidadoComponent } from '../../consolidado/consolidado.component';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
-    ConsolidadoComponent,
+    //ConsolidadoComponent,
     //EmisionEstablComponent,
     //FiltroFechaComponent,
     //SelectZonaComponent,

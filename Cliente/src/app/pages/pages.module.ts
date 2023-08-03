@@ -24,7 +24,8 @@ import { SelectLocalesComponent} from './ui-components/select-locales/select-loc
 import { FiltroFechaComponent } from './ui-components/filtro-fecha/filtro-fecha.component';
 import { SelectZonaComponent} from './ui-components/select-zona/select-zona.component';
 import { EmisionEstablComponent } from './ui-components/emision-establ/emision-establ.component';
-import { SelectLineasComponent} from './ui-components/select-lineas/select-lineas.component';
+import { SelectLineasComponent } from './ui-components/select-lineas/select-lineas.component';
+import { ConsolidadoComponent } from './ui-components/consolidado/consolidado.component';
 
 
 import { MatSelectionList } from '@angular/material/list';
@@ -34,6 +35,7 @@ import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect'; // Importa el módulo MultiSelectModule de PrimeNG
 import { DropdownModule } from 'primeng/dropdown'; // Importa el módulo DropdownModule de PrimeNG
 import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de PrimeNG
+import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTextModule de PrimeNG
 
 @NgModule({
   declarations: [
@@ -50,10 +52,12 @@ import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de Prim
     SelectZonaComponent,
     FiltroFechaComponent,
     EmisionEstablComponent,
-    SelectLineasComponent
+    SelectLineasComponent,
+    ConsolidadoComponent
 
   ],
   imports: [
+    InputTextModule,
     TagModule,
     DropdownModule,
     MultiSelectModule ,
