@@ -1,0 +1,37 @@
+export interface Existencia {
+  Descripción: string;
+  Marca: string;
+  Origen: string;
+  Código_Prov: string;
+  NombreLinea: string;
+  PrecioMasIva: number | null;
+  PrecioTarjetaCredito: number | null;
+  Total_Nacional: number | null;
+  IdItem: string;
+  4: number | null;
+  5: number | null;
+  8: number | null;
+  9: number | null;
+  10: number | null;
+  11: number | null;
+  15: number | null;
+  20: number | null;
+  22: number | null;
+  23: number | null;
+  24: number | null;
+  26: number | null;
+  27: number | null;
+  32: number | null;
+  34: number | null;
+  35: number | null;
+  37: number | null;
+  38: number | null;
+  80: number | null;
+  82: number | null;
+  83: number | null;
+  84: number | null;
+  86: number | null;
+  87: number | null;
+  88: number | null;
+  89: number | null;
+}

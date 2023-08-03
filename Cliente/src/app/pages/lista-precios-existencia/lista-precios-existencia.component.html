@@ -1,119 +1,219 @@
 <mat-card class="cardWithShadow theme-card">
-    <mat-card-header class="icon-title">
-        <mat-card-title class="m-b-0 title">
-            <mat-icon class="icon">search</mat-icon><span>Filtros de Búsqueda</span>
-        </mat-card-title>
-    </mat-card-header>
+  <mat-card-header class="icon-title">
+    <mat-card-title class="m-b-0 title">
+      <mat-icon class="icon">search</mat-icon><span>Filtros de Búsqueda</span>
+    </mat-card-title>
+  </mat-card-header>
 
-    <mat-card-content class="b-t-1">
-        <form>
-            <div class="row">
-                <div class="col-sm-3">
-                    <mat-card-title>Línea:</mat-card-title>
-                    <mat-form-field>
-                        <mat-label>Select an option</mat-label>
-                        <mat-select>
-                            <mat-option value="1">Option 1</mat-option>
-                            <mat-option value="2">Option 2</mat-option>
-                            <mat-option value="3">Option 3</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-card-title>Tipo de Inventario</mat-card-title>
-                    <mat-selection-list #nivel [multiple]="false">
-                        <mat-list-option *ngFor="let tipo of tipoInventario" [value]="tipo">
-                            {{ tipo }}
-                        </mat-list-option>
-                    </mat-selection-list>
-                </div>
-                <div class="col-sm-2">
-                    <mat-card-title>Tipo de Nivel</mat-card-title>
-                    <mat-selection-list #nivel [multiple]="false">
-                        <mat-list-option *ngFor="let nivel of tipoNivel" [value]="nivel">
-                            {{ nivel }}
-                        </mat-list-option>
-                    </mat-selection-list>
-
-                </div>
-
-                <div class="col-sm-3">
-                    <!--form-outline mb-4-->
-                    <mat-card-title>Buscar por:</mat-card-title>
-                    <mat-form-field>
-                        <mat-label>Select an option</mat-label>
-                        <mat-select>
-                            <mat-option value="1">Option 1</mat-option>
-                            <mat-option value="2">Option 2</mat-option>
-                            <mat-option value="3">Option 3</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-card-title>Ingrese parámetro:</mat-card-title>
-                    <mat-form-field>
-                        <input matInput placeholder="" value="">
-                    </mat-form-field>
-
-                </div>
-
-                <div class="col-sm-3">
-                    <mat-card-title>Periodo:</mat-card-title>
-                    <mat-form-field>
-                        <input matInput placeholder="" value="">
-                    </mat-form-field>
-                    <mat-card-title>Estado:</mat-card-title>
-                    <mat-form-field>
-                        <input matInput placeholder="" value="">
-                    </mat-form-field>
-                </div>
-
-                <div class="col-sm-1 buttons">
-                    <button mat-flat-button color="warn" class="w-100">
-                        Buscar
-                    </button>
-                    <button mat-flat-button color="accent" class="w-100">
-                        Limpiar
-                    </button>
-                </div>
-
+  <mat-card-content class="b-t-1">
+    <form>
+      <div class="row">
+        <div class="col-sm-4">
+          <app-select-lineas (selectedValue)="onSelectionChange($event)"></app-select-lineas>
+        </div>
+        <!--Aún no implementados-->
+        <div class="col-sm-4">
+          <div class="row">
+            <div class="col-sm-12 m-2">
+              <p-radioButton
+                name="inventario"
+                value="fisico"
+                [(ngModel)]="inventario"
+                inputId="inventario1"></p-radioButton>
+              <label for="inventario1">Inventario Físico</label>
             </div>
-        </form>
 
-    </mat-card-content>
+            <div class="col-sm-12 mt-4">
+              <p-radioButton
+                name="inventario"
+                value="disponible"
+                [(ngModel)]="inventario"
+                inputId="inventario2"></p-radioButton>
+              <label for="inventario2" class="ml-3"
+                >Inventario Disponible</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="buttons">
+              <button mat-flat-button color="warn" (click)="buscarExistencias()">
+                <!--(click)="buscarLocales()"-->
+                Buscar
+              </button>
+            </div>
+          </div>
+      </div>
+    
+      <span
+        >Hola, por favor agrega los otros componentes, por ahora no se usan así
+        que los omití</span
+      >
+    </form>
+    
+  </mat-card-content>
 </mat-card>
 
 <mat-card class="cardWithShadow theme-card">
-    <mat-card-header class="icon-title">
-        <mat-card-title class="m-b-0 title">
-            <div class="row justify-content-around">
-                <div class="col">
-                    <p>Mostrar</p>
-                </div>
-                <div class="col">
-                    <select class="form-select" aria-label=".form-select-sm example">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <p>registros.</p>
-                </div>
-            </div>
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="table-responsive m-t-16">
-            <table class="w-100">
-                <th>vvv</th>
-
-                <th>vvv</th>
-                <th>vvv</th>
-                <th>vvv</th>
-
-                <th>vvv</th>
-
-                <th>vvv</th>
-                <th>vvv</th>
-                <th>vvv</th>
-            </table>
+  <mat-card-header class="icon-title">
+    <mat-card-title class="m-b-0 title">
+      <div class="row justify-content-around">
+        <div class="col">
+          <p>Registros</p>
         </div>
-    </mat-card-content>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+    <p-table
+      #dt2
+      [value]="listaPreciosExistencia"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="[
+        'IdItem',
+        'NombreLinea',
+        'Descripción',
+        'Código_Prov'
+      ]"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      styleClass="p-datatable-gridlines"
+      >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+              placeholder="Search keyword" />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 22%">Name</th>
+          <th style="width: 22%">Country</th>
+          <th style="width: 22%">Agent</th>
+          <th style="width: 22%">Status</th>
+        </tr>
+        <tr>
+          <th>
+            <p-columnFilter type="text" field="IdItem"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="NombreLinea"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="Descripción"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="Código_Prov"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="PrecioMasIva"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="Total_Nacional"></p-columnFilter>
+          </th>
+          <!--
+          <th>
+            <p-columnFilter type="text" field="4"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="5"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="8"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="9"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="10"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="11"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="15"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="20"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="22"></p-columnFilter>
+          </th>
+          -->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-existencia>
+        <tr>
+          <td>
+            {{ existencia.IdItem }}
+          </td>
+          <td>
+            <span class="ml-1 vertical-align-middle">
+              {{ existencia.NombreLinea }}</span
+            >
+          </td>
+          <td>
+            <span class="ml-1 vertical-align-middle">
+              {{
+                existencia["Descripción"]
+              }}</span
+            >
+          </td>
+          
+          <td>
+            {{existencia["Código_Prov"]}}
+          </td>
+          <td>
+            {{existencia.PrecioMasIva}}
+          </td>
+          <td>
+            {{existencia.Total_Nacional}}
+          </td>
+            <!--
+          <td>
+            {{existencia["4"]}}
+          </td>
+          <td>
+            {{existencia["5"]}}
+          </td>
+          <td>
+            {{existencia["8"]}}
+          </td>
+          <td>
+            {{existencia["9"]}}
+          </td>
+          <td>
+            {{existencia["10"]}}
+          </td>
+          <td>
+            {{existencia["11"]}}
+          </td>
+          <td>
+            {{existencia["15"]}}
+          </td>
+          <td>
+            {{existencia["20"]}}
+          </td>
+          <td>
+            {{existencia["22"]}}
+          </td>
+          -->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No customers found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
 </mat-card>

@@ -1,0 +1,11 @@
+<form>
+    <ng-select
+      [items]="lineasId"
+      bindLabel="nombre"
+      bindValue="codigoNombre" 
+      name="id"
+      [(ngModel)]="selectLocal"
+      (ngModelChange)="onSelectChange()"
+      >
+    </ng-select>
+  </form>
