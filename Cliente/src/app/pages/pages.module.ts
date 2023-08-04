@@ -15,6 +15,7 @@ import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.co
 import { ListaPreciosExistenciaComponent } from './lista-precios-existencia/lista-precios-existencia.component';
 import { ListadoFacturasEntregasPendientesComponent } from './listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component';
 import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
+import { KardexMercaderiaComponent } from './kardex-mercaderia/kardex-mercaderia.component';
 
 //Se importan los componentes
 import { TablasComponent} from './ui-components/tablas/tablas.component';
@@ -26,7 +27,8 @@ import { SelectZonaComponent} from './ui-components/select-zona/select-zona.comp
 import { EmisionEstablComponent } from './ui-components/emision-establ/emision-establ.component';
 import { SelectLineasComponent } from './ui-components/select-lineas/select-lineas.component';
 import { ConsolidadoComponent } from './ui-components/consolidado/consolidado.component';
-import { KardexMercaderiaComponent } from './kardex-mercaderia/kardex-mercaderia.component'; 
+import { FechaInventarioComponent } from './ui-components/fecha-inventario/fecha-inventario.component';
+import { TipoInventarioComponent } from './ui-components/tipo-inventario/tipo-inventario.component';
 
 import { MatSelectionList } from '@angular/material/list';
 import { CalendarModule } from 'primeng/calendar';
@@ -36,6 +38,7 @@ import { MultiSelectModule } from 'primeng/multiselect'; // Importa el módulo M
 import { DropdownModule } from 'primeng/dropdown'; // Importa el módulo DropdownModule de PrimeNG
 import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de PrimeNG
 import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTextModule de PrimeNG
+
 
 
 @NgModule({
@@ -56,8 +59,9 @@ import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTe
     EmisionEstablComponent,
     SelectLineasComponent,
     ConsolidadoComponent,
-    
-
+    FechaInventarioComponent,
+    TipoInventarioComponent,
+  
   ],
   imports: [
     InputTextModule,
