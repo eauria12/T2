@@ -43,6 +43,7 @@ import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de Prim
 import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTextModule de PrimeNG
 import { CheckboxModule } from 'primeng/checkbox';
 import { ScrollerModule } from 'primeng/scroller';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 
@@ -72,7 +73,7 @@ import { ScrollerModule } from 'primeng/scroller';
   
   ],
   imports: [
-    
+    InputNumberModule,
     ScrollerModule,
     CheckboxModule,
     InputTextModule,

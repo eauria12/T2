@@ -8,12 +8,18 @@
   <mat-card-content class="b-t-1">
     <form>
       <div class="row" *ngIf="autorizado === false">
-        <div class="col-sm-4">
-          <app-select-lineas
-            (selectedValue)="onSelectionChange($event)"></app-select-lineas>
+        <div class="col-md-7">
+
+          <div class="col-sm-8">
+            <app-select-lineas
+              (selectedValue)="onSelectionChange($event)"></app-select-lineas>
+          </div>
+          
         </div>
+
+      
         <!--Aún no implementados-->
-        <div class="col-sm-4">
+        <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-12 m-2">
               <p-radioButton

@@ -16,11 +16,8 @@
     display: flex;
     flex-direction: column;
     //justify-content: center;
-    gap: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    
+    gap: 10px;
+    padding: 10px 30px 0 30px;   
 }
 
 .radio-horizontal {
@@ -34,5 +31,10 @@
 
 .codigo-articulo {
     padding: 20px 0px 10px;
+    position: relative;
+}
 
+.style2 {
+    display: flex;
+    justify-content: center;
 }

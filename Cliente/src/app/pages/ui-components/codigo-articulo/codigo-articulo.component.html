@@ -1,14 +1,14 @@
 <div class="busqueda-codigo">
     <label>Desde: </label>
-    <input pInputText placeholder="..." />
-    <p-button icon="pi pi-search-plus" styleClass="p-button-warning" class="hi"></p-button>
-    <input pInputText placeholder="..." />
+    <p-inputNumber mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+    <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
+    <input pInputText placeholder="" type="text" class="input-text1"/>
 </div>
 
 
 <div class="busqueda-codigo">
     <label>Hasta: &nbsp;</label>
-    <input pInputText placeholder="..." />
-    <p-button icon="pi pi-search-plus" styleClass="p-button-warning" class="hi"></p-button>
-    <input pInputText placeholder="..." />
+    <p-inputNumber mode="decimal"  [useGrouping]="false"></p-inputNumber>
+    <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
+    <input pInputText placeholder="" type="text" class="input-text1" />
 </div>

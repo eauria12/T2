@@ -1,4 +1,6 @@
 <form>
+  <mat-card-title>Líneas</mat-card-title>
+  <mat-card-content>
     <ng-select
       [items]="lineasId"
       bindLabel="nombre"
@@ -8,4 +10,5 @@
       (ngModelChange)="onSelectChange()"
       >
     </ng-select>
+  </mat-card-content>
   </form>

@@ -4,12 +4,20 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
     letter-spacing: normal;
+    text-align: center;
 }
 
 .busqueda-codigo {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-bottom: 15px;
+    align-items: center;
+}
+
+.input-text1{
+    //font-size: 0.9rem;
+    padding: 0.5rem 3rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
