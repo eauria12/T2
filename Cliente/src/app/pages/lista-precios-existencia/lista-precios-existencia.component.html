@@ -7,9 +7,10 @@
 
   <mat-card-content class="b-t-1">
     <form>
-      <div class="row">
+      <div class="row" *ngIf="autorizado===false">
         <div class="col-sm-4">
-          <app-select-lineas (selectedValue)="onSelectionChange($event)"></app-select-lineas>
+          <app-select-lineas
+            (selectedValue)="onSelectionChange($event)"></app-select-lineas>
         </div>
         <!--Aún no implementados-->
         <div class="col-sm-4">
@@ -36,26 +37,26 @@
           </div>
         </div>
         <div class="col-sm-3">
-            <div class="buttons">
-              <button mat-flat-button color="warn" (click)="buscarExistencias()">
-                <!--(click)="buscarLocales()"-->
-                Buscar
-              </button>
-            </div>
+          <div class="buttons">
+            <button mat-flat-button color="warn" (click)="buscarExistencias()">
+              <!--(click)="buscarLocales()"-->
+              Buscar
+            </button>
           </div>
-      </div>
+        </div>
 
-      <app-fecha-inventario></app-fecha-inventario>
-      <app-tipo-inventario></app-tipo-inventario>
-    
-      <span
-        >Hola, por favor agrega los otros componentes, por ahora no se usan así
-        que los omití</span
-      >
+        <app-fecha-inventario></app-fecha-inventario>
+        <app-tipo-inventario></app-tipo-inventario>
+  
+        <span
+          >Hola, por favor agrega los otros componentes, por ahora no se usan así
+          que los omití</span
+        >
+
+      </div>
 
       
     </form>
-    
   </mat-card-content>
 </mat-card>
 
@@ -69,156 +70,114 @@
       </div>
     </mat-card-title>
   </mat-card-header>
-    <p-table
-      #dt2
-      [value]="listaPreciosExistencia"
-      dataKey="id"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]"
-      [loading]="loading"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [globalFilterFields]="[
-        'IdItem',
-        'NombreLinea',
-        'Descripción',
-        'Código_Prov'
-      ]"
-      [tableStyle]="{ 'min-width': '75rem' }"
-      styleClass="p-datatable-gridlines"
-      >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="pi pi-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
-              placeholder="Search keyword" />
-          </span>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 22%">Name</th>
-          <th style="width: 22%">Country</th>
-          <th style="width: 22%">Agent</th>
-          <th style="width: 22%">Status</th>
-        </tr>
-        <tr>
-          <th>
-            <p-columnFilter type="text" field="IdItem"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="NombreLinea"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="Descripción"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="Código_Prov"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="PrecioMasIva"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="Total_Nacional"></p-columnFilter>
-          </th>
-          <!--
-          <th>
-            <p-columnFilter type="text" field="4"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="5"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="8"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="9"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="10"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="11"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="15"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="20"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="22"></p-columnFilter>
-          </th>
-          -->
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-existencia>
-        <tr>
-          <td>
-            {{ existencia.IdItem }}
-          </td>
-          <td>
-            <span class="ml-1 vertical-align-middle">
-              {{ existencia.NombreLinea }}</span
-            >
-          </td>
-          <td>
-            <span class="ml-1 vertical-align-middle">
-              {{
-                existencia["Descripción"]
-              }}</span
-            >
-          </td>
-          
-          <td>
-            {{existencia["Código_Prov"]}}
-          </td>
-          <td>
-            {{existencia.PrecioMasIva}}
-          </td>
-          <td>
-            {{existencia.Total_Nacional}}
-          </td>
-            <!--
-          <td>
-            {{existencia["4"]}}
-          </td>
-          <td>
-            {{existencia["5"]}}
-          </td>
-          <td>
-            {{existencia["8"]}}
-          </td>
-          <td>
-            {{existencia["9"]}}
-          </td>
-          <td>
-            {{existencia["10"]}}
-          </td>
-          <td>
-            {{existencia["11"]}}
-          </td>
-          <td>
-            {{existencia["15"]}}
-          </td>
-          <td>
-            {{existencia["20"]}}
-          </td>
-          <td>
-            {{existencia["22"]}}
-          </td>
-          -->
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="5">No customers found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
+  <p-table
+    #dt2
+    [value]="listaPreciosExistenciaFiltrados"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="[
+      'IdItem',
+      'NombreLinea',
+      'Descripción',
+      'Código_Prov'
+    ]"
+    [scrollable]="true"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search keyword" />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código SAIA</th>
+        <th>Línea</th>
+        <th>Descripción</th>
+        <th>Código Proveedor</th>
+        <th>P.V.P. INCL. IVA</th>
+        <th>Inventario Nacional</th>
+        <th style="width: 1%" *ngFor="let local of locales">
+          LOCAL {{ local }}
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="IdItem"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="NombreLinea"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="Descripción"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="Código_Prov"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="PrecioMasIva"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="Total_Nacional"></p-columnFilter>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" *ngFor="let local of locales" let-existencia>
+      <tr>
+        <td>
+          {{ existencia.IdItem }}
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ existencia.NombreLinea }}</span
+          >
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ existencia['Descripción'] }}</span
+          >
+        </td>
+
+        <td>
+          {{ existencia['Código_Prov'] }}
+        </td>
+        <td>
+          {{ existencia.PrecioMasIva }}
+        </td>
+        <td>
+          {{ existencia.Total_Nacional }}
+        </td>
+        <td *ngFor="let local of locales">
+          <div *ngIf="existencia[local] === null">-</div>
+          <div >{{ existencia[local] }}</div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </mat-card>
+<style>
+  ::ng-deep .p-column-filter-row .p-column-filter-menu-button,
+  .p-column-filter-row .p-column-filter-clear-button {
+    display: none;
+  }
+  ::ng-deep .p-column-filter-clear-button {
+    display: none !important;
+  }
+</style>
