@@ -68,7 +68,7 @@ export class ObtenerPermisosService {
 
   async getPermisosSafe(servicio: String) {
     return new Promise<any>((resolve, reject) => {
-      this.http.get("http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/" + servicio)
+      this.http.get("http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/" + servicio) //prueba usuario no autorizado
         .pipe(catchError((error) => of(error)))
         .subscribe((res) => {
           if (res instanceof HttpErrorResponse)
