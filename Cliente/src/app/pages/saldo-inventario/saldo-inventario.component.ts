@@ -39,7 +39,7 @@ export class SaldoInventarioComponent {
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
-  lineArticulo: string[] = ['Por Código', 'Por línea'];
+  lineArticulo: string[] = ['Por Código de Artículo', 'Por Línea de Artículo'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
   acceso: boolean = false
 

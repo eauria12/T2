@@ -17,6 +17,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
+//import { TablaKardexComponent } from '../../tabla-kardex/tabla-kardex.component';
 //import { NivelComponent } from '../../nivel/nivel.component';
 //import { ZonaComponent } from '../../zona/zona.component';
 //import { CodigoArticuloComponent } from '../../codigo-articulo/codigo-articulo.component';
@@ -47,6 +48,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
+    //TablaKardexComponent,
     //NivelComponent,
     //ZonaComponent,
     //CodigoArticuloComponent,

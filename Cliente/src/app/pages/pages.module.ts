@@ -31,6 +31,7 @@ import { TipoInventarioComponent } from './ui-components/tipo-inventario/tipo-in
 import { CodigoArticuloComponent } from './ui-components/codigo-articulo/codigo-articulo.component';
 import { NivelComponent } from './ui-components/nivel/nivel.component';
 import { ZonaComponent } from './ui-components/zona/zona.component';
+import { TablaKardexComponent } from './ui-components/tabla-kardex/tabla-kardex.component';
 
 import { MatSelectionList } from '@angular/material/list';
 import { CalendarModule } from 'primeng/calendar';
@@ -41,6 +42,7 @@ import { DropdownModule } from 'primeng/dropdown'; // Importa el módulo Dropdow
 import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de PrimeNG
 import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTextModule de PrimeNG
 import { CheckboxModule } from 'primeng/checkbox';
+import { ScrollerModule } from 'primeng/scroller';
 
 
 
@@ -66,9 +68,12 @@ import { CheckboxModule } from 'primeng/checkbox';
     CodigoArticuloComponent,
     NivelComponent,
     ZonaComponent,
+    TablaKardexComponent,
   
   ],
   imports: [
+    
+    ScrollerModule,
     CheckboxModule,
     InputTextModule,
     TagModule,
