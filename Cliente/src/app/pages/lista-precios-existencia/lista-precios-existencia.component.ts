@@ -25,6 +25,60 @@ export class ListaPreciosExistenciaComponent {
   listaPreciosExistencia: Existencia[] = [];
   listaPreciosExistenciaFiltrados: Existencia[] = [];
 
+  vistaAtabla:[string[],string[]];
+ 
+  vistaTabla: boolean = false;
+
+  labelslantasOReencauche = [
+    "IdItem", "NombreLinea",
+    "familia", "diseño", "medida", "aro", "marca", "aplicación", "letra",
+    "ic", "iv", "pr", "pais_origen", "Código_Prov", "PrecioMasIva", "Total_Nacional"
+  ]//se verifica cuando se tenga los datos
+
+  labelsvistaAllLubricantes = [
+    "IdItem", "NombreLinea",
+    "familia", "diseño", "presentacion", "marca", "aplicación", "API", "SAE",
+    "pais_origen", "Código_Prov", "PrecioMasIva", "Total_Nacional"
+  ]
+  labelsvistaAllBaterias = [
+    "IdItem", "NombreLinea",
+    "familia", "diseño", "polar", "capacidad", "voltios", "placas",
+    "pais_origen", "Código_Prov", "PrecioMasIva", "Total_Nacional"
+  ]
+  labelsvistaOtros = [
+    'IdItem',
+    'NombreLinea',
+    'Descripción',
+    'Código_Prov',
+    'PrecioMasIva',
+    'Total_Nacional'
+  ]
+
+  headerLantasOReencauche = [
+    "CÓDIGO SAIA", "LÍNEA",
+    "FAMILIA", "DISEÑO", "MEDIDA", "ARO", "MARCA", "APLICACIÓN", "LETRA",
+    "IC", "IV", "PR", "PAÍS ORIGEN", "CÓDIGO PROVEEDOR", "P.V.P. INCL.IVA", "INVENTARIO NACIONAL"
+  ]//se verifica cuando se tenga los datos
+
+  headervistaAllLubricantes = [
+    "CÓDIGO SAIA", "LÍNEA",
+    "FAMILIA", "DISEÑO", "PRESENTACIÓN", "MARCA", "APLICACIÓN", "API", "SAE",
+    "PAÍS ORIGEN", "CÓDIGO PROVEEDOR", "P.V.P. INCL.IVA", "INVENTARIO NACIONAL"
+  ]
+  headervistaAllBaterias = [
+    "CÓDIGO SAIA", "LÍNEA",
+    "FAMILIA", "DISEÑO", "POLAR", "CAPACIDAD", "VOLTIOS", "PLACAS",
+    "PAÍS ORIGEN", "CÓDIGO PROVEEDOR", "P.V.P. INCL.IVA", "INVENTARIO NACIONAL"
+  ]
+  headervistaOtros = [
+    "CÓDIGO SAIA",
+    "LÍNEA",
+    "DESCRIPCIÓN",
+    "CÓDIGO PROVEEDOR",
+    "P.V.P. INCL.IVA",
+    "INVENTARIO NACIONAL"
+  ]
+
   locales = [
     "4",
     "5",
@@ -93,10 +147,6 @@ export class ListaPreciosExistenciaComponent {
 
     });
   }
-  handleLineasSeleccionadas(lineas: any[]) {
-    this.lineasSeleccionadas = lineas;
-  }
-
 
   onSelectionChange(event: any) {
     this.selected = event;
@@ -114,6 +164,9 @@ export class ListaPreciosExistenciaComponent {
 
   }
   cargarTabla() {
+    this.vistaAtabla=[[],[]];
+    this.vistaTabla=true;
+    this.handleLineasSeleccionadas(this.selected.split("-")[1].trim());
     this.localesValues = this.locales.map((clave) => this.listaPreciosExistencia[parseInt(clave)]);
     this.listaPreciosExistenciaFiltrados = this.listaPreciosExistencia.filter(objeto => objeto.NombreLinea.replace(/\s+/g, "") === this.selected.replace(/\s+/g, ""));
     if (this.listaPreciosExistenciaFiltrados.length == 0) {
@@ -122,4 +175,16 @@ export class ListaPreciosExistenciaComponent {
   }
 
 
+  handleLineasSeleccionadas(seleccionadoTabla: string) {
+
+    if (seleccionadoTabla == "LLANTAS" || seleccionadoTabla == "REENCAUCHE") {
+      this.vistaAtabla=[this.headerLantasOReencauche,this.labelslantasOReencauche]
+    } else if (seleccionadoTabla.includes("LUBRICANTES")) {
+      this.vistaAtabla=[this.headervistaAllLubricantes,this.labelsvistaAllLubricantes]
+    } else if (seleccionadoTabla.includes("BATERIAS")) {
+      this.vistaAtabla=[this.headervistaAllBaterias,this.labelsvistaAllBaterias]
+    } else {
+      this.vistaAtabla=[this.headervistaOtros,this.labelsvistaOtros]
+    }
+  }
 }
