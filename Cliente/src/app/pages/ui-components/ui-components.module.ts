@@ -17,6 +17,9 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
+//import { NivelComponent } from '../../nivel/nivel.component';
+//import { ZonaComponent } from '../../zona/zona.component';
+//import { CodigoArticuloComponent } from '../../codigo-articulo/codigo-articulo.component';
 //import { TipoInventarioComponent } from '../../tipo-inventario/tipo-inventario.component';
 //import { FechaInventarioComponent } from '../../fecha-inventario/fecha-inventario.component';
 //import { ConsolidadoComponent } from '../../consolidado/consolidado.component';
@@ -44,6 +47,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
+    //NivelComponent,
+    //ZonaComponent,
+    //CodigoArticuloComponent,
     //TipoInventarioComponent,
     //FechaInventarioComponent,
     //ConsolidadoComponent,

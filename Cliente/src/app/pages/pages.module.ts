@@ -26,9 +26,11 @@ import { FiltroFechaComponent } from './ui-components/filtro-fecha/filtro-fecha.
 import { SelectZonaComponent} from './ui-components/select-zona/select-zona.component';
 import { EmisionEstablComponent } from './ui-components/emision-establ/emision-establ.component';
 import { SelectLineasComponent } from './ui-components/select-lineas/select-lineas.component';
-import { ConsolidadoComponent } from './ui-components/consolidado/consolidado.component';
 import { FechaInventarioComponent } from './ui-components/fecha-inventario/fecha-inventario.component';
 import { TipoInventarioComponent } from './ui-components/tipo-inventario/tipo-inventario.component';
+import { CodigoArticuloComponent } from './ui-components/codigo-articulo/codigo-articulo.component';
+import { NivelComponent } from './ui-components/nivel/nivel.component';
+import { ZonaComponent } from './ui-components/zona/zona.component';
 
 import { MatSelectionList } from '@angular/material/list';
 import { CalendarModule } from 'primeng/calendar';
@@ -38,6 +40,7 @@ import { MultiSelectModule } from 'primeng/multiselect'; // Importa el módulo M
 import { DropdownModule } from 'primeng/dropdown'; // Importa el módulo DropdownModule de PrimeNG
 import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de PrimeNG
 import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTextModule de PrimeNG
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 
@@ -58,12 +61,15 @@ import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTe
     FiltroFechaComponent,
     EmisionEstablComponent,
     SelectLineasComponent,
-    ConsolidadoComponent,
     FechaInventarioComponent,
     TipoInventarioComponent,
+    CodigoArticuloComponent,
+    NivelComponent,
+    ZonaComponent,
   
   ],
   imports: [
+    CheckboxModule,
     InputTextModule,
     TagModule,
     DropdownModule,
