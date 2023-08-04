@@ -7,6 +7,7 @@ import { SaldoInventarioComponent } from './pages/saldo-inventario/saldo-inventa
 import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
 import {ListadoFacturasEntregasPendientesComponent} from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component'
 import { ComprobantesElectronicosComponent } from './pages/comprobantes-electronicos/comprobantes-electronicos.component';
+import { KardexMercaderiaComponent } from './pages/kardex-mercaderia/kardex-mercaderia.component'; 
 
 const routes: Routes = [
   {
@@ -52,22 +53,27 @@ const routes: Routes = [
       {
         path: 'saldo-inventario',
         canActivate: [AuthGuard] ,
-        component:SaldoInventarioComponent
+        component: SaldoInventarioComponent
       },
       {
         path: 'precio-existencia',
         canActivate: [AuthGuard] ,
-        component:ListaPreciosExistenciaComponent
+        component: ListaPreciosExistenciaComponent
       },
       {
         path: 'listado-facturas-entregas-pendientes',
         canActivate: [AuthGuard] ,
-        component:ListadoFacturasEntregasPendientesComponent
+        component: ListadoFacturasEntregasPendientesComponent
       },
       {
         path: 'comprobantes-electronicos',
         canActivate: [AuthGuard] ,
-        component:ComprobantesElectronicosComponent
+        component: ComprobantesElectronicosComponent
+      },
+      {
+        path: 'kardex-mercaderia',
+        canActivate: [AuthGuard] ,
+        component: KardexMercaderiaComponent
       },
       
     ],

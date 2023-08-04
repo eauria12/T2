@@ -4,7 +4,7 @@ import { SaldoInventarioComponent } from './saldo-inventario/saldo-inventario.co
 import { ListaPreciosExistenciaComponent } from './lista-precios-existencia/lista-precios-existencia.component';
 import { ListadoFacturasEntregasPendientesComponent } from './listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component'
 import { ComprobantesElectronicosComponent } from './comprobantes-electronicos/comprobantes-electronicos.component';
-
+import { KardexMercaderiaComponent } from './kardex-mercaderia/kardex-mercaderia.component'; 
 
 export const PagesRoutes: Routes = [
   {
@@ -39,7 +39,14 @@ export const PagesRoutes: Routes = [
     path: 'comprobantes-electronicos',
     component: ComprobantesElectronicosComponent,
     data: {
-      title: 'Comprobantes  Page',
+      title: 'Comprobantes Electronicos Page',
+    },
+  },
+  {
+    path: 'kardex-mercaderia',
+    component: KardexMercaderiaComponent,
+    data: {
+      title: 'Kardex Mercaderia Page',
     },
   },
   

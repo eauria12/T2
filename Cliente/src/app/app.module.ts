@@ -24,10 +24,6 @@ import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
-//import { ListaPreciosExistenciaComponent } from './pages/lista-precios-existencia/lista-precios-existencia.component';
-//import { ListadoFacturasEntregasPendientesComponent } from './pages/listado-facturas-entregas-pendientes/listado-facturas-entregas-pendientes.component';
-//import { ComprobantesElectronicosComponent } from './pages/comprobantes-electronicos/comprobantes-electronicos.component';
-
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
@@ -43,9 +39,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     HeaderComponent,
     BrandingComponent,
     AppNavItemComponent,
-    //ListaPreciosExistenciaComponent,
-    //ListadoFacturasEntregasPendientesComponent,
-    //ComprobantesElectronicosComponent,
+   
   ],
   imports: [
     BrowserModule,

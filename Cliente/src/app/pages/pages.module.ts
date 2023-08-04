@@ -26,7 +26,7 @@ import { SelectZonaComponent} from './ui-components/select-zona/select-zona.comp
 import { EmisionEstablComponent } from './ui-components/emision-establ/emision-establ.component';
 import { SelectLineasComponent } from './ui-components/select-lineas/select-lineas.component';
 import { ConsolidadoComponent } from './ui-components/consolidado/consolidado.component';
-
+import { KardexMercaderiaComponent } from './kardex-mercaderia/kardex-mercaderia.component'; 
 
 import { MatSelectionList } from '@angular/material/list';
 import { CalendarModule } from 'primeng/calendar';
@@ -37,6 +37,7 @@ import { DropdownModule } from 'primeng/dropdown'; // Importa el módulo Dropdow
 import { TagModule } from 'primeng/tag'; // Importa el módulo TagModule de PrimeNG
 import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTextModule de PrimeNG
 
+
 @NgModule({
   declarations: [
     AppDashboardComponent, 
@@ -44,6 +45,7 @@ import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTe
     ListaPreciosExistenciaComponent,
     ComprobantesElectronicosComponent,
     ListadoFacturasEntregasPendientesComponent,
+    KardexMercaderiaComponent,
 
     TablasComponent,
     ListaLocalesComponent,
@@ -53,7 +55,8 @@ import { InputTextModule } from 'primeng/inputtext'; //Importa el modulo InputTe
     FiltroFechaComponent,
     EmisionEstablComponent,
     SelectLineasComponent,
-    ConsolidadoComponent
+    ConsolidadoComponent,
+    
 
   ],
   imports: [

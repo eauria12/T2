@@ -27,9 +27,9 @@ export const navItems: NavItem[] = [
   },
 
   {
-    displayName: 'Listado de Facturas con Entregas Pendientes',
-    iconName: 'list-details',
-    route: '/listado-facturas-entregas-pendientes',
+    displayName: 'Kardex de Mercaderías',
+    iconName: 'table-shortcut',
+    route: '/kardex-mercaderia',
   },
 
   {
@@ -37,8 +37,14 @@ export const navItems: NavItem[] = [
     iconName: 'file-invoice',
     route: '/comprobantes-electronicos',
   },
- 
+
   {
+    displayName: 'Listado de Facturas con Entregas Pendientes',
+    iconName: 'list-details',
+    route: '/listado-facturas-entregas-pendientes',
+  },
+ 
+  /*{
     displayName: 'Badge',
     iconName: 'rosette',
     route: '/ui-components/badge',
@@ -62,7 +68,7 @@ export const navItems: NavItem[] = [
     displayName: 'Tooltips',
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
-  },
+  },*/
 
 /*
   {

@@ -124,6 +124,10 @@ export class SaldoInventarioComponent {
     //this.buscarClicked = true;
   }
 
+  limpiar(){
+    window.location.href="/saldo-inventario";
+  }
+
   //borrar despues solo para pruebas
 
   imprimirTabla() {
