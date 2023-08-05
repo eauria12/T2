@@ -36,7 +36,7 @@ export class ObtenerPermisosService {
 
   async permisosNivel(servicio: String) {
     this.listaPermisos = await this.getPermisosSafe(servicio);
-    const booleanos: boolean[] = [false, false, false];
+    const booleanos: boolean[] = [false, false, false, false,];
     this.listaPermisos.forEach((elemento) => {
       const nivelId = elemento.nivelId.toString();
       const ultimosDosDigitos = nivelId.slice(-2);
@@ -46,8 +46,11 @@ export class ObtenerPermisosService {
       if (ultimosDosDigitos === "51") {
         booleanos[1] = true;
       }
-      if (ultimosDosDigitos === "54") {
+      if (ultimosDosDigitos === "52") {
         booleanos[2] = true;
+      }
+      if (ultimosDosDigitos === "54") {
+        booleanos[3] = true;
       }
     });
     return booleanos;

@@ -20,7 +20,7 @@
                       (click)="handleNivelSeleccionado()">Nacional</mat-list-option>
                     <mat-list-option [value]="typesOfNivel[1]" [disabled]="!opcionesNivel[1]"
                       (click)="handleNivelSeleccionado()">Zona</mat-list-option>
-                    <mat-list-option [value]="typesOfNivel[2]" [disabled]="!opcionesNivel[2]"
+                    <mat-list-option [value]="typesOfNivel[2]" [disabled]="!opcionesNivel[2] || !opcionesNivel[3]"
                       (click)="handleNivelSeleccionado()">Local</mat-list-option>
                   </mat-selection-list>
                 </div>

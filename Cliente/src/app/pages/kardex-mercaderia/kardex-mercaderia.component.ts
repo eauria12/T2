@@ -30,14 +30,13 @@ export class KardexMercaderiaComponent {
   codigoServicio: String = "080509";
   permisoCostoUnitario: boolean;
   localId: string | null;
-  mostrarListaLineas:boolean = false;
+  mostrarListaLineas:boolean = true;
   mostrarFiltroCodigo:boolean = false;
 
   constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Movimientos por Local', 'Movimientos en Locales'];
-  lineArticulo: string[] = ['Por Código de Artículo', 'Por Línea de Artículo'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
   acceso: boolean = false
 
@@ -54,10 +53,6 @@ export class KardexMercaderiaComponent {
 
   handleLocalesSeleccionados(locales: any[]) {
     this.localesSeleccionados = locales;
-  }
-
-  handleLineasSeleccionadas(lineas: any[]) {
-    this.lineasSeleccionadas = lineas;
   }
 
   handleFechaInicio(Incio: Date) {
@@ -102,23 +97,6 @@ export class KardexMercaderiaComponent {
       } else if (zon === this.zona[2]) {
         this.NivelLocal = "Zona 2";
         console.log("Seleccione Sur");
-      }
-    }
-  }
-
-
-  filtraArticulos(lineArticulo: string) {
-    console.log("Filtro ");
-    if (this.lineArt.selectedOptions.selected.length > 0) {
-      console.log("Evento Filtro ");
-      if (lineArticulo === this.lineArticulo[0]) {
-        this.mostrarListaLineas = false;
-        this.mostrarFiltroCodigo = true;
-        console.log("Filtro codigo");
-      } else if (lineArticulo === this.lineArticulo[1]) {
-        this.mostrarListaLineas = true;
-        this.mostrarFiltroCodigo = false;
-        console.log("Lista lineas");
       }
     }
   }
