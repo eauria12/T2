@@ -4,6 +4,7 @@ import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 import { LocalIdService } from 'src/app/services/resources/local.service';
+import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.service';
 
 @Component({
   selector: 'app-kardex-mercaderia',
@@ -30,10 +31,11 @@ export class KardexMercaderiaComponent {
   codigoServicio: String = "080509";
   permisoCostoUnitario: boolean;
   localId: string | null;
+  zonaId :number ;
   mostrarListaLineas:boolean = true;
   mostrarFiltroCodigo:boolean = false;
 
-  constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService) { }
+  constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService, private obtenerLocal: ObtenerLocalInfoService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Movimientos por Local', 'Movimientos en Locales'];
@@ -48,6 +50,7 @@ export class KardexMercaderiaComponent {
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
+    this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);
   }
 
 
