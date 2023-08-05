@@ -1,1 +1,43 @@
-<p>tabla-kardex works!</p>
+<p-table
+        [value]="listaPreciosExistenciaFiltrados"  
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [tableStyle]="{ 'min-width': '75rem' }"
+        styleClass="p-datatable-gridlines"
+       
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">Fecha</th>
+                <th style="width:25%">Transacción</th>
+                <th style="width:25%">Doc.</th>
+                <th style="width:25%">Número</th>
+                <th style="width:25%">Entrada</th>
+                <th style="width:25%">Salida</th>
+                <th style="width:25%">Exist.</th>       
+                <th style="width:25%">Venta Total</th>
+                <th style="width:25%">Vta. Unit.</th> 
+                <th style="width:25%">Referencias</th>       
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>name</td>
+                <td>counnrtr</td>
+                <td>fsd</td>
+                <td>dcdc</td>
+                <td>name</td>
+                <td>counnrtr</td>
+                <td>fsd</td>
+                <td>dcdc</td>
+                <td>name</td>
+                <td>counnrtr</td>
+        
+            </tr>
+        </ng-template>
+   
+    </p-table>

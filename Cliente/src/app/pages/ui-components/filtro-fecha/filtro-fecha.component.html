@@ -1,19 +1,11 @@
-<div class="pb-5">
-    <p>Desde:</p>
-    <p-calendar
-      [(ngModel)]="datedesde"
-      name="desde"
-      [showIcon]="true"
-      (ngModelChange)="onDesdeChange()"
-    ></p-calendar>
-  </div>
-  <div class="mt-auto">
-    <p>Hasta:</p>
-    <p-calendar
-      [(ngModel)]="datehasta"
-      name="hasta"
-      [showIcon]="true"
-      (ngModelChange)="onHastaChange()"
-    ></p-calendar>
-    <p> {{disabled}} </p>
-  </div>
+<div class="busqueda-fecha">
+  <p>Desde:</p>
+  <p-calendar [(ngModel)]="datedesde" name="desde" [showIcon]="true" (ngModelChange)="onDesdeChange()"
+    class="input-text1"></p-calendar>
+</div>
+<div class="busqueda-fecha">
+  <p>Hasta:</p>
+  <p-calendar [(ngModel)]="datehasta" name="hasta" [showIcon]="true" (ngModelChange)="onHastaChange()"
+    class="input-text1"></p-calendar>
+
+</div>
