@@ -33,6 +33,28 @@ export class ObtenerSaldosInventarioService {
     });
   }
 
+  async getTodosSaldosInventarioSafe(LocalesEscogidos: number[], LineasEscogidas: String) {
+    const bodyenvio = {
+      "locales": this.StringLocales(LocalesEscogidos),
+      "lineas": LineasEscogidas,
+      "formatoNivel": "N",
+      "formatoLineaArticulo": "L",
+      "formatoPresentacion": "L",
+      "codigoDesde": "",
+      "codigoHasta": ""
+    };
+    return new Promise<any>((resolve, reject) => {
+      this.http.post("http://oasysweb.saia.com.ec/andina/api/inventario/reportes/saldosListar", bodyenvio)
+        .pipe(catchError((error) => of(error)))
+        .subscribe((res) => {
+          if (res instanceof HttpErrorResponse)
+            reject({ error: res.error, status: res.status });
+          else
+            resolve(res);
+        });
+    });
+  }
+
   private StringLocales(LocalesEscogidos: number[]) {
     return LocalesEscogidos.join(",");
   }

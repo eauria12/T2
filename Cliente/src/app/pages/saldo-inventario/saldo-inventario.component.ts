@@ -24,9 +24,10 @@ export class SaldoInventarioComponent {
   localesSeleccionados: any[] = [];
   zonaSelected: boolean = false;
   lineasSeleccionadas: any[] = [];
+  opcionesNivel: boolean[] = []
   NivelLocal: String = "";
   listaPermisos: Permiso[] = [];
-  opcionesNivel: boolean[] = []
+  codigosElegidos: number[] = []
   lineasDisponibles: String = "";
   localesDisponibles: number[] = [];
   codigoServicio: String = "080509";
@@ -86,6 +87,11 @@ export class SaldoInventarioComponent {
         console.log("Seleccione Local");
       }
     }
+  }
+
+  handleCodigosElegidos(codigos: number[]) {
+    this.codigosElegidos = codigos;
+    console.log(this.codigosElegidos);
   }
 
   onZonaSeleccionada(zon: string) {

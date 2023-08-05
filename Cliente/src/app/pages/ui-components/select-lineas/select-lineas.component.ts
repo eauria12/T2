@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import {ObtenerListasService} from 'src/app/services/obtener-listas.service';
 import { Local } from 'src/app/interfaces/local';
+
 @Component({
   selector: 'app-select-lineas',
   templateUrl: './select-lineas.component.html',

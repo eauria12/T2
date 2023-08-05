@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/htt
 import { catchError } from 'rxjs/operators'
 import { of } from 'rxjs';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { Linea } from '../interfaces/linea';
 
 
 @Injectable({
@@ -66,4 +67,5 @@ export class ObtenerListasService {
         });
     });
   }
+
 }
