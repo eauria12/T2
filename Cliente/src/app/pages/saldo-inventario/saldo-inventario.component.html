@@ -56,7 +56,8 @@
 
                 <div class="col-sm-12">
                   <div class="codigo-articulo">
-                    <app-codigo-articulo></app-codigo-articulo>
+                      <app-codigo-articulo [disabled]="!mostrarFiltroCodigo" (codigosEscogidos)="handleCodigosElegidos($event)"
+                [lineasDisponibles]="lineasDisponibles"></app-codigo-articulo>
                   </div>
                   
                 </div>
@@ -87,39 +88,13 @@
 
 
           <div class="row">
-            <div class="col-sm-5">
-              <mat-card-title>Fecha</mat-card-title>   asi se usa el componente fecha   
-              <app-filtro-fecha #fechasElegidas (fechaInicioEnvio)="handleFechaInicio($event)" (fechaFinEnvio)="handleFechaFin($event)" [disabled]="!mostrarFiltroCodigo"></app-filtro-fecha>
-            </div>
-
-            <div class="col-sm-5">
-              <mat-card-title  >Consolidado</mat-card-title>
-              <app-consolidado [disabled]="!mostrarFiltroCodigo" (codigosEscogidos)="handleCodigosElegidos($event)" [lineasDisponibles]="lineasDisponibles"></app-consolidado>
-            </div>
-
-            <div class="col-sm-3 filter">
-              <mat-card-title>Presentación</mat-card-title>
-              <mat-selection-list #present [multiple]="false">
-                <mat-list-option *ngFor="let pr of presentacion" [value]="presentacion">
-                  {{ pr }}
-                </mat-list-option>
-              </mat-selection-list>
-            </div>
-            <div class="col-sm-2">
-              <mat-card-title>Articulo</mat-card-title>
-              <mat-selection-list #lineArt [multiple]="false">
-                <mat-list-option *ngFor="let linArt of lineArticulo" [value]="linArt" (click)="filtraArticulos(linArt)">
-                  {{ linArt }}
-                </mat-list-option>
-              </mat-selection-list>
-            </div>
-            <div class="col-sm-2">
+            <div class="col-sm-12 style-buscar">
               <div class="buttons">
                 <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirTabla()">
                   Buscar
                 </button>
-                <button mat-flat-button color="accent" class="m-t-8" (click)="limpiar()" >
-                  Limpiar  
+                <button mat-flat-button color="accent" class="m-t-8" (click)="limpiar()">
+                  Limpiar
                 </button>
               </div>
 
@@ -137,8 +112,7 @@
 <div class="row">
   <div class="col-sm-12">
     <app-tablas *ngIf="buscarClicked" [localesMostrar]="localesSeleccionados" [lineasMostrar]="lineasSeleccionadas"
-      [permisoCostoUnitario]="permisoCostoUnitario" [fechaInicio]="fechaInicio" [fechaFin]="fechaFin" [codigosVisualizar]="mostrarFiltroCodigo" [lineasVisualizar]="mostrarListaLineas"
-      [codigosEscogidos]="codigosElegidos" [lineasDisponibles]="lineasDisponibles">
+      [permisoCostoUnitario]="permisoCostoUnitario" [fechaInicio]="fechaInicio" [fechaFin]="fechaFin">
     </app-tablas>
   </div>
 </div>

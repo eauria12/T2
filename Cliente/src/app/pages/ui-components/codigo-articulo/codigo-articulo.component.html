@@ -1,6 +1,9 @@
 <div class="busqueda-codigo">
     <label>Desde: </label>
-    <p-inputNumber mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+    <input #codigoDesdeInput pInputText pKeyFilter="int" id="consolidadoDesde" [disabled]="disabled" (input)="onInputChange()" />
+
+    <!-- Esto es lo q estaba antes<input #codigoDesdeInput pInputText id="consolidadoDesde" [disabled]="disabled" (input)="onInputChange()" />-->
+    <!-- Esto es donde nome deja ingresar el 0 <p-inputNumber #codigoDesdeInput    [useGrouping]="false" id="consolidadoDesde" [disabled]="disabled" (input)="onInputChange()" ></p-inputNumber>-->
     <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
     <input pInputText placeholder="" type="text" class="input-text1"/>
 </div>
@@ -8,7 +11,9 @@
 
 <div class="busqueda-codigo">
     <label>Hasta: &nbsp;</label>
-    <p-inputNumber mode="decimal"  [useGrouping]="false"></p-inputNumber>
+    <input #codigoHastaInput pInputText pKeyFilter="int" id="consolidadoHasta" [disabled]="disabled" (input)="onInputChange()" />
+    <!--<input #codigoHastaInput pInputText id="consolidadoHasta" [disabled]="disabled" (input)="onInputChange()" />-->
+    <!--<p-inputNumber #codigoHastaInput   [useGrouping]="false" id="consolidadoHasta" [disabled]="disabled" (input)="onInputChange()" ></p-inputNumber>-->
     <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
     <input pInputText placeholder="" type="text" class="input-text1" />
 </div>
