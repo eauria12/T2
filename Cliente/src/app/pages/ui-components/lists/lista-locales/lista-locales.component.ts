@@ -33,6 +33,7 @@ export class ListaLocalesComponent implements OnInit {
     if (this.localesDisponibles.length > 0) {
       this.locales = this.locales.filter(elemento => this.localesDisponibles.includes(elemento.id));
     }
+    console.log("this.locales");
     console.log(this.locales);
   }
 

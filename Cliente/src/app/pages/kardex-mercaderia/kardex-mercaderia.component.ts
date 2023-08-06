@@ -28,7 +28,7 @@ export class KardexMercaderiaComponent {
   codigosElegidos: number[] = []
   lineasDisponibles: String = "";
   localesDisponibles: number[] = [];
-  codigoServicio: String = "080509";
+  codigoServicio: String = "080507";
   permisoCostoUnitario: boolean;
   localId: string | null;
   zonaId :number ;
@@ -40,6 +40,7 @@ export class KardexMercaderiaComponent {
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Movimientos por Local', 'Movimientos en Locales'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
+  zonasPermitidas: boolean[] = [true, true, true];
   acceso: boolean = false
 
   async ngOnInit() {
@@ -48,6 +49,7 @@ export class KardexMercaderiaComponent {
     this.permisoCostoUnitario = await this.permisos.permisoCostoUnitario(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
+    console.log(this.localesDisponibles);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
     this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);
@@ -76,6 +78,11 @@ export class KardexMercaderiaComponent {
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
         this.zonaSelected = true;
         console.log("Seleccione Zona");
+        console.log(this.opcionesNivel[2]);
+        if (this.opcionesNivel[2]) {
+          console.log("Zonas limitadas al usuario");
+          this.zonasPermitidas[this.zonaId]= false;
+        }
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
         this.zonaSelected = false;
         this.NivelLocal = "Local";

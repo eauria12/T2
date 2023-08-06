@@ -4,6 +4,7 @@ import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 import { LocalIdService } from 'src/app/services/resources/local.service';
+import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.service';
 
 
 
@@ -33,15 +34,17 @@ export class SaldoInventarioComponent {
   codigoServicio: String = "080509";
   permisoCostoUnitario: boolean;
   localId: string | null;
+  zonaId :number ;
   mostrarListaLineas:boolean = false;
   mostrarFiltroCodigo:boolean = false;
 
-  constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService) { }
+  constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService, private obtenerLocal: ObtenerLocalInfoService) { }
 
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
   lineArticulo: string[] = ['Por Código de Artículo', 'Por Línea de Artículo'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
+  zonasPermitidas: boolean[] = [true, true, true];
   acceso: boolean = false
 
   async ngOnInit() {
@@ -52,6 +55,7 @@ export class SaldoInventarioComponent {
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
+    this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);
   }
 
 
@@ -81,6 +85,10 @@ export class SaldoInventarioComponent {
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
         this.zonaSelected = true;
         console.log("Seleccione Zona");
+        if (this.opcionesNivel[2]) {
+          console.log("Zonas limitadas al usuario");
+          this.zonasPermitidas[this.zonaId]= false;
+        }
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
         this.zonaSelected = false;
         this.NivelLocal = "Local";
