@@ -12,20 +12,21 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
+   // width: 100%;
 }
 
 .busqueda-codigo {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
+    gap: 8px;
+    //width: 100%;
     align-items: center;
 }
 
 .input-text1{
     text-align: center;
-    flex: 1;
+    padding: 1rem 1rem 0 1rem;
+    //flex:1;
 }
 
 .input-text2{
