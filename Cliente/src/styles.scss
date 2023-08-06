@@ -60,8 +60,43 @@ img, svg {
   border-color: #faac36;
 }
 
+.p-calendar-w-btn .p-inputtext {
+  text-align: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fcd499;
+  border-color: #faac36;
+}
+
+.p-inputtext:enabled:hover {
+  outline: 0 none;
+  outline-offset: 0;
+  border-color: #faac36;
+}
+
 .p-button.p-button-warning, .p-buttonset.p-button-warning > .p-button, .p-splitbutton.p-button-warning > .p-button {
   color: #fff;
-  background: #FBC02D;
-  border: 1px solid #FBC02D;
+  background: #faac36;
+  border: 1px solid #faac36;
+}
+
+.p-button.p-button-warning:enabled:hover, .p-buttonset.p-button-warning > .p-button:enabled:hover, .p-splitbutton.p-button-warning > .p-button:enabled:hover {
+  background: #fab710;
+  color: #fff;
+  border-color: #fab710;
+}
+
+.p-button:enabled:hover {
+  background: #fab710;
+  color: #fff;
+  border-color: #fab710;
+}
+.p-button:enabled:active {
+  background: #fab710;
+  color: #ffffff;
+  border-color: #fab710;
 }

@@ -7,17 +7,25 @@
     text-align: center;
 }
 
+.filtro-fecha {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
 .busqueda-fecha {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: 15px;
+    gap: 10px;
+    width: 100%;
     align-items: center;
+    flex: 1;
 }
 
 .input-text1{
-    //font-size: 0.9rem;
-    padding: 0.5rem 3rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: center;
+    flex: 1;
 }
+
+
 

@@ -1,21 +1,19 @@
-<div class="busqueda-codigo">
-    <label>Desde: </label>
-    <input #codigoDesdeInput pInputText pKeyFilter="int" id="consolidadoDesde" [disabled]="disabled"
-        (input)="onInputChange()" />
-
-    <!-- Esto es lo q estaba antes<input #codigoDesdeInput pInputText id="consolidadoDesde" [disabled]="disabled" (input)="onInputChange()" />-->
-    <!-- Esto es donde nome deja ingresar el 0 <p-inputNumber #codigoDesdeInput    [useGrouping]="false" id="consolidadoDesde" [disabled]="disabled" (input)="onInputChange()" ></p-inputNumber>-->
-    <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
-    <input pInputText placeholder="" type="text" class="input-text1" />
-</div>
+<div class="codigo-art">
+    <div class="busqueda-codigo">
+        <mat-card-title>Desde:</mat-card-title>
+        <input #codigoDesdeInput pInputText pKeyFilter="int" id="consolidadoDesde" [disabled]="disabled"
+            (input)="onInputChange()" class="input-text1" />
+        <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
+        <input pInputText placeholder="" type="text" class="input-text2" />
+    </div>
 
 
-<div class="busqueda-codigo">
-    <label>Hasta: &nbsp;</label>
-    <input #codigoHastaInput pInputText pKeyFilter="int" id="consolidadoHasta" [disabled]="disabled"
-        (input)="onInputChange()" />
-    <!--<input #codigoHastaInput pInputText id="consolidadoHasta" [disabled]="disabled" (input)="onInputChange()" />-->
-    <!--<p-inputNumber #codigoHastaInput   [useGrouping]="false" id="consolidadoHasta" [disabled]="disabled" (input)="onInputChange()" ></p-inputNumber>-->
-    <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
-    <input pInputText placeholder="" type="text" class="input-text1" />
+    <div class="busqueda-codigo">
+        <mat-card-title>Hasta: &nbsp;</mat-card-title>
+        <input #codigoHastaInput pInputText pKeyFilter="int" id="consolidadoHasta" [disabled]="disabled"
+            (input)="onInputChange()" class="input-text1" />
+        <p-button icon="pi pi-search-plus" styleClass="p-button-warning"></p-button>
+        <input pInputText placeholder="" type="text" class="input-text2" />
+    </div>
+
 </div>
