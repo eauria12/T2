@@ -1,0 +1,35 @@
+export interface Kardex {
+        companiaId: number;
+        localId: number;
+        tipoDocumentoId: string;
+        documentoId: null | string;
+        detalleId: null | string;
+        tipoMovimientoId: string;
+        lineaId: number;
+        lineaNombre: string;
+        itemId: string;
+        cantidadEntrada: number;
+        cantidadSalida: null | number;
+        valorTotal: null | number;
+        valorUnitario: null | number;
+        fecha: string;
+        afectaInventario: null | boolean;
+        itemNombre: string;
+        costoReposicion: number;
+        precio: number;
+        monedaId: string;
+        fechaUltimaCompra: string;
+        fechaUltimaVenta: string;
+        unidadMedidaId: string;
+        stockMinimo: number;
+        stockMaximo: number;
+        transaccionNombre: string;
+        formaNegociacionNombre: null | string;
+        documentoReferencia: null | string;
+        localReferencia: null | string;
+        articuloReferencia: null | string;
+        referencia: string;
+        localNombre: string;
+        zonaId: number;
+        zonaNombre: string;      
+}
