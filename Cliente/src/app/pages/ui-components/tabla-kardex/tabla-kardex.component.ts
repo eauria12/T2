@@ -28,29 +28,16 @@ export class TablaKardexComponent {
   constructor(private obtenerKardex: ObtenerKardexService) { }
 
   async ngOnChanges(changes: SimpleChanges) {
+    this.listaKardex= []
     if (changes['localesMostrar'] || changes['fechaInicio'] || changes['fechaFin'] || changes['codigosEscogidos'] || changes['seleccionNivel'] || changes['stock'] || changes['localSeleccion']) {
       let locales: number[] = this.localesMostrar;
-      console.log('locales:', locales);
-
       let fechaDesdeEnvio: Date = this.fechaInicio;
-      console.log('fechaDesdeEnvio:', fechaDesdeEnvio);
-
       let fechaHastaEnvio: Date = this.fechaFin;
-      console.log('fechaHastaEnvio:', fechaHastaEnvio);
-
       let codigosDesdeEnvio: string = String(this.codigosEscogidos[0]);
-      console.log('codigosDesdeEnvio:', codigosDesdeEnvio);
-
       let codigosHastaEnvio: string = String(this.codigosEscogidos[1]);
-      console.log('codigosHastaEnvio:', codigosHastaEnvio);
-
       let nivelEnvio: string = this.seleccionNivel;
-      console.log('nivelEnvio:', nivelEnvio);
-
       let stockEnvio: string = this.stock;
-      console.log('stockEnvio:', stockEnvio);
       this.localSeleccionHabilita = this.localSeleccion;
-      console.log('localSeleccion:', this.localSeleccion);
       this.listaKardex = await this.obtenerKardex.getKardexSafe(locales, codigosDesdeEnvio, codigosHastaEnvio, fechaDesdeEnvio, fechaHastaEnvio, nivelEnvio, stockEnvio);
       console.log(this.listaKardex)
       if (this.listaKardex.length > 0) {
@@ -79,6 +66,10 @@ export class TablaKardexComponent {
     }
     return resultado;
   }
+
+  //validarexistencia(LocalesEscogidos: number[], codigoDesde: String, codigoHasta: String, fechaDesde: Date, fechaHasta: Date, nivel: String, Stock: String){
+  //  if (LocalesEscogidos )
+  //}
 
 
 }

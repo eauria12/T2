@@ -5,7 +5,7 @@ import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 import { LocalIdService } from 'src/app/services/resources/local.service';
 import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-kardex-mercaderia',
   templateUrl: './kardex-mercaderia.component.html',
@@ -140,6 +140,14 @@ export class KardexMercaderiaComponent {
   //borrar despues solo para pruebas
 
   imprimirTabla() {
+    Swal.fire({
+      title: 'Cargando',
+      icon: 'info',
+      timer: 3000,
+      showConfirmButton: false,
+
+    });
+  
     this.buscarClicked = true;
     console.log("hola again");
     console.log(this.localesSeleccionados);
