@@ -22,7 +22,7 @@ export class TablasComponent {
   lineas: number[];
   codigos: number[];
   SaldosInventario: Saldolistar[] = [];
-  SaldosInventarioSeparadoLocal: { [localId: number]: Saldolistar[] } = {};
+  SaldosInventarioSeparadoLocal: { [localId: string]: Saldolistar[] } = {};
   DatosMostrar: boolean = false;
 
   constructor(private obtenerSaldos: ObtenerSaldosInventarioService) { }
@@ -70,10 +70,10 @@ export class TablasComponent {
     }
   }
 
-  agruparPorLocalId(data: Saldolistar[]): { [localId: number]: Saldolistar[] } {
-    const resultado: { [localId: number]: Saldolistar[] } = {};
+  agruparPorLocalId(data: Saldolistar[]): { [localId: string]: Saldolistar[] } {
+    const resultado: { [localId: string]: Saldolistar[] } = {};
     for (const elemento of data) {
-      const localId = elemento.localId;
+      const localId = elemento.localNombre;
       if (resultado[localId]) {
         resultado[localId].push(elemento);
       } else {

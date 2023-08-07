@@ -1,16 +1,10 @@
-<p-table
-        [value]="listaPreciosExistenciaFiltrados"  
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [paginator]="true"
-        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-        [tableStyle]="{ 'min-width': '50rem' }"
-        [tableStyle]="{ 'min-width': '75rem' }"
-        styleClass="p-datatable-gridlines"
-       
-    >
-        <ng-template pTemplate="header">
+<p-table [value]="listaPreciosExistenciaFiltrados" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+    [tableStyle]="{ 'min-width': '50rem' }" [tableStyle]="{ 'min-width': '75rem' }" styleClass="p-datatable-gridlines">
+
+    
+        <ng-template pTemplate="header" *ngIf="localSeleccionHabilita">
             <tr>
                 <th style="width:25%">Fecha</th>
                 <th style="width:25%">Transacción</th>
@@ -18,26 +12,57 @@
                 <th style="width:25%">Número</th>
                 <th style="width:25%">Entrada</th>
                 <th style="width:25%">Salida</th>
-                <th style="width:25%">Exist.</th>       
+                <th style="width:25%">Exist.</th>
                 <th style="width:25%">Venta Total</th>
-                <th style="width:25%">Vta. Unit.</th> 
-                <th style="width:25%">Referencias</th>       
+                <th style="width:25%">Vta. Unit.</th>
+                <th style="width:25%">Referencias</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-customer>
+        <ng-template pTemplate="body" let-customer *ngIf="localSeleccionHabilita">
+            <ng-container *ngFor="let locales of kardexSeparadoLocal | keyvalue">
+                <tr>
+                    <td>Local {{ locales.key }}</td> <!-- Mostrar el localId -->
+                </tr>
+                <tr *ngFor="let elemento of locales.value">
+                    <!-- Iterar sobre los elementos del arreglo asociado al localId -->
+                    <td></td>
+                    <td>{{ elemento.fecha }}</td>
+                    <td>{{ elemento.transaccionNombre }}</td>
+                    <td>{{ elemento.localId }}</td>
+
+                </tr>
+            </ng-container>
+        </ng-template>
+    
+        <ng-template pTemplate="header" *ngIf="!localSeleccionHabilita">
             <tr>
-                <td>name</td>
-                <td>counnrtr</td>
-                <td>fsd</td>
-                <td>dcdc</td>
-                <td>name</td>
-                <td>counnrtr</td>
-                <td>fsd</td>
-                <td>dcdc</td>
-                <td>name</td>
-                <td>counnrtr</td>
-        
+                <th style="width:25%">Fecha</th>
+                <th style="width:25%">Transacción</th>
+                <th style="width:25%">Local</th>
+                <th style="width:25%">Doc.</th>
+                <th style="width:25%">Número</th>
+                <th style="width:25%">Entrada</th>
+                <th style="width:25%">Salida</th>
+                <th style="width:25%">Exist.</th>
+                <th style="width:25%">Venta Total</th>
+                <th style="width:25%">Vta. Unit.</th>
+                <th style="width:25%">Referencias</th>
             </tr>
         </ng-template>
-   
-    </p-table>
+        <ng-template pTemplate="body" let-customer *ngIf="!localSeleccionHabilita">
+            <ng-container *ngFor="let locales of kardexSeparadoLocal | keyvalue">
+                <tr>
+                    <td>Local {{ locales.key }}</td> <!-- Mostrar el localId -->
+                </tr>
+                <tr *ngFor="let elemento of locales.value">
+                    <!-- Iterar sobre los elementos del arreglo asociado al localId -->
+                    <td></td>
+                    <td>{{ elemento.fecha }}</td>
+                    <td>{{ elemento.transaccionNombre }}</td>
+                    <td>{{ elemento.localId }}</td>
+
+                </tr>
+            </ng-container>
+        </ng-template>
+    
+</p-table>

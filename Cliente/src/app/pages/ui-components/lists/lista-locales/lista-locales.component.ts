@@ -30,11 +30,15 @@ export class ListaLocalesComponent implements OnInit {
     this.localId = this.LocalIdService.getLocalId();
     this.zonaId = await this.localInfo.getLocalZona(this.localId);
     this.locales = await this.servicioListas.getListaLocalesSafe();
+    console.log("-------------------------------------------");
+    console.log(this.locales);
+    console.log(this.localesDisponibles);
+    console.log(this.localesDisponibles.length);
+    console.log("-------------------------------------------");
     if (this.localesDisponibles.length > 0) {
       this.locales = this.locales.filter(elemento => this.localesDisponibles.includes(elemento.id));
     }
-    console.log("this.locales");
-    console.log(this.locales);
+
   }
 
   async ngOnChanges(changes: SimpleChanges) {

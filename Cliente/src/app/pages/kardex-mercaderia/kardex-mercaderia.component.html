@@ -39,7 +39,7 @@
                 <div class="col-sm-4">
                   <mat-card-title>Presentación</mat-card-title>
                   <mat-selection-list #present [multiple]="false">
-                    <mat-list-option *ngFor="let pr of presentacion" [value]="presentacion">
+                    <mat-list-option *ngFor="let pr of presentacion" [value]="presentacion" (click)="onPresentacionSeleccionada(pr)">
                       {{ pr }}
                     </mat-list-option>
                   </mat-selection-list>
@@ -53,8 +53,8 @@
 
                 <div class="col-sm-12">
                   <div>
-                    <app-filtro-fecha #fechasElegidas (fechaInicioEnvio)="handleFechaInicio($event)"
-                      (fechaFinEnvio)="handleFechaFin($event)"></app-filtro-fecha>
+                    <app-filtro-fecha #fechasElegidas (datedesdeChange)="handleFechaInicio($event)"
+                      (datehastaChange)="handleFechaFin($event)"></app-filtro-fecha>
                   </div>
                 </div>
 
@@ -100,6 +100,7 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <app-tabla-kardex></app-tabla-kardex>
+    <app-tabla-kardex *ngIf="buscarClicked" [localesMostrar]="localesSeleccionados" [fechaInicio]="fechaInicio" [fechaFin]="fechaFin"
+    [codigosEscogidos]="codigosElegidos" [seleccionNivel]="seleccionNivel" [stock]="stock" [localSeleccion]="localSeleccion"></app-tabla-kardex>
   </div>
 </div>

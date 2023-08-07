@@ -48,11 +48,11 @@ export class SaldoInventarioComponent {
   acceso: boolean = false
 
   async ngOnInit() {
+    this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio);
     this.opcionesNivel = await this.permisos.permisosNivel(this.codigoServicio);
     this.permisoCostoUnitario = await this.permisos.permisoCostoUnitario(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
-    this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
     this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);

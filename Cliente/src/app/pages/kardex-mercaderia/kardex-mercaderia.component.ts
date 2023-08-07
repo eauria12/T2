@@ -14,11 +14,12 @@ import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.ser
 export class KardexMercaderiaComponent {
   @ViewChild('nivel') nivelList: MatSelectionList;
   @ViewChild('zon') zonaList: MatSelectionList;
+  @ViewChild('present') presentacionList: MatSelectionList;
   @ViewChild('lineArt') lineArt: MatSelectionList;
   
   protected buscarClicked: boolean = false;
-  fechaInicio: Date = new Date(1900, 1, 1);
-  fechaFin: Date = new Date(2200, 31, 12);
+  fechaInicio: Date ;
+  fechaFin: Date ;
   localesSeleccionados: any[] = [];
   zonaSelected: boolean = false;
   lineasSeleccionadas: any[] = [];
@@ -32,8 +33,10 @@ export class KardexMercaderiaComponent {
   permisoCostoUnitario: boolean;
   localId: string | null;
   zonaId :number ;
-  mostrarListaLineas:boolean = true;
-  mostrarFiltroCodigo:boolean = false;
+  mostrarFiltroCodigo:boolean = true;
+  stock = "S"
+  seleccionNivel = "L"
+  localSeleccion: boolean;
 
   constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService, private obtenerLocal: ObtenerLocalInfoService) { }
 
@@ -41,15 +44,15 @@ export class KardexMercaderiaComponent {
   presentacion: string[] = ['Movimientos por Local', 'Movimientos en Locales'];
   zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
   zonasPermitidas: boolean[] = [true, true, true];
-  acceso: boolean = false
+  acceso: boolean = false;
+  
 
   async ngOnInit() {
+    this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
     this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio);
     this.opcionesNivel = await this.permisos.permisosNivel(this.codigoServicio);
     this.permisoCostoUnitario = await this.permisos.permisoCostoUnitario(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
-    this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
-    console.log(this.localesDisponibles);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
     this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);
@@ -74,10 +77,12 @@ export class KardexMercaderiaComponent {
       if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[0]) {
         this.zonaSelected = false;
         this.NivelLocal = "Nacional";
+        this.seleccionNivel ="N";
         console.log("Seleccione nacional");
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
         this.zonaSelected = true;
         console.log("Seleccione Zona");
+        this.seleccionNivel ="Z";
         console.log(this.opcionesNivel[2]);
         if (this.opcionesNivel[2]) {
           console.log("Zonas limitadas al usuario");
@@ -86,6 +91,7 @@ export class KardexMercaderiaComponent {
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
         this.zonaSelected = false;
         this.NivelLocal = "Local";
+        this.seleccionNivel ="L";
         console.log("Seleccione Local");
       }
     }
@@ -107,6 +113,18 @@ export class KardexMercaderiaComponent {
       } else if (zon === this.zona[2]) {
         this.NivelLocal = "Zona 2";
         console.log("Seleccione Sur");
+      }
+    }
+  }
+
+  onPresentacionSeleccionada(pr: string) {
+    if (this.presentacionList.selectedOptions.selected.length > 0) {
+      if ( pr === this.presentacion[0]) {
+        this.localSeleccion = true;
+        console.log("Seleccione por local");
+      } else if (pr === this.presentacion[1]) {
+        this.localSeleccion = false;
+        console.log("Seleccione en locales");
       }
     }
   }
