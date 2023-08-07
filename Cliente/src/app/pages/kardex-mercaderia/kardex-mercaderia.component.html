@@ -13,7 +13,7 @@
             <div class="col-md-9">
               <div class="row">
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                   <mat-card-title>Nivel</mat-card-title>
                   <mat-selection-list #nivel [multiple]="false">
                     <mat-list-option [value]="typesOfNivel[0]" [disabled]="!opcionesNivel[0]"
@@ -29,17 +29,19 @@
                   <mat-card-title> Zonas </mat-card-title>
                   <mat-card class="b-1 shadow-none">
                     <mat-selection-list #zon [disabled]="!zonaSelected" [multiple]="false">
-                      <mat-list-option *ngFor="let zon of zona; let i = index" [value]="zon" [disabled]="zonasPermitidas[i]" (click)="onZonaSeleccionada(zon)">
+                      <mat-list-option *ngFor="let zon of zona; let i = index" [value]="zon"
+                        [disabled]="zonasPermitidas[i]" (click)="onZonaSeleccionada(zon)">
                         {{ zon }}
                       </mat-list-option>
                     </mat-selection-list>
                   </mat-card>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                   <mat-card-title>Presentación</mat-card-title>
                   <mat-selection-list #present [multiple]="false">
-                    <mat-list-option *ngFor="let pr of presentacion" [value]="presentacion" (click)="onPresentacionSeleccionada(pr)">
+                    <mat-list-option *ngFor="let pr of presentacion" [value]="presentacion"
+                      (click)="onPresentacionSeleccionada(pr)">
                       {{ pr }}
                     </mat-list-option>
                   </mat-selection-list>
@@ -69,28 +71,23 @@
                     [localesDisponibles]="localesDisponibles" [NivelLocal]="NivelLocal">
                   </app-lista-locales>
                 </div>
-
               </div>
-            </div>
 
-          </div>
+              <div class="col-sm-12">
+                <div class="buttons">
+                  <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirTabla()">
+                    Buscar
+                  </button>
+                  <button mat-flat-button color="accent" class="m-t-8" (click)="limpiar()">
+                    Limpiar
+                  </button>
+                </div>
 
-
-          <div class="row">
-            <div class="col-sm-12 style-buscar">
-              <div class="buttons">
-                <button mat-flat-button color="warn" class="m-t-8" (click)="imprimirTabla()">
-                  Buscar
-                </button>
-                <button mat-flat-button color="accent" class="m-t-8" (click)="limpiar()">
-                  Limpiar
-                </button>
-              </div>
+              </div>  
 
             </div>
 
           </div>
-
         </form>
       </mat-card-content>
     </mat-card>
@@ -100,7 +97,8 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <app-tabla-kardex *ngIf="buscarClicked" [localesMostrar]="localesSeleccionados" [fechaInicio]="fechaInicio" [fechaFin]="fechaFin"
-    [codigosEscogidos]="codigosElegidos" [seleccionNivel]="seleccionNivel" [stock]="stock" [localSeleccion]="localSeleccion"></app-tabla-kardex>
+    <app-tabla-kardex *ngIf="buscarClicked" [localesMostrar]="localesSeleccionados" [fechaInicio]="fechaInicio"
+      [fechaFin]="fechaFin" [codigosEscogidos]="codigosElegidos" [seleccionNivel]="seleccionNivel" [stock]="stock"
+      [localSeleccion]="localSeleccion"></app-tabla-kardex>
   </div>
 </div>

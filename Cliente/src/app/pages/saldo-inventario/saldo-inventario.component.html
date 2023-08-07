@@ -47,7 +47,7 @@
 
                 <div class="col-sm-12">
                   <mat-selection-list #lineArt [multiple]="false" class="radio-horizontal">
-                    <mat-list-option *ngFor="let linArt of lineArticulo" [value]="linArt"
+                    <mat-list-option togglePosition="before" *ngFor="let linArt of lineArticulo" [value]="linArt"
                       (click)="filtraArticulos(linArt)">
                       {{ linArt }}
                     </mat-list-option>

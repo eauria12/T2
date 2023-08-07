@@ -124,9 +124,6 @@ export class ListaPreciosExistenciaComponent {
       this.loading = false;
     }
 
-
-
-
   }
 
   //Implementación de alerta x usuario sin autorización

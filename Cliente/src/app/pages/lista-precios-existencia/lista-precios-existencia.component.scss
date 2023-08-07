@@ -13,8 +13,10 @@
 }
 
 .lista-container {
-    height: 200px; /* Establece la altura deseada */
-    overflow: auto; /* Añade scroll cuando sea necesario */
+    height: 200px;
+    /* Establece la altura deseada */
+    overflow: auto;
+    /* Añade scroll cuando sea necesario */
 }
 
 .buttons {
@@ -22,5 +24,26 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    
+    padding-top: 15px;
 }
+
+.theme-card.mat-mdc-card {
+    .mat-mdc-card-content {
+        padding-top: 10px;
+    }
+}
+
+.radio-horizontal {
+    display: flex;
+    //text-overflow:ellipsis;
+    //overflow:hidden;
+}
+/*
+.parte {
+    flex: 1;
+}
+
+.parte2 {
+    flex: 1;
+}*/
+

@@ -8,20 +8,62 @@
   <mat-card-content class="b-t-1">
     <form>
       <div class="row" *ngIf="autorizado === false">
-        <div class="col-md-7">
 
-          <div class="col-sm-8">
-            <app-select-lineas
-              (selectedValue)="onSelectionChange($event)"></app-select-lineas>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-sm-7">
+              <app-select-lineas (selectedValue)="onSelectionChange($event)"></app-select-lineas>
+            </div>
           </div>
-          
+
+
+
+          <div class="row">
+
+            <div class="col-sm-4">
+              <mat-selection-list [multiple]="false" class="radio-horizontal">
+                <mat-list-option togglePosition="before" class="parte">
+                  Inventario Físico
+                </mat-list-option>
+                <mat-list-option togglePosition="before" class="parte2">
+                  Inventario Disponible
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+
+            <div class="col-sm-4">
+              <app-fecha-inventario></app-fecha-inventario>
+            </div>
+
+            <div class="col-sm-4">
+              <app-tipo-inventario></app-tipo-inventario>
+            </div>
+
+          </div>
+
         </div>
 
-      
-        <!--Aún no implementados-->
-        <div class="col-sm-8">
+        <div class="col-md-2">
           <div class="row">
-            <div class="col-sm-12 m-2">
+            <div class="col-sm-10">
+              <div class="buttons">
+                <button mat-flat-button color="warn" (click)="buscarExistencias()">
+                  <!--(click)="buscarLocales()"-->
+                  Buscar
+                </button>
+                <button mat-flat-button color="accent" class="m-t-8">
+                  Limpiar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!--
+        <div class="col-sm-12 m-2">
               <p-radioButton
                 name="inventario"
                 value="fisico"
@@ -40,22 +82,8 @@
                 >Inventario Disponible</label
               >
             </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="buttons">
-            <button mat-flat-button color="warn" (click)="buscarExistencias()">
-              <!--(click)="buscarLocales()"-->
-              Buscar
-            </button>
-          </div>
-        </div>
+      -->
 
-        <app-fecha-inventario></app-fecha-inventario>
-        <app-tipo-inventario></app-tipo-inventario>
-
-        <span>Hola, ahí le arreglas la posición de los filtros :'v</span>
-      </div>
     </form>
   </mat-card-content>
 </mat-card>
@@ -70,28 +98,15 @@
       </div>
     </mat-card-title>
   </mat-card-header>
-  <p-table
-    *ngIf="vistaTabla"
-    #dt2
-    [value]="listaPreciosExistenciaFiltrados"
-    dataKey="id"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [loading]="loading"
-    [paginator]="true"
+  <p-table *ngIf="vistaTabla" #dt2 [value]="listaPreciosExistenciaFiltrados" dataKey="id" [rows]="10"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-    [globalFilterFields]="vistaAtabla[1]"
-    [tableStyle]="{ 'min-width': '75rem' }"
-    styleClass="p-datatable-gridlines">
+    [globalFilterFields]="vistaAtabla[1]" [tableStyle]="{ 'min-width': '75rem' }" styleClass="p-datatable-gridlines">
     <ng-template pTemplate="caption">
       <div class="flex">
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
-          <input
-            pInputText
-            type="text"
-            (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+          <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
             placeholder="Search keyword" />
         </span>
       </div>
@@ -130,6 +145,7 @@
   .p-column-filter-row .p-column-filter-clear-button {
     display: none;
   }
+
   ::ng-deep .p-column-filter-clear-button {
     display: none !important;
   }

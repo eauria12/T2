@@ -100,3 +100,15 @@ img, svg {
   color: #ffffff;
   border-color: #fab710;
 }
+
+.p-button:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fab710;
+}
+
+/*.mdc-list-item__primary-text {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+} */
