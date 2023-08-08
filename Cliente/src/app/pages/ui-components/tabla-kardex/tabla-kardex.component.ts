@@ -12,8 +12,7 @@ import { KardexLocal } from 'src/app/interfaces/kardex-local';
   styleUrls: ['./tabla-kardex.component.scss']
 })
 export class TablaKardexComponent {
-  listaPreciosExistenciaFiltrados: Existencia[] = [];
-
+  
   @Input() localesMostrar: number[];
   @Input() fechaInicio: Date;
   @Input() fechaFin: Date;
