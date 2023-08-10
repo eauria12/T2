@@ -73,8 +73,8 @@
       </div>
     </mat-card-title>
   </mat-card-header>
-  <p-table *ngIf="vistaTabla" #dt2 [value]="listaPreciosExistenciaFiltrados" dataKey="id" [rows]="10"
-    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+  <p-table *ngIf="vistaTabla" #dt2 [value]="listaPreciosExistenciaFiltrados" dataKey="id" [rows]="30"
+    [showCurrentPageReport]="true" [loading]="loading" [paginator]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
     [globalFilterFields]="vistaAtabla[1]" [tableStyle]="{ 'min-width': '75rem' }" styleClass="p-datatable-gridlines">
     <ng-template pTemplate="caption">
@@ -82,7 +82,7 @@
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
           <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search keyword" />
+            placeholder="Buscar" />
         </span>
       </div>
     </ng-template>
@@ -95,7 +95,10 @@
       </tr>
       <tr>
         <th *ngFor="let labelF of vistaAtabla[1]">
-          <p-columnFilter type="text" [field]="labelF"></p-columnFilter>
+          <p-columnFilter type="text" (input)="dt2.filter($any($event.target).value,labelF, 'contains')" [field]="labelF"></p-columnFilter>
+        </th>
+        <th style="width: 1%" *ngFor="let local of locales">
+          -
         </th>
       </tr>
     </ng-template>
