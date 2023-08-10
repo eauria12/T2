@@ -1,11 +1,11 @@
 import { Component, NgModule, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
-import { TablasComponent } from '../ui-components/tablas/tablas.component';
+//import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 import { LocalIdService } from 'src/app/services/resources/local.service';
 import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class SaldoInventarioComponent {
   @ViewChild('nivel') nivelList: MatSelectionList;
   @ViewChild('zon') zonaList: MatSelectionList;
   @ViewChild('lineArt') lineArt: MatSelectionList;
-  
+
   protected buscarClicked: boolean = false;
   fechaInicio: Date = new Date(1900, 1, 1);
   fechaFin: Date = new Date(2200, 31, 12);
@@ -34,9 +34,9 @@ export class SaldoInventarioComponent {
   codigoServicio: String = "080509";
   permisoCostoUnitario: boolean;
   localId: string | null;
-  zonaId :number ;
-  mostrarListaLineas:boolean = false;
-  mostrarFiltroCodigo:boolean = false;
+  zonaId: number;
+  mostrarListaLineas: boolean = false;
+  mostrarFiltroCodigo: boolean = false;
 
   constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService, private obtenerLocal: ObtenerLocalInfoService) { }
 
@@ -87,7 +87,7 @@ export class SaldoInventarioComponent {
         console.log("Seleccione Zona");
         if (this.opcionesNivel[2]) {
           console.log("Zonas limitadas al usuario");
-          this.zonasPermitidas[this.zonaId]= false;
+          this.zonasPermitidas[this.zonaId] = false;
         }
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
         this.zonaSelected = false;
@@ -138,17 +138,55 @@ export class SaldoInventarioComponent {
     //this.buscarClicked = true;
   }
 
-  limpiar(){
-    window.location.href="/saldo-inventario";
+  limpiar() {
+    window.location.href = "/saldo-inventario";
   }
 
   //borrar despues solo para pruebas
+  showAlert(label: string) {
+    Swal.fire({
+      title: label,
+      icon: 'warning', // Puedes usar 'success', 'error', 'warning', 'info', 'question' u otros íconos personalizados
+      timer: 1500
 
-  imprimirTabla() {
+    });
+  }
+
+  showAlertLoading(label: string) {
+    Swal.fire({
+      title: label,
+      icon: 'info',
+      timer: 1500,
+      showConfirmButton: false,
+
+    });
+  }
+
+  /*imprimirTabla() {
     this.buscarClicked = true;
     console.log("hola again");
     console.log(this.localesSeleccionados);
     console.log(this.lineasSeleccionadas);
+  }*/
+
+
+  imprimirTabla() {
+
+    if (this.localesSeleccionados.length == 0) {
+      this.showAlert("Seleccione local/es");
+      this.buscarClicked = false;
+    }
+    /*if () {
+      this.showAlert("No existen datos para mostrar");
+      this.buscarClicked = true;
+    }*/
+    this.buscarClicked = true;
+    console.log("hola again");
+    console.log(this.localesSeleccionados);
+    console.log(this.lineasSeleccionadas);
+
+
   }
+
 
 }

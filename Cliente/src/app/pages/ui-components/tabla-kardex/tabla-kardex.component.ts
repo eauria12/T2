@@ -1,9 +1,10 @@
 import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Existencia } from 'src/app/interfaces/existencia';
-import { Saldolistar } from 'src/app/interfaces/saldolistar';
 import { ObtenerKardexService } from 'src/app/services/obtener-kardex.service';
 import { Kardex } from 'src/app/interfaces/kardex';
+import { KardexCodigo } from 'src/app/interfaces/kardex-codigo';
+import { KardexLocal } from 'src/app/interfaces/kardex-local';
 
 @Component({
   selector: 'app-tabla-kardex',
@@ -11,8 +12,7 @@ import { Kardex } from 'src/app/interfaces/kardex';
   styleUrls: ['./tabla-kardex.component.scss']
 })
 export class TablaKardexComponent {
-  listaPreciosExistenciaFiltrados: Existencia[] = [];
-
+  
   @Input() localesMostrar: number[];
   @Input() fechaInicio: Date;
   @Input() fechaFin: Date;
@@ -22,8 +22,8 @@ export class TablaKardexComponent {
   @Input() localSeleccion: boolean;
   localSeleccionHabilita: boolean;
   listaKardex: Kardex[] = [];
-  kardexSeparadoLocal: { [localId: string]: Kardex[] } = {};
-  KardexFinal: Kardex[] = [];
+  kardexSeparadoLocal: KardexLocal[] = [];
+  KardexFinal: KardexCodigo[] = [];
 
   constructor(private obtenerKardex: ObtenerKardexService) { }
 
@@ -43,29 +43,81 @@ export class TablaKardexComponent {
       if (this.listaKardex.length > 0) {
         if (this.localSeleccion) {
           console.log("por local")
-          this.kardexSeparadoLocal = this.agruparPorLocalId(this.listaKardex);
+          this.kardexSeparadoLocal = this.agruparKardexPorLocal(this.listaKardex);
           console.log(this.kardexSeparadoLocal)
         } else {
-          console.log("Solito")
-          this.KardexFinal = this.listaKardex;
+          console.log("Solito");
+          this.KardexFinal = this.agruparKardexPorCodigo(this.listaKardex);
           console.log(this.KardexFinal)
         }
       }
     }
   }
 
-  agruparPorLocalId(data: Kardex[]): { [localId: string]: Kardex[] } {
-    const resultado: { [localId: string]: Kardex[] } = {};
-    for (const elemento of data) {
-      const localId = elemento.localNombre;
-      if (resultado[localId]) {
-        resultado[localId].push(elemento);
-      } else {
-        resultado[localId] = [elemento];
+   agruparKardexPorCodigo(kardexArray: Kardex[]): KardexCodigo[] {
+    const kardexPorCodigo: { [codigoId: string]: KardexCodigo } = {};
+  
+    for (const kardex of kardexArray) {
+      if (!kardexPorCodigo[kardex.itemId]) {
+        const nuevoKardexCodigo: KardexCodigo = {
+          codigoId: kardex.itemId,
+          nombre: kardex.itemNombre,
+          ultimaCompra: kardex.fechaUltimaCompra,
+          ultimaVenta: kardex.fechaUltimaVenta,
+          stockMin: kardex.stockMinimo.toString(),
+          stockMax: kardex.stockMaximo.toString(),
+          precio: kardex.precio.toString(),
+          moneda: kardex.monedaId,
+          unidad: kardex.unidadMedidaId,
+          localNombre : kardex.localNombre,
+          registroKardex: []
+        };
+        kardexPorCodigo[kardex.itemId] = nuevoKardexCodigo;
       }
+  
+      kardexPorCodigo[kardex.itemId].registroKardex.push(kardex);
     }
-    return resultado;
+  
+    return Object.values(kardexPorCodigo);
   }
+
+  agruparKardexPorLocal(kardexArray: Kardex[]): KardexLocal[] {
+    const kardexPorLocal: { [localId: number]: KardexLocal } = {};
+  
+    for (const kardex of kardexArray) {
+      if (!kardexPorLocal[kardex.localId]) {
+        kardexPorLocal[kardex.localId] = {
+          localNombre: kardex.localNombre,
+          listaKardexporCodigo: []
+        };
+      }
+  
+      const local = kardexPorLocal[kardex.localId];
+      let kardexCodigo = local.listaKardexporCodigo.find(k => k.codigoId === kardex.itemId);
+  
+      if (!kardexCodigo) {
+        kardexCodigo = {
+          codigoId: kardex.itemId,
+          nombre: kardex.itemNombre,
+          ultimaCompra: kardex.fechaUltimaCompra,
+          ultimaVenta: kardex.fechaUltimaVenta,
+          stockMin: kardex.stockMinimo.toString(),
+          stockMax: kardex.stockMaximo.toString(),
+          precio: kardex.precio.toString(),
+          moneda: kardex.monedaId,
+          unidad: kardex.unidadMedidaId,
+          localNombre : kardex.localNombre,
+          registroKardex: []
+        };
+        local.listaKardexporCodigo.push(kardexCodigo);
+      }
+  
+      kardexCodigo.registroKardex.push(kardex);
+    }
+  
+    return Object.values(kardexPorLocal);
+  }
+  
 
   //validarexistencia(LocalesEscogidos: number[], codigoDesde: String, codigoHasta: String, fechaDesde: Date, fechaHasta: Date, nivel: String, Stock: String){
   //  if (LocalesEscogidos )
