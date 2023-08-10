@@ -1,0 +1,63 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "user-authentication-test;return-the-last-two-characters-as-a-string",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "Return the last two characters as a string",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "a nivelId \"08050950\"",
+            "match": {
+              "location": "src\\test\\steps\\permisoStep.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1033399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 4,
+            "name": "I call the obtenerCodigoPermiso method",
+            "match": {
+              "location": "src\\test\\steps\\permisoStep.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 197800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 5,
+            "name": "I should get \"50\"",
+            "match": {
+              "location": "src\\test\\steps\\permisoStep.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 486599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "user-authentication-test",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "User authentication test",
+    "tags": [],
+    "uri": "src\\test\\features\\permiso.feature"
+  }
+]
