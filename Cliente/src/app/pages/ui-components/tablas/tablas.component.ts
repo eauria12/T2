@@ -42,19 +42,23 @@ export class TablasComponent {
       } else {
         this.DatosMostrar = true;
         this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(this.SaldosInventario);
+        console.log(this.SaldosInventarioSeparadoLocal)
       }
     } else if ((changes['codigosEscogidos'] || changes['localesMostrar']) && this.codigosVisualizar == true) {
       this.codigos = [...this.codigosEscogidos];
       this.locales = [...this.localesMostrar];
       this.SaldosInventario  = await this.obtenerSaldos.getTodosSaldosInventarioSafe( this.locales, this.lineasDisponibles);
       console.log(this.locales)
+      console.log("locales")
       console.log(this.SaldosInventario)
+      console.log("Saldos de inventario")
       console.log(this.codigosVisualizar)
       console.log("codigosVisualizar")
       if (this.locales.length == 0 || this.SaldosInventario.length == 0) {
         console.log(" fallo 1 codigosVisualizar")
         this.DatosMostrar = false;
       } else {
+        console.log("Por codigo")
         let Articulos: Saldolistar[] = []
         for (const elemento of this.SaldosInventario) {
           if (this.codigos[0] <= parseInt(elemento.itemId) && parseInt(elemento.itemId) <= this.codigos[1]) {
@@ -65,6 +69,7 @@ export class TablasComponent {
         console.log("Si codigosVisualizar")
         this.DatosMostrar = true;
         this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(Articulos);
+        console.log(this.SaldosInventarioSeparadoLocal)
         }
       }
     }

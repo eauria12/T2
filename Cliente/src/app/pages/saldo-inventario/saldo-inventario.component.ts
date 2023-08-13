@@ -88,6 +88,9 @@ export class SaldoInventarioComponent {
         if (this.opcionesNivel[2]) {
           console.log("Zonas limitadas al usuario");
           this.zonasPermitidas[this.zonaId] = false;
+        } else {
+          console.log("Zonas no limitadas al usuario");
+          this.zonasPermitidas = [false, false, false];
         }
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
         this.zonaSelected = false;
