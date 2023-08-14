@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ObtenerSaldosInventarioService } from 'src/app/services/obtener-saldos-inventario.service';
 import { Saldolistar } from 'src/app/interfaces/saldolistar';
+import { SaldoLocal } from 'src/app/interfaces/saldo-local';
 
 @Component({
   selector: 'app-tablas',
@@ -15,77 +16,80 @@ export class TablasComponent {
   @Input() fechaFin: Date;
   @Input() fechaInicio: Date;
   @Input() codigosVisualizar: Boolean;
+  @Input() formatoPresentacion: String;
   @Input() lineasVisualizar: Boolean;
   @Input() codigosEscogidos: number[];
-  @Input() lineasDisponibles: String;
   locales: number[];
   lineas: number[];
   codigos: number[];
   SaldosInventario: Saldolistar[] = [];
-  SaldosInventarioSeparadoLocal: { [localId: string]: Saldolistar[] } = {};
+  SaldosInventarioSeparadoLocal: SaldoLocal[] = [];
+  formato: String;
   DatosMostrar: boolean = false;
 
   constructor(private obtenerSaldos: ObtenerSaldosInventarioService) { }
 
   async ngOnChanges(changes: SimpleChanges) {
-    if ((changes['localesMostrar'] || changes['lineasMostrar']) && this.lineasVisualizar) {
+    this.SaldosInventario = []
+    if ((changes['localesMostrar'] || changes['lineasMostrar'] || changes['formatoPresentacion']) && this.lineasVisualizar) {
       this.locales = [...this.localesMostrar];
       this.lineas = [...this.lineasMostrar];
-      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales, this.lineas);
-      console.log(this.locales)
-      console.log(this.lineas)
-      console.log(this.SaldosInventario)
-      console.log(this.lineasVisualizar)
-      console.log("lineasVisualizar")
+      this.formato = this.formatoPresentacion;
+      console.log(this.locales);
+      console.log(this.lineas);
+      console.log(this.formato);
+      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales, this.lineas, this.formato);
       if (this.locales.length == 0 || this.lineas.length == 0 || this.SaldosInventario.length == 0) {
         this.DatosMostrar = false;
       } else {
+        console.log("Visualizar por lienas")
         this.DatosMostrar = true;
-        this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(this.SaldosInventario);
-        console.log(this.SaldosInventarioSeparadoLocal)
+        if (this.formato == "L") {
+          this.SaldosInventarioSeparadoLocal = this.agruparSaldosPorLocal(this.SaldosInventario);
+          console.log(this.SaldosInventarioSeparadoLocal)
+        } else if (this.formato == "C") {
+          this.SaldosInventarioSeparadoLocal = this.agruparSaldosPorLocal(this.SaldosInventario);
+          console.log(this.SaldosInventarioSeparadoLocal)
+        }
       }
-    } else if ((changes['codigosEscogidos'] || changes['localesMostrar']) && this.codigosVisualizar == true) {
+    } else if ((changes['codigosEscogidos'] || changes['localesMostrar'] || changes['formatoPresentacion']) && this.codigosVisualizar == true) {
       this.codigos = [...this.codigosEscogidos];
       this.locales = [...this.localesMostrar];
-      this.SaldosInventario  = await this.obtenerSaldos.getTodosSaldosInventarioSafe( this.locales, this.lineasDisponibles);
-      console.log(this.locales)
-      console.log("locales")
-      console.log(this.SaldosInventario)
-      console.log("Saldos de inventario")
-      console.log(this.codigosVisualizar)
-      console.log("codigosVisualizar")
+      this.formato = this.formatoPresentacion;
+      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioCodigoSafe(this.locales, this.formato)
       if (this.locales.length == 0 || this.SaldosInventario.length == 0) {
         console.log(" fallo 1 codigosVisualizar")
         this.DatosMostrar = false;
       } else {
-        console.log("Por codigo")
-        let Articulos: Saldolistar[] = []
-        for (const elemento of this.SaldosInventario) {
-          if (this.codigos[0] <= parseInt(elemento.itemId) && parseInt(elemento.itemId) <= this.codigos[1]) {
-            Articulos.push(elemento);
-          }
-        }
-        if (Articulos.length > 0){
-        console.log("Si codigosVisualizar")
+        console.log("Visualizar por Codigo")
         this.DatosMostrar = true;
-        this.SaldosInventarioSeparadoLocal = this.agruparPorLocalId(Articulos);
-        console.log(this.SaldosInventarioSeparadoLocal)
+        if (this.formato == "L") {
+          this.SaldosInventarioSeparadoLocal = this.agruparSaldosPorLocal(this.SaldosInventario);
+          console.log(this.SaldosInventarioSeparadoLocal)
+        } else if (this.formato == "C") {
+          this.SaldosInventarioSeparadoLocal = this.agruparSaldosPorLocal(this.SaldosInventario);
+          console.log(this.SaldosInventarioSeparadoLocal)
         }
       }
     }
   }
 
-  agruparPorLocalId(data: Saldolistar[]): { [localId: string]: Saldolistar[] } {
-    const resultado: { [localId: string]: Saldolistar[] } = {};
-    for (const elemento of data) {
-      const localId = elemento.localNombre;
-      if (resultado[localId]) {
-        resultado[localId].push(elemento);
-      } else {
-        resultado[localId] = [elemento];
+  agruparSaldosPorLocal(saldosArray: Saldolistar[]): SaldoLocal[] {
+    const saldosPorLocal: { [localId: number]: SaldoLocal } = {};
+  
+    for (const saldo of saldosArray) {
+      if (!saldosPorLocal[saldo.localId]) {
+        saldosPorLocal[saldo.localId] = {
+          localNombre: saldo.localNombre,
+          listaSaldos: []
+        };
       }
+  
+      const local = saldosPorLocal[saldo.localId];
+      local.listaSaldos.push(saldo);
     }
-    return resultado;
+  
+    return Object.values(saldosPorLocal);
   }
 
 

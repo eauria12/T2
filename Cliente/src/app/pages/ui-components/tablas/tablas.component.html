@@ -1,6 +1,7 @@
 <mat-card class="cardWithShadow theme-card">
-    <p-table [value]="SaldosInventario" sortField="representative.name" sortMode="single" [scrollable]="true"
-        scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="localId" [tableStyle]="{'min-width': '60rem'}">s
+    <p-table [value]="SaldosInventarioSeparadoLocal" sortField="representative.name" sortMode="single"
+        [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="localId"
+        [tableStyle]="{'min-width': '60rem'}">s
         <ng-template pTemplate="header">
             <tr>
                 <th>Código</th>
@@ -23,56 +24,58 @@
                     <span class="font-bold ml-2">{{SaldosInventario.localNombre}}</span>
                 </td>
             </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-SaldosInventarioSeparadoLocal let-rowIndex="rowIndex">
-            <tr>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.itemId }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.itemNombre }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.paisNombre }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.unidadMedidaNombre }}
-                </td>
-                <td>
-                    {{SaldosInventarioSeparadoLocal.saldo}}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.reservado }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.disponible }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.costoUnitario }}
-                </td>
-                <td *ngIf="!permisoCostoUnitario">
-                    No autorizado
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.ventasCantidad }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.ventasCantidad * SaldosInventarioSeparadoLocal.costoUnitario | number: '.2' }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.unidadMedidaConversion }}
-                </td>
-                <td>
-                    {{ SaldosInventarioSeparadoLocal.dias }}
-                </td>
-            </tr>
+            <ng-template pTemplate="body" *ngFor="let saldoListar of SaldosInventario.listaSaldos"
+                let-rowIndex="rowIndex">
+                <tr>
+                    <td>
+                        {{ saldoListar.itemId }}
+                    </td>
+                    <td>
+                        {{ saldoListar.itemNombre }}
+                    </td>
+                    <td>
+                        {{ saldoListar.paisNombre }}
+                    </td>
+                    <td>
+                        {{ saldoListar.unidadMedidaNombre }}
+                    </td>
+                    <td>
+                        {{saldoListar.saldo}}
+                    </td>
+                    <td>
+                        {{ saldoListar.reservado }}
+                    </td>
+                    <td>
+                        {{ saldoListar.disponible }}
+                    </td>
+                    <td>
+                        {{ saldoListar.costoUnitario }}
+                    </td>
+                    <td *ngIf="!permisoCostoUnitario">
+                        No autorizado
+                    </td>
+                    <td>
+                        {{ saldoListar.ventasCantidad }}
+                    </td>
+                    <td>
+                        {{ saldoListar.ventasCantidad * saldoListar.costoUnitario |
+                        number: '.2' }}
+                    </td>
+                    <td>
+                        {{ saldoListar.unidadMedidaConversion }}
+                    </td>
+                    <td>
+                        {{ saldoListar.dias }}
+                    </td>
+                </tr>
+            </ng-template>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-              <td colspan="5">No existen registros.</td>
+                <td colspan="5">No existen registros.</td>
             </tr>
         </ng-template>
+
     </p-table>
 
 </mat-card>

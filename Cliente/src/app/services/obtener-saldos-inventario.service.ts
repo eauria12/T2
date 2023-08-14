@@ -11,15 +11,37 @@ export class ObtenerSaldosInventarioService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  async getSaldosInventarioSafe(LocalesEscogidos: number[], LineasEscogidas: number[]) {
+  async getSaldosInventarioSafe(LocalesEscogidos: number[], LineasEscogidas: number[], formatoPresentacion: String) {
     const bodyenvio = {
       "locales": this.StringLocales(LocalesEscogidos),
       "lineas": this.StringLineas(LineasEscogidas),
       "formatoNivel": "N",
       "formatoLineaArticulo": "L",
-      "formatoPresentacion": "L",
+      "formatoPresentacion": formatoPresentacion,
       "codigoDesde": "",
       "codigoHasta": ""
+    };
+    return new Promise<any>((resolve, reject) => {
+      this.http.post("http://oasysweb.saia.com.ec/andina/api/inventario/reportes/saldosListar", bodyenvio)
+        .pipe(catchError((error) => of(error)))
+        .subscribe((res) => {
+          if (res instanceof HttpErrorResponse)
+            reject({ error: res.error, status: res.status });
+          else
+            resolve(res);
+        });
+    });
+  }
+
+  async getSaldosInventarioCodigoSafe(codigosEscogidos: number[], formatoPresentacion: String) {
+    const bodyenvio = {
+      "locales": "",
+      "lineas": "",
+      "formatoNivel": "N",
+      "formatoLineaArticulo": "A",
+      "formatoPresentacion": formatoPresentacion,
+      "codigoDesde": codigosEscogidos[0].toString(),
+      "codigoHasta": codigosEscogidos[1].toString()
     };
     return new Promise<any>((resolve, reject) => {
       this.http.post("http://oasysweb.saia.com.ec/andina/api/inventario/reportes/saldosListar", bodyenvio)

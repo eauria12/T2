@@ -18,6 +18,7 @@ export class SaldoInventarioComponent {
   @ViewChild('nivel') nivelList: MatSelectionList;
   @ViewChild('zon') zonaList: MatSelectionList;
   @ViewChild('lineArt') lineArt: MatSelectionList;
+  @ViewChild('present') present: MatSelectionList;
 
   protected buscarClicked: boolean = false;
   fechaInicio: Date = new Date(1900, 1, 1);
@@ -37,6 +38,7 @@ export class SaldoInventarioComponent {
   zonaId: number;
   mostrarListaLineas: boolean = false;
   mostrarFiltroCodigo: boolean = false;
+  formatoPresentacion: String;
 
   constructor(private permisos: ObtenerPermisosService, private LocalIdService: LocalIdService, private obtenerLocal: ObtenerLocalInfoService) { }
 
@@ -133,6 +135,20 @@ export class SaldoInventarioComponent {
         this.mostrarListaLineas = true;
         this.mostrarFiltroCodigo = false;
         console.log("Lista lineas");
+      }
+    }
+  }
+
+  escogeArticulos(formatoPresentar: string) {
+    console.log("Filtro ");
+    if (this.present.selectedOptions.selected.length > 0) {
+      console.log("Evento Filtro ");
+      if (formatoPresentar === this.presentacion[0]) {
+        this.formatoPresentacion = "C";
+        console.log("Filtro Consolidado");
+      } else if (formatoPresentar === this.presentacion[1]) {
+        this.formatoPresentacion = "L";
+        console.log("Filtro Local");
       }
     }
   }

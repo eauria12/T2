@@ -20,7 +20,7 @@ export class FiltroFechaComponent {
 
   onHastaChange() {
     this.datehastaChange.emit(this.datehasta);
-  }
+  } 
 
 
   /*Manejo de fechas Carlos */

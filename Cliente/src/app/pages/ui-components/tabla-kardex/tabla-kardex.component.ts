@@ -12,7 +12,7 @@ import { KardexLocal } from 'src/app/interfaces/kardex-local';
   styleUrls: ['./tabla-kardex.component.scss']
 })
 export class TablaKardexComponent {
-  
+
   @Input() localesMostrar: number[];
   @Input() fechaInicio: Date;
   @Input() fechaFin: Date;
@@ -28,7 +28,7 @@ export class TablaKardexComponent {
   constructor(private obtenerKardex: ObtenerKardexService) { }
 
   async ngOnChanges(changes: SimpleChanges) {
-    this.listaKardex= []
+    this.listaKardex = []
     if (changes['localesMostrar'] || changes['fechaInicio'] || changes['fechaFin'] || changes['codigosEscogidos'] || changes['seleccionNivel'] || changes['stock'] || changes['localSeleccion']) {
       let locales: number[] = this.localesMostrar;
       let fechaDesdeEnvio: Date = this.fechaInicio;
@@ -38,25 +38,27 @@ export class TablaKardexComponent {
       let nivelEnvio: string = this.seleccionNivel;
       let stockEnvio: string = this.stock;
       this.localSeleccionHabilita = this.localSeleccion;
-      this.listaKardex = await this.obtenerKardex.getKardexSafe(locales, codigosDesdeEnvio, codigosHastaEnvio, fechaDesdeEnvio, fechaHastaEnvio, nivelEnvio, stockEnvio);
-      console.log(this.listaKardex)
-      if (this.listaKardex.length > 0) {
-        if (this.localSeleccion) {
-          console.log("por local")
-          this.kardexSeparadoLocal = this.agruparKardexPorLocal(this.listaKardex);
-          console.log(this.kardexSeparadoLocal)
-        } else {
-          console.log("Solito");
-          this.KardexFinal = this.agruparKardexPorCodigo(this.listaKardex);
-          console.log(this.KardexFinal)
+      if (this.validarExistencia(locales, codigosDesdeEnvio, codigosHastaEnvio, fechaDesdeEnvio, fechaHastaEnvio, nivelEnvio, stockEnvio)) {
+        this.listaKardex = await this.obtenerKardex.getKardexSafe(locales, codigosDesdeEnvio, codigosHastaEnvio, fechaDesdeEnvio, fechaHastaEnvio, nivelEnvio, stockEnvio);
+        console.log(this.listaKardex)
+        if (this.listaKardex.length > 0) {
+          if (this.localSeleccion) {
+            console.log("por local")
+            this.kardexSeparadoLocal = this.agruparKardexPorLocal(this.listaKardex);
+            console.log(this.kardexSeparadoLocal)
+          } else {
+            console.log("Solito");
+            this.KardexFinal = this.agruparKardexPorCodigo(this.listaKardex);
+            console.log(this.KardexFinal)
+          }
         }
       }
     }
   }
 
-   agruparKardexPorCodigo(kardexArray: Kardex[]): KardexCodigo[] {
+  agruparKardexPorCodigo(kardexArray: Kardex[]): KardexCodigo[] {
     const kardexPorCodigo: { [codigoId: string]: KardexCodigo } = {};
-  
+
     for (const kardex of kardexArray) {
       if (!kardexPorCodigo[kardex.itemId]) {
         const nuevoKardexCodigo: KardexCodigo = {
@@ -69,21 +71,21 @@ export class TablaKardexComponent {
           precio: kardex.precio.toString(),
           moneda: kardex.monedaId,
           unidad: kardex.unidadMedidaId,
-          localNombre : kardex.localNombre,
+          localNombre: kardex.localNombre,
           registroKardex: []
         };
         kardexPorCodigo[kardex.itemId] = nuevoKardexCodigo;
       }
-  
+
       kardexPorCodigo[kardex.itemId].registroKardex.push(kardex);
     }
-  
+
     return Object.values(kardexPorCodigo);
   }
 
   agruparKardexPorLocal(kardexArray: Kardex[]): KardexLocal[] {
     const kardexPorLocal: { [localId: number]: KardexLocal } = {};
-  
+
     for (const kardex of kardexArray) {
       if (!kardexPorLocal[kardex.localId]) {
         kardexPorLocal[kardex.localId] = {
@@ -91,10 +93,10 @@ export class TablaKardexComponent {
           listaKardexporCodigo: []
         };
       }
-  
+
       const local = kardexPorLocal[kardex.localId];
       let kardexCodigo = local.listaKardexporCodigo.find(k => k.codigoId === kardex.itemId);
-  
+
       if (!kardexCodigo) {
         kardexCodigo = {
           codigoId: kardex.itemId,
@@ -106,22 +108,58 @@ export class TablaKardexComponent {
           precio: kardex.precio.toString(),
           moneda: kardex.monedaId,
           unidad: kardex.unidadMedidaId,
-          localNombre : kardex.localNombre,
+          localNombre: kardex.localNombre,
           registroKardex: []
         };
         local.listaKardexporCodigo.push(kardexCodigo);
       }
-  
+
       kardexCodigo.registroKardex.push(kardex);
     }
-  
+
     return Object.values(kardexPorLocal);
   }
-  
-
-  //validarexistencia(LocalesEscogidos: number[], codigoDesde: String, codigoHasta: String, fechaDesde: Date, fechaHasta: Date, nivel: String, Stock: String){
-  //  if (LocalesEscogidos )
-  //}
 
 
+  validarExistencia(LocalesEscogidos: number[],
+    codigoDesde: string,
+    codigoHasta: string,
+    fechaDesde: Date,
+    fechaHasta: Date,
+    nivel: string,
+    stock: string
+  ): boolean {
+    if (!LocalesEscogidos.length) {
+      this.MostrarAlerta("No hay Locales");
+      return false;
+    }
+    if (!codigoDesde || !codigoHasta) {
+      this.MostrarAlerta("Códigos inválidos");
+      return false;
+    }
+    if (!fechaDesde || !fechaHasta) {
+      this.MostrarAlerta("Fechas inválidas");
+      return false;
+    }
+    if (!nivel) {
+      this.MostrarAlerta("No hay nivel seleccionado");
+      return false;
+    }
+    if (!stock) {
+      this.MostrarAlerta("No hay stock seleccionado");
+      return false;
+    }
+    return true;
+  }
+
+
+  MostrarAlerta(Mensaje: String) {
+    Swal.fire({
+      title: Mensaje,
+      icon: 'info',
+      timer: 3000,
+      showConfirmButton: false,
+
+    });
+  }
 }
