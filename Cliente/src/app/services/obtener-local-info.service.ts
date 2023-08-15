@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RealizarPeticionesAsincronasSafeService } from './realizar-peticiones-asincronas-safe.service';
 
-
 const urlInfoLocal: string = "http://oasysweb.saia.com.ec/andina/api/info/local/";
 
 @Injectable({

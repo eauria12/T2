@@ -190,7 +190,6 @@ export class SaldoInventarioComponent {
 
 
   imprimirTabla() {
-
     if (this.localesSeleccionados.length == 0) {
       this.showAlert("Seleccione local/es");
       this.buscarClicked = false;
@@ -203,8 +202,6 @@ export class SaldoInventarioComponent {
     console.log("hola again");
     console.log(this.localesSeleccionados);
     console.log(this.lineasSeleccionadas);
-
-
   }
 
 
