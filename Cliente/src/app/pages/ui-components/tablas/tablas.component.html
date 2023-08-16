@@ -1,6 +1,6 @@
 <mat-card class="cardWithShadow theme-card">
     <p-table [value]="SaldosInventarioSeparadoLocal" sortField="representative.name" sortMode="single"
-        [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="localId"
+        [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="localNombre"
         [tableStyle]="{'min-width': '60rem'}">s
         <ng-template pTemplate="header">
             <tr>
@@ -24,8 +24,7 @@
                     <span class="font-bold ml-2">{{SaldosInventario.localNombre}}</span>
                 </td>
             </tr>
-            <ng-template pTemplate="body" *ngFor="let saldoListar of SaldosInventario.listaSaldos"
-                let-rowIndex="rowIndex">
+            <ng-container *ngFor="let saldoListar of SaldosInventario.listaSaldos">
                 <tr>
                     <td>
                         {{ saldoListar.itemId }}
@@ -68,7 +67,7 @@
                         {{ saldoListar.dias }}
                     </td>
                 </tr>
-            </ng-template>
+            </ng-container>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
