@@ -1,68 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
-import { catchError } from 'rxjs/operators'
-import { of } from 'rxjs';
-import { AuthService } from 'src/app/services/authentication/auth.service';
-import { Linea } from '../interfaces/linea';
+import { RealizarPeticionesAsincronasSafeService } from './realizar-peticiones-asincronas-safe.service';
 
+const urlListaZonas: string = "http://oasysweb.saia.com.ec/andina/api/info/zona/lista";
+const urlListaLocales: string = "http://oasysweb.saia.com.ec/andina/api/info/local/lista";
+const urlListaLineas: string = "http://oasysweb.saia.com.ec/andina/api/info/linea/lista";
+const urlListaPorRango: string = "http://oasysweb.saia.com.ec/andina/api/info/linea/listaPorRango/";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObtenerListasService {
 
-  constructor(private http: HttpClient, private auth: AuthService) {   }
+  constructor(private peticionesAsync: RealizarPeticionesAsincronasSafeService) {   }
 
   async getListaZonasSafe() {
-    return new Promise<any>((resolve, reject) => {
-      this.http.get("http://oasysweb.saia.com.ec/andina/api/info/zona/lista")
-        .pipe(catchError((error) => of(error)))
-        .subscribe((res) => {
-          if (res instanceof HttpErrorResponse)
-            reject({ error: res.error, status: res.status });
-          else
-            resolve(res);
-        });
-    });
+    return this.peticionesAsync.realizarGetAsincronoSeguro(urlListaZonas);
   }
 
   async getListaLocalesSafe() {
-    return new Promise<any>((resolve, reject) => {
-      this.http.get("http://oasysweb.saia.com.ec/andina/api/info/local/lista")
-        .pipe(catchError((error) => of(error)))
-        .subscribe((res) => {
-          if (res instanceof HttpErrorResponse)
-            reject({ error: res.error, status: res.status });
-          else
-            resolve(res);
-        });
-    });
+    return this.peticionesAsync.realizarGetAsincronoSeguro(urlListaLocales);
   }
 
   async getListaLineasSafe() {
-    return new Promise<any>((resolve, reject) => {
-      this.http.get("http://oasysweb.saia.com.ec/andina/api/info/linea/lista")
-        .pipe(catchError((error) => of(error)))
-        .subscribe((res) => {
-          if (res instanceof HttpErrorResponse)
-            reject({ error: res.error, status: res.status });
-          else
-            resolve(res);
-        });
-    });
+    return this.peticionesAsync.realizarGetAsincronoSeguro(urlListaLineas);
   }
 
   async getListaPorRangoLineasSafe(lineas: String) {
-    return new Promise<any>((resolve, reject) => {
-      this.http.get("http://oasysweb.saia.com.ec/andina/api/info/linea/listaPorRango/"+lineas)
-        .pipe(catchError((error) => of(error)))
-        .subscribe((res) => {
-          if (res instanceof HttpErrorResponse)
-            reject({ error: res.error, status: res.status });
-          else
-            resolve(res);
-        });
-    });
+    let urlEnvio = urlListaPorRango + lineas;
+    return this.peticionesAsync.realizarGetAsincronoSeguro(urlEnvio);
   }
 
 }

@@ -1,11 +1,11 @@
-import { Component, NgModule, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
-import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 import { LocalIdService } from 'src/app/services/resources/local.service';
 import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-kardex-mercaderia',
   templateUrl: './kardex-mercaderia.component.html',
@@ -18,8 +18,8 @@ export class KardexMercaderiaComponent {
   @ViewChild('lineArt') lineArt: MatSelectionList;
   
   protected buscarClicked: boolean = false;
-  fechaInicio: Date ;
-  fechaFin: Date ;
+  fechaInicio: Date = new Date(1900, 1, 1);
+  fechaFin: Date = new Date(2200, 31, 12);
   localesSeleccionados: any[] = [];
   zonaSelected: boolean = false;
   lineasSeleccionadas: any[] = [];
@@ -58,7 +58,6 @@ export class KardexMercaderiaComponent {
     this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);
   }
 
-
   handleLocalesSeleccionados(locales: any[]) {
     this.localesSeleccionados = locales;
   }
@@ -72,49 +71,42 @@ export class KardexMercaderiaComponent {
   }
 
   handleNivelSeleccionado() {
-    // Verificamos si "Nacional" está seleccionado
     if (this.nivelList.selectedOptions.selected.length > 0) {
       if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[0]) {
-        this.zonaSelected = false;
-        this.NivelLocal = "Nacional";
-        this.seleccionNivel ="N";
-        console.log("Seleccione nacional");
+        this.setInformacionNivel(false,"Nacional","N")
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
-        this.zonaSelected = true;
-        console.log("Seleccione Zona");
-        this.seleccionNivel ="Z";
-        console.log(this.opcionesNivel[2]);
-        if (this.opcionesNivel[2]) {
-          console.log("Zonas limitadas al usuario");
-          this.zonasPermitidas[this.zonaId]= false;
-        } else {
-          this.zonasPermitidas = [false, false, false];
-        }
+        this.setInformacionNivel(true,"","Z")
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
-        this.zonaSelected = false;
-        this.NivelLocal = "Local";
-        this.seleccionNivel ="L";
-        console.log("Seleccione Local");
+        this.setInformacionNivel(false,"Local","L")
+      }
+    }
+  }
+
+  setInformacionNivel(zonaSeleccionada : boolean, niveldelLocal: string, seleccionDeNivel: string){
+    this.zonaSelected = zonaSeleccionada;
+    this.NivelLocal = niveldelLocal;
+    this.seleccionNivel = seleccionDeNivel;
+    if (this.seleccionNivel === "Z"){
+      if (this.opcionesNivel[2]) {
+        this.zonasPermitidas[this.zonaId]= false;
+      } else {
+        this.zonasPermitidas = [false, false, false];
       }
     }
   }
 
   handleCodigosElegidos(codigos: number[]) {
     this.codigosElegidos = codigos;
-    console.log(this.codigosElegidos);
   }
 
   onZonaSeleccionada(zon: string) {
     if (this.zonaList.selectedOptions.selected.length > 0) {
       if (zon === "Nacional") {
         this.NivelLocal = "Nacional";
-        console.log("Seleccione nacional");
       } else if (zon === this.zona[1]) {
         this.NivelLocal = "Zona 1";
-        console.log("Seleccione Centro-Norte");
       } else if (zon === this.zona[2]) {
         this.NivelLocal = "Zona 2";
-        console.log("Seleccione Sur");
       }
     }
   }
@@ -123,23 +115,15 @@ export class KardexMercaderiaComponent {
     if (this.presentacionList.selectedOptions.selected.length > 0) {
       if ( pr === this.presentacion[0]) {
         this.localSeleccion = true;
-        console.log("Seleccione por local");
       } else if (pr === this.presentacion[1]) {
         this.localSeleccion = false;
-        console.log("Seleccione en locales");
       }
     }
-  }
-
-  buscarLocales() {
-    //this.buscarClicked = true;
   }
 
   limpiar(){
     window.location.href="/saldo-inventario";
   }
-
-  //borrar despues solo para pruebas
 
   imprimirTabla() {
     Swal.fire({
@@ -149,11 +133,7 @@ export class KardexMercaderiaComponent {
       showConfirmButton: false,
 
     });
-  
     this.buscarClicked = true;
-    console.log("hola again");
-    console.log(this.localesSeleccionados);
-    console.log(this.lineasSeleccionadas);
   }
 
 }

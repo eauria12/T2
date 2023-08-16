@@ -1,12 +1,13 @@
-import { Component, NgModule, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
-//import { TablasComponent } from '../ui-components/tablas/tablas.component';
 import { Permiso } from 'src/app/interfaces/permiso';
 import { ObtenerPermisosService } from 'src/app/services/obtener-permisos.service'
 import { LocalIdService } from 'src/app/services/resources/local.service';
 import { ObtenerLocalInfoService } from 'src/app/services/obtener-local-info.service';
 import Swal from 'sweetalert2';
 
+const presentacionConsolidado: string = "C";
+const presentacionLocal: string = "L";
 
 @Component({
   selector: 'app-saldo-inventario',
@@ -78,133 +79,86 @@ export class SaldoInventarioComponent {
   }
 
   handleNivelSeleccionado() {
-    // Verificamos si "Nacional" está seleccionado
     if (this.nivelList.selectedOptions.selected.length > 0) {
       if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[0]) {
-        this.zonaSelected = false;
-        this.NivelLocal = "Nacional";
-        console.log("Seleccione nacional");
+        this.setInformacionNivel(false,"Nacional")
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[1]) {
-        this.zonaSelected = true;
-        console.log("Seleccione Zona");
-        if (this.opcionesNivel[2]) {
-          console.log("Zonas limitadas al usuario");
-          this.zonasPermitidas[this.zonaId] = false;
-        } else {
-          console.log("Zonas no limitadas al usuario");
-          this.zonasPermitidas = [false, false, false];
-        }
+        this.setInformacionNivel(true,"")
       } else if (this.nivelList.selectedOptions.selected[0].value === this.typesOfNivel[2]) {
-        this.zonaSelected = false;
-        this.NivelLocal = "Local";
-        console.log("Seleccione Local");
+        this.setInformacionNivel(false,"Local")
+      }
+    }
+  }
+
+  setInformacionNivel(zonaSeleccionada : boolean, niveldelLocal: string){
+    this.zonaSelected = zonaSeleccionada;
+    this.NivelLocal = niveldelLocal;
+    if (this.zonaSelected){
+      if (this.opcionesNivel[2]) {
+        this.zonasPermitidas[this.zonaId]= false;
+      } else {
+        this.zonasPermitidas = [false, false, false];
       }
     }
   }
 
   handleCodigosElegidos(codigos: number[]) {
     this.codigosElegidos = codigos;
-    console.log(this.codigosElegidos);
   }
 
   onZonaSeleccionada(zon: string) {
     if (this.zonaList.selectedOptions.selected.length > 0) {
       if (zon === "Nacional") {
         this.NivelLocal = "Nacional";
-        console.log("Seleccione nacional");
       } else if (zon === this.zona[1]) {
         this.NivelLocal = "Zona 1";
-        console.log("Seleccione Centro-Norte");
       } else if (zon === this.zona[2]) {
         this.NivelLocal = "Zona 2";
-        console.log("Seleccione Sur");
       }
     }
   }
 
-
   filtraArticulos(lineArticulo: string) {
-    console.log("Filtro ");
     if (this.lineArt.selectedOptions.selected.length > 0) {
-      console.log("Evento Filtro ");
       if (lineArticulo === this.lineArticulo[0]) {
         this.mostrarListaLineas = false;
         this.mostrarFiltroCodigo = true;
-        console.log("Filtro codigo");
       } else if (lineArticulo === this.lineArticulo[1]) {
         this.mostrarListaLineas = true;
         this.mostrarFiltroCodigo = false;
-        console.log("Lista lineas");
       }
     }
   }
 
   escogeArticulos(formatoPresentar: string) {
-    console.log("Filtro ");
     if (this.present.selectedOptions.selected.length > 0) {
-      console.log("Evento Filtro ");
       if (formatoPresentar === this.presentacion[0]) {
-        this.formatoPresentacion = "C";
-        console.log("Filtro Consolidado");
+        this.formatoPresentacion = presentacionConsolidado;
       } else if (formatoPresentar === this.presentacion[1]) {
-        this.formatoPresentacion = "L";
-        console.log("Filtro Local");
+        this.formatoPresentacion = presentacionLocal;
       }
     }
-  }
-
-  buscarLocales() {
-    //this.buscarClicked = true;
   }
 
   limpiar() {
     window.location.href = "/saldo-inventario";
   }
-
-  //borrar despues solo para pruebas
+  
   showAlert(label: string) {
     Swal.fire({
       title: label,
-      icon: 'warning', // Puedes usar 'success', 'error', 'warning', 'info', 'question' u otros íconos personalizados
+      icon: 'warning', 
       timer: 1500
 
     });
   }
 
-  showAlertLoading(label: string) {
-    Swal.fire({
-      title: label,
-      icon: 'info',
-      timer: 1500,
-      showConfirmButton: false,
-
-    });
-  }
-
-  /*imprimirTabla() {
-    this.buscarClicked = true;
-    console.log("hola again");
-    console.log(this.localesSeleccionados);
-    console.log(this.lineasSeleccionadas);
-  }*/
-
-
   imprimirTabla() {
-
     if (this.localesSeleccionados.length == 0) {
       this.showAlert("Seleccione local/es");
       this.buscarClicked = false;
     }
-    /*if () {
-      this.showAlert("No existen datos para mostrar");
-      this.buscarClicked = true;
-    }*/
     this.buscarClicked = true;
-    console.log("hola again");
-    console.log(this.localesSeleccionados);
-    console.log(this.lineasSeleccionadas);
-
-
   }
 
 

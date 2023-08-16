@@ -39,7 +39,8 @@ export class TablasComponent {
       console.log(this.lineas);
       console.log(this.formato);
       this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioSafe(this.locales, this.lineas, this.formato);
-      if (this.locales.length == 0 || this.lineas.length == 0 || this.SaldosInventario.length == 0) {
+      console.log(this.SaldosInventario );
+      if (this.locales.length == 0 || this.lineas.length == 0 || this.SaldosInventario == null) {
         this.DatosMostrar = false;
       } else {
         console.log("Visualizar por lienas")
@@ -57,7 +58,7 @@ export class TablasComponent {
       this.locales = [...this.localesMostrar];
       this.formato = this.formatoPresentacion;
       this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioCodigoSafe(this.locales, this.formato)
-      if (this.locales.length == 0 || this.SaldosInventario.length == 0) {
+      if (this.locales.length == 0 || this.SaldosInventario == null) {
         console.log(" fallo 1 codigosVisualizar")
         this.DatosMostrar = false;
       } else {

@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators'
-import { of } from 'rxjs';
-import { AuthService } from 'src/app/services/authentication/auth.service';
+import { RealizarPeticionesAsincronasSafeService } from './realizar-peticiones-asincronas-safe.service';
 import { Permiso } from 'src/app/interfaces/permiso';
+
+const urlObtenerPermisos: string = "http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/";
+const codigoPermisoNacional: string = "50";
+const codigoPermisoLocal: string = "51";
+const codigoPermisoZonaLocal: string = "52";
+const codigoPermisoTodasZonas: string = "54";
+const codigoPermisoCostoUnitario: string = "60";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObtenerPermisosService {
-
+  
   private listaPermisos: Permiso[] = [];
   private listaLocales: number[] = [];
-
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  
+  constructor(private peticionesAsync: RealizarPeticionesAsincronasSafeService) { }
+  
+  async getPermisosSafe(servicio: String) {
+    let urlEnvio = urlObtenerPermisos + servicio
+    return this.peticionesAsync.realizarGetAsincronoSeguro(urlEnvio)
+  }
 
   async permisosDisponibles(servicio: String) {
     this.listaPermisos = await this.getPermisosSafe(servicio);
@@ -40,18 +49,10 @@ export class ObtenerPermisosService {
     this.listaPermisos.forEach((elemento) => {
       const nivelId = elemento.nivelId.toString();
       const ultimosDosDigitos = nivelId.slice(-2);
-      if (ultimosDosDigitos === "50") {
-        booleanos[0] = true;
-      }
-      if (ultimosDosDigitos === "51") {
-        booleanos[1] = true;
-      }
-      if (ultimosDosDigitos === "52") {
-        booleanos[2] = true;
-      }
-      if (ultimosDosDigitos === "54") {
-        booleanos[3] = true;
-      }
+      if (ultimosDosDigitos === codigoPermisoNacional) { booleanos[0] = true;}
+      if (ultimosDosDigitos === codigoPermisoLocal) { booleanos[1] = true;}
+      if (ultimosDosDigitos === codigoPermisoZonaLocal) { booleanos[2] = true;}
+      if (ultimosDosDigitos === codigoPermisoTodasZonas) { booleanos[3] = true;}
     });
     return booleanos;
   }
@@ -62,25 +63,10 @@ export class ObtenerPermisosService {
     this.listaPermisos.forEach((elemento) => {
       const nivelId = elemento.nivelId.toString();
       const ultimosDosDigitos = nivelId.slice(-2);
-      if (ultimosDosDigitos === "60") {
-        permiso = true;
-      }
+      if (ultimosDosDigitos === codigoPermisoCostoUnitario) {permiso = true;}
     });
    return permiso; 
 }
-
-  async getPermisosSafe(servicio: String) {
-    return new Promise<any>((resolve, reject) => {
-      this.http.get("http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/" + servicio) //prueba usuario no autorizado
-        .pipe(catchError((error) => of(error)))
-        .subscribe((res) => {
-          if (res instanceof HttpErrorResponse)
-            reject({ error: res.error, status: res.status });
-          else
-            resolve(res);
-        });
-    });
-  }
 
   private obtenerCodigoPermiso(nivelId: string): string {
     const ultimosNumeros = nivelId.slice(-2);

@@ -23,22 +23,15 @@ export class ListaLocalesComponent implements OnInit {
 
 
   constructor(private servicioListas: ObtenerListasService,private LocalIdService: LocalIdService, private localInfo: ObtenerLocalInfoService) {
-
   }
 
   async ngOnInit() {
     this.localId = this.LocalIdService.getLocalId();
     this.zonaId = await this.localInfo.getLocalZona(this.localId);
     this.locales = await this.servicioListas.getListaLocalesSafe();
-    console.log("-------------------------------------------");
-    console.log(this.locales);
-    console.log(this.localesDisponibles);
-    console.log(this.localesDisponibles.length);
-    console.log("-------------------------------------------");
     if (this.localesDisponibles.length > 0) {
       this.locales = this.locales.filter(elemento => this.localesDisponibles.includes(elemento.id));
     }
-
   }
 
   async ngOnChanges(changes: SimpleChanges) {
@@ -70,15 +63,12 @@ export class ListaLocalesComponent implements OnInit {
   seleccionarNivelZona() {
     if (this.localesElegidosList) {
       const todasLasOpciones = this.localesElegidosList.options.toArray();
-      console.log(todasLasOpciones);
       todasLasOpciones.forEach(opcion => {
         const zonaIdOpcion = opcion.value.zonaId;
-        console.log(zonaIdOpcion);
-        console.log((this.NivelLocal).slice(-1));
-        if (zonaIdOpcion == (this.NivelLocal).slice(-1)) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
-          opcion._setSelected(true); // Seleccionar la opción si el zonaId coincide
+        if (zonaIdOpcion == (this.NivelLocal).slice(-1)) {  
+          opcion._setSelected(true); 
         } else {
-          opcion._setSelected(false); // Des-seleccionar la opción si el zonaId no coincide
+          opcion._setSelected(false); 
         }
       });
     const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value.id);
@@ -91,10 +81,10 @@ export class ListaLocalesComponent implements OnInit {
       const todasLasOpciones = this.localesElegidosList.options.toArray();
       todasLasOpciones.forEach(opcion => {
         const localActual = opcion.value.id; 
-        if (localActual == this.localId) {  //if (zonaIdOpcion === this.zonaIdSeleccionada)
-          opcion._setSelected(true); // Seleccionar la opción si el zonaId coincide
+        if (localActual == this.localId) {  
+          opcion._setSelected(true); 
         } else {
-          opcion._setSelected(false); // Des-seleccionar la opción si el zonaId no coincide
+          opcion._setSelected(false); 
         }
       });
     const opcionesSeleccionadas = this.localesElegidosList.selectedOptions.selected.map((option: any) => option.value.id);
