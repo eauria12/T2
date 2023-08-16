@@ -1,63 +1,459 @@
 [
-  {
-    "description": "",
-    "elements": [
-      {
-        "description": "",
-        "id": "user-authentication-test;return-the-last-two-characters-as-a-string",
-        "keyword": "Scenario",
-        "line": 2,
-        "name": "Return the last two characters as a string",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 3,
-            "name": "a nivelId \"08050950\"",
-            "match": {
-              "location": "src\\test\\steps\\permisoStep.ts:13"
+    {
+      "description": "",
+      "elements": [
+        {
+          "description": "",
+          "id": "user-authentication-test;as-a-member-of-the-company",
+          "keyword": "Scenario",
+          "line": 2,
+          "name": "As a member of the company",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 3,
+              "name": "a username \"RALCIVAR\"",
+              "match": {
+                "location": "src\\test\\steps\\authStep.ts:9"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 1508700
+              }
             },
-            "result": {
-              "status": "passed",
-              "duration": 1033399
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 4,
-            "name": "I call the obtenerCodigoPermiso method",
-            "match": {
-              "location": "src\\test\\steps\\permisoStep.ts:23"
+            {
+              "arguments": [],
+              "keyword": "And ",
+              "line": 4,
+              "name": "a localID 80",
+              "match": {
+                "location": "src\\test\\steps\\authStep.ts:17"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 301899
+              }
             },
-            "result": {
-              "status": "passed",
-              "duration": 197800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 5,
-            "name": "I should get \"50\"",
-            "match": {
-              "location": "src\\test\\steps\\permisoStep.ts:28"
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 5,
+              "name": "I call the authenticated method",
+              "match": {
+                "location": "src\\test\\steps\\authStep.ts:23"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 189106399
+              }
             },
-            "result": {
-              "status": "passed",
-              "duration": 486599
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 6,
+              "name": "I should see the message \"Successfully authenticated\"",
+              "match": {
+                "location": "src\\test\\steps\\authStep.ts:30"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 1235699
+              }
             }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      }
-    ],
-    "id": "user-authentication-test",
-    "line": 1,
-    "keyword": "Feature",
-    "name": "User authentication test",
-    "tags": [],
-    "uri": "src\\test\\features\\permiso.feature"
-  }
-]
+          ],
+          "tags": [],
+          "type": "scenario"
+        }
+      ],
+      "id": "user-authentication-test",
+      "line": 1,
+      "keyword": "Feature",
+      "name": "User authentication test",
+      "tags": [],
+      "uri": "src\\test\\features\\auth.feature"
+    },
+    {
+      "description": "",
+      "elements": [
+        {
+          "description": "",
+          "id": "kardex-test;as-stock-employee-on-nacional",
+          "keyword": "Scenario",
+          "line": 2,
+          "name": "As stock employee on Nacional",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 3,
+              "name": "the type of nivel \"Nacional\" to filter by Nacional items",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:9"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 1151599
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 4,
+              "name": "I call the handleNivelSeleccionado method",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:18"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 240699
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 5,
+              "name": "I should have the atribute seleccionNivel of the object with a value of \"N\"",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:22"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 449000
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        },
+        {
+          "description": "",
+          "id": "kardex-test;as-stock-employee-on-zona",
+          "keyword": "Scenario",
+          "line": 7,
+          "name": "As stock employee on Zona",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 8,
+              "name": "the type of zona \"Zona\" to filter by Zona items",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:33"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 569299
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 9,
+              "name": "I call the handleNivelSeleccionado method",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:18"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 83499
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 10,
+              "name": "I should see \"Z\"",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:43"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 730599
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        },
+        {
+          "description": "",
+          "id": "kardex-test;as-stock-employee-on-centro-norte",
+          "keyword": "Scenario",
+          "line": 13,
+          "name": "As stock employee on Centro Norte",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 14,
+              "name": "a selected Zona with a value \"Zona Centro-Norte\"",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:50"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 612800
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 15,
+              "name": "I call the onZonaSeleccionada method",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:56"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 365199
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 16,
+              "name": "I should have \"Zona 1\"",
+              "match": {
+                "location": "src\\test\\steps\\kardexStep.ts:60"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 200899
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        }
+      ],
+      "id": "kardex-test",
+      "line": 1,
+      "keyword": "Feature",
+      "name": "Kardex test",
+      "tags": [],
+      "uri": "src\\test\\features\\kardex.feature"
+    },
+    {
+      "description": "",
+      "elements": [
+        {
+          "description": "",
+          "id": "permissions-test;return-the-last-two-characters-as-a-string",
+          "keyword": "Scenario",
+          "line": 2,
+          "name": "Return the last two characters as a string",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 3,
+              "name": "a nivelId \"08050950\"",
+              "match": {
+                "location": "src\\test\\steps\\permisoStep.ts:9"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 418500
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 4,
+              "name": "I call the obtenerCodigoPermiso method",
+              "match": {
+                "location": "src\\test\\steps\\permisoStep.ts:15"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 264799
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 5,
+              "name": "I should get \"50\"",
+              "match": {
+                "location": "src\\test\\steps\\permisoStep.ts:21"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 250500
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        }
+      ],
+      "id": "permissions-test",
+      "line": 1,
+      "keyword": "Feature",
+      "name": "Permissions test",
+      "tags": [],
+      "uri": "src\\test\\features\\permiso.feature"
+    },
+    {
+      "description": "",
+      "elements": [
+        {
+          "description": "",
+          "id": "saldos-test;as-stock-employee",
+          "keyword": "Scenario",
+          "line": 2,
+          "name": "As stock employee",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 3,
+              "name": "the line \"Por Código de Artículo\" to filter by code",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:7"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 494299
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 4,
+              "name": "I call the filtraArticulos method",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:13"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 115500
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 5,
+              "name": "I should see string \"mostrarFiltroCodigo\"",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:17"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 101499
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        },
+        {
+          "description": "",
+          "id": "saldos-test;as-stock-employee-i-want-filter-items",
+          "keyword": "Scenario",
+          "line": 7,
+          "name": "As stock employee I want filter items",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 8,
+              "name": "the line \"Por Línea de Artículo\" to filter by lines",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:25"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 331000
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 9,
+              "name": "I call the filtraArticulos method and,",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:31"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 56600
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 10,
+              "name": "I should see lines string \"mostrarListaLineas\"",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:36"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 149900
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        },
+        {
+          "description": "",
+          "id": "saldos-test;as-accounting-department-employee",
+          "keyword": "Scenario",
+          "line": 13,
+          "name": "As accounting department employee",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 14,
+              "name": "a \"Saldos Consolidados\" to have a consolidated format",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:44"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 860100
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 15,
+              "name": "I call the escogeArticulos method and,",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:50"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 117800
+              }
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 16,
+              "name": "I should have the value of \"C\"",
+              "match": {
+                "location": "src\\test\\steps\\saldosStep.ts:55"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 83400
+              }
+            }
+          ],
+          "tags": [],
+          "type": "scenario"
+        }
+      ],
+      "id": "saldos-test",
+      "line": 1,
+      "keyword": "Feature",
+      "name": "Saldos test",
+      "tags": [],
+      "uri": "src\\test\\features\\saldos.feature"
+    }
+  ]
