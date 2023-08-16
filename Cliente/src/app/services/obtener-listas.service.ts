@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
-import { catchError } from 'rxjs/operators'
-import { of } from 'rxjs';
 import { RealizarPeticionesAsincronasSafeService } from './realizar-peticiones-asincronas-safe.service';
 
 const urlListaZonas: string = "http://oasysweb.saia.com.ec/andina/api/info/zona/lista";
@@ -14,7 +11,7 @@ const urlListaPorRango: string = "http://oasysweb.saia.com.ec/andina/api/info/li
 })
 export class ObtenerListasService {
 
-  constructor(private http: HttpClient, private peticionesAsync: RealizarPeticionesAsincronasSafeService) {   }
+  constructor(private peticionesAsync: RealizarPeticionesAsincronasSafeService) {   }
 
   async getListaZonasSafe() {
     return this.peticionesAsync.realizarGetAsincronoSeguro(urlListaZonas);

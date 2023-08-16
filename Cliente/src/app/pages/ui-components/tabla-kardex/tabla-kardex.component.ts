@@ -58,7 +58,6 @@ export class TablaKardexComponent {
 
   agruparKardexPorCodigo(kardexArray: Kardex[]): KardexCodigo[] {
     const kardexPorCodigo: { [codigoId: string]: KardexCodigo } = {};
-
     for (const kardex of kardexArray) {
       if (!kardexPorCodigo[kardex.itemId]) {
         const nuevoKardexCodigo: KardexCodigo = {
@@ -76,16 +75,13 @@ export class TablaKardexComponent {
         };
         kardexPorCodigo[kardex.itemId] = nuevoKardexCodigo;
       }
-
       kardexPorCodigo[kardex.itemId].registroKardex.push(kardex);
     }
-
     return Object.values(kardexPorCodigo);
   }
 
   agruparKardexPorLocal(kardexArray: Kardex[]): KardexLocal[] {
     const kardexPorLocal: { [localId: number]: KardexLocal } = {};
-
     for (const kardex of kardexArray) {
       if (!kardexPorLocal[kardex.localId]) {
         kardexPorLocal[kardex.localId] = {
@@ -93,10 +89,8 @@ export class TablaKardexComponent {
           listaKardexporCodigo: []
         };
       }
-
       const local = kardexPorLocal[kardex.localId];
       let kardexCodigo = local.listaKardexporCodigo.find(k => k.codigoId === kardex.itemId);
-
       if (!kardexCodigo) {
         kardexCodigo = {
           codigoId: kardex.itemId,
@@ -113,10 +107,8 @@ export class TablaKardexComponent {
         };
         local.listaKardexporCodigo.push(kardexCodigo);
       }
-
       kardexCodigo.registroKardex.push(kardex);
     }
-
     return Object.values(kardexPorLocal);
   }
 
@@ -159,7 +151,6 @@ export class TablaKardexComponent {
       icon: 'info',
       timer: 3000,
       showConfirmButton: false,
-
     });
   }
 }

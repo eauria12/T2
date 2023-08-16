@@ -36,12 +36,9 @@ export class CodigoArticuloComponent {
     } else {
       this.lineas = await this.servicioListas.getListaLineasSafe();
     }
-    console.log(this.lineas);
   }
 
   onInputChange() {
-    console.log(parseInt(this.codigoDesdeInput.nativeElement.value))
-    console.log(parseInt(this.codigoHastaInput.nativeElement.value))
     if (parseInt(this.codigoDesdeInput.nativeElement.value) <= parseInt(this.codigoHastaInput.nativeElement.value)) {
       this.codigosEscogidos.emit([parseInt(this.codigoDesdeInput.nativeElement.value), parseInt(this.codigoHastaInput.nativeElement.value )]);
     }

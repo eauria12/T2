@@ -3,6 +3,11 @@ import { RealizarPeticionesAsincronasSafeService } from './realizar-peticiones-a
 import { Permiso } from 'src/app/interfaces/permiso';
 
 const urlObtenerPermisos: string = "http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/";
+const codigoPermisoNacional: string = "50";
+const codigoPermisoLocal: string = "51";
+const codigoPermisoZonaLocal: string = "52";
+const codigoPermisoTodasZonas: string = "54";
+const codigoPermisoCostoUnitario: string = "60";
 
 @Injectable({
   providedIn: 'root'
@@ -44,18 +49,10 @@ export class ObtenerPermisosService {
     this.listaPermisos.forEach((elemento) => {
       const nivelId = elemento.nivelId.toString();
       const ultimosDosDigitos = nivelId.slice(-2);
-      if (ultimosDosDigitos === "50") {
-        booleanos[0] = true;
-      }
-      if (ultimosDosDigitos === "51") {
-        booleanos[1] = true;
-      }
-      if (ultimosDosDigitos === "52") {
-        booleanos[2] = true;
-      }
-      if (ultimosDosDigitos === "54") {
-        booleanos[3] = true;
-      }
+      if (ultimosDosDigitos === codigoPermisoNacional) { booleanos[0] = true;}
+      if (ultimosDosDigitos === codigoPermisoLocal) { booleanos[1] = true;}
+      if (ultimosDosDigitos === codigoPermisoZonaLocal) { booleanos[2] = true;}
+      if (ultimosDosDigitos === codigoPermisoTodasZonas) { booleanos[3] = true;}
     });
     return booleanos;
   }
@@ -66,9 +63,7 @@ export class ObtenerPermisosService {
     this.listaPermisos.forEach((elemento) => {
       const nivelId = elemento.nivelId.toString();
       const ultimosDosDigitos = nivelId.slice(-2);
-      if (ultimosDosDigitos === "60") {
-        permiso = true;
-      }
+      if (ultimosDosDigitos === codigoPermisoCostoUnitario) {permiso = true;}
     });
    return permiso; 
 }

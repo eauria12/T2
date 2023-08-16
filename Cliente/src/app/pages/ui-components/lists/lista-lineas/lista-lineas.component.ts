@@ -29,7 +29,6 @@ export class ListaLineasComponent {
     } else {
     this.lineas  = await this.servicioListas.getListaLineasSafe();
     }
-    console.log(this.lineas);
   }
 
   async ngOnChanges(changes: SimpleChanges) {
