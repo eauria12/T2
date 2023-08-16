@@ -25,6 +25,7 @@
     "@ng-select/ng-select": "^10.0.4",
     "angular-tabler-icons": "^2.7.0",
     "apexcharts": "^3.35.3",
+    "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "ng-apexcharts": "1.7.1",
     "ngx-cookie-service": "^16.0.0",
