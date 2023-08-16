@@ -1,80 +1,85 @@
 <mat-card class="cardWithShadow theme-card">
-    <p-table [value]="SaldosInventarioSeparadoLocal" sortField="representative.name" sortMode="single"
-        [scrollable]="true" scrollHeight="400px" rowGroupMode="subheader" groupRowsBy="localNombre"
-        [tableStyle]="{'min-width': '60rem'}">s
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Código</th>
-                <th>Articulo</th>
-                <th>Pais Origen</th>
-                <th>Presentación</th>
-                <th>Saldo</th>
-                <th>Reservado</th>
-                <th>Disponible</th>
-                <th>Costo Unit.</th>
-                <th>Cantidad</th>
-                <th>Costo</th>
-                <th>Unidad</th>
-                <th>Dias</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="groupheader" let-SaldosInventario>
-            <tr pRowGroupHeader>
-                <td colspan="5">
-                    <span class="font-bold ml-2">{{SaldosInventario.localNombre}}</span>
-                </td>
-            </tr>
-            <ng-container *ngFor="let saldoListar of SaldosInventario.listaSaldos">
-                <tr>
-                    <td>
-                        {{ saldoListar.itemId }}
-                    </td>
-                    <td>
-                        {{ saldoListar.itemNombre }}
-                    </td>
-                    <td>
-                        {{ saldoListar.paisNombre }}
-                    </td>
-                    <td>
-                        {{ saldoListar.unidadMedidaNombre }}
-                    </td>
-                    <td>
-                        {{saldoListar.saldo}}
-                    </td>
-                    <td>
-                        {{ saldoListar.reservado }}
-                    </td>
-                    <td>
-                        {{ saldoListar.disponible }}
-                    </td>
-                    <td>
-                        {{ saldoListar.costoUnitario }}
-                    </td>
-                    <td *ngIf="!permisoCostoUnitario">
-                        No autorizado
-                    </td>
-                    <td>
-                        {{ saldoListar.ventasCantidad }}
-                    </td>
-                    <td>
-                        {{ saldoListar.ventasCantidad * saldoListar.costoUnitario |
-                        number: '.2' }}
-                    </td>
-                    <td>
-                        {{ saldoListar.unidadMedidaConversion }}
-                    </td>
-                    <td>
-                        {{ saldoListar.dias }}
-                    </td>
-                </tr>
-            </ng-container>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="5">No existen registros.</td>
-            </tr>
-        </ng-template>
-
-    </p-table>
-
+  <p-table
+    [value]="SaldosInventarioSeparadoLocal"
+    sortField="representative.name"
+    sortMode="single"
+    [scrollable]="true"
+    scrollHeight="400px"
+    rowGroupMode="subheader"
+    groupRowsBy="localNombre"
+    [tableStyle]="{ 'min-width': '60rem' }"
+    >s
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código</th>
+        <th>Articulo</th>
+        <th>Pais Origen</th>
+        <th>Presentación</th>
+        <th>Saldo</th>
+        <th>Reservado</th>
+        <th>Disponible</th>
+        <th>Costo Unit.</th>
+        <th>Cantidad</th>
+        <th>Costo</th>
+        <th>Unidad</th>
+        <th>Dias</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="groupheader" let-SaldosInventario>
+      <tr pRowGroupHeader>
+        <td colspan="12">
+          <span class="font-bold ml-2">{{ SaldosInventario.localNombre }}</span>
+        </td>
+      </tr>
+      <ng-container *ngFor="let saldoListar of SaldosInventario.listaSaldos">
+        <tr>
+          <td>
+            {{ saldoListar.itemId }}
+          </td>
+          <td>
+            {{ saldoListar.itemNombre }}
+          </td>
+          <td>
+            {{ saldoListar.paisNombre }}
+          </td>
+          <td>
+            {{ saldoListar.unidadMedidaNombre }}
+          </td>
+          <td>
+            {{ saldoListar.saldo }}
+          </td>
+          <td>
+            {{ saldoListar.reservado }}
+          </td>
+          <td>
+            {{ saldoListar.disponible }}
+          </td>
+          <td>
+            {{ saldoListar.costoUnitario }}
+          </td>
+          <td *ngIf="!permisoCostoUnitario">No autorizado</td>
+          <td>
+            {{ saldoListar.ventasCantidad }}
+          </td>
+          <td>
+            {{
+              saldoListar.ventasCantidad * saldoListar.costoUnitario
+                | number : '.2'
+            }}
+          </td>
+          <td>
+            {{ saldoListar.unidadMedidaConversion }}
+          </td>
+          <td>
+            {{ saldoListar.dias }}
+          </td>
+        </tr>
+      </ng-container>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No existen registros.</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </mat-card>

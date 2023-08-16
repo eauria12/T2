@@ -1,112 +1,126 @@
-<p-table [value]="kardexSeparadoLocal" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-    [paginator]="true" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-    [tableStyle]="{ 'min-width': '50rem' }" [tableStyle]="{ 'min-width': '75rem' }" styleClass="p-datatable-gridlines"
-    *ngIf="localSeleccionHabilita">
-
-
+<mat-card class="cardWithShadow theme-card">
+  <p-table
+    [value]="kardexSeparadoLocal"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    *ngIf="localSeleccionHabilita"
+    rowGroupMode="subheader"
+    groupRowsBy="localNombre">
     <ng-template pTemplate="header">
-        <tr>
-            <th style="width:25%">Fecha</th>
-            <th style="width:25%">Transacción</th>
-            <th style="width:25%">Doc.</th>
-            <th style="width:25%">Número</th>
-            <th style="width:25%">Entrada</th>
-            <th style="width:25%">Salida</th>
-            <th style="width:25%">Exist.</th>
-            <th style="width:25%">Venta Total</th>
-            <th style="width:25%">Vta. Unit.</th>
-            <th style="width:25%">Referencias</th>
-        </tr>
+      <tr>
+        <th style="width: 25%">Fecha</th>
+        <th style="width: 25%">Transacción</th>
+        <th style="width: 25%">Doc.</th>
+        <th style="width: 25%">Número</th>
+        <th style="width: 25%">Entrada</th>
+        <th style="width: 25%">Salida</th>
+        <th style="width: 25%">Exist.</th>
+        <th style="width: 25%">Venta Total</th>
+        <th style="width: 25%">Vta. Unit.</th>
+        <th style="width: 25%">Referencias</th>
+      </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-kardexPorLocal>
+    <ng-template pTemplate="groupheader" let-kardexPorLocal>
+      <tr pRowGroupHeader>
+        <td colspan="10">
+          <span class="font-bold ml-2">{{ kardexPorLocal.localNombre }}</span>
+        </td>
+      </tr>
+      <ng-container
+        *ngFor="let kardexPorCodigo of kardexPorLocal.listaKardexporCodigo">
         <tr>
-            <td>{{kardexPorLocal.localNombre}}</td>
+          <td colspan="1">Código: {{ kardexPorCodigo.codigoId }}</td>
+          <td colspan="2">Nombre: {{ kardexPorCodigo.nombre }}</td>
+          <td colspan="3">Ultima Compra: {{ kardexPorCodigo.ultimaCompra }}</td>
+          <td colspan="4">Stock Minimo: {{ kardexPorCodigo.stockMin }}</td>
         </tr>
-        <ng-container *ngFor="let kardexPorCodigo of kardexPorLocal.listaKardexporCodigo">
-            <tr>
-                <td>Codigo: {{kardexPorCodigo.codigoId}}</td>
-                <td>Producto: {{kardexPorCodigo.nombre}}</td>
-                <td>Ultima Compra: {{kardexPorCodigo.ultimaCompra}}</td>
-                <td>Stock Minimo: {{kardexPorCodigo.stockMin}}</td>
-            </tr>
-            <tr>
-                <td>Precio: {{kardexPorCodigo.precio}}</td>
-                <td>Moneda: {{kardexPorCodigo.moneda}}</td>
-                <td>Unidad: {{kardexPorCodigo.unidad}}</td>
-                <td>Ultima Venta: {{kardexPorCodigo.ultimaVenta}}</td>
-                <td>Stock Minimo: {{kardexPorCodigo.stockMax}}</td>
-            </tr>
-            <tr *ngFor="let kardex of kardexPorCodigo.registroKardex">
-                <td>{{ kardex.fecha}}</td>
-                <td>{{ kardex.transaccionNombre}}</td>
-                <td>{{ kardex.localId }}</td>
-                <td>{{ kardex.tipoDocumentoId }}</td>
-                <td>{{ kardex.documentoId }}</td>
-                <td>{{ kardex.cantidadEntrada }}</td>
-                <td>{{ kardex.cantidadSalida }}</td>
-                <td>{{ kardex.cantidadSalida }}</td>
-                <td>Existencia</td>
-                <td>{{ kardex.valorTotal }}</td>
-                <td>{{ kardex.valorUnitario }}</td>
-                <td>{{ kardex.referencia }}</td>
 
-            </tr>
-        </ng-container>
+        <tr>
+          <td>Precio: {{ kardexPorCodigo.precio }}</td>
+          <td>Moneda: {{ kardexPorCodigo.moneda }}</td>
+          <td>Unidad: {{ kardexPorCodigo.unidad }}</td>
+          <td colspan="3">Ultima Venta: {{ kardexPorCodigo.ultimaVenta }}</td>
+          <td colspan="4">Stock Minimo: {{ kardexPorCodigo.stockMax }}</td>
+        </tr>
 
+        <tr *ngFor="let kardex of kardexPorCodigo.registroKardex">
+          <td>{{ kardex.fecha }}</td>
+          <td>{{ kardex.transaccionNombre }}</td>
+          <!--<td>{{ kardex.localId }}</td>-->
+          <td>{{ kardex.tipoDocumentoId }}</td>
+          <td>{{ kardex.documentoId }}</td>
+          <td>{{ kardex.cantidadEntrada }}</td>
+          <td>{{ kardex.cantidadSalida }}</td>
+          <td>{{ kardex.cantidadSalida }}</td>
+          <!--<td>Existencia</td>-->
+          <td>{{ kardex.valorTotal }}</td>
+          <td>{{ kardex.valorUnitario }}</td>
+          <td>{{ kardex.referencia }}</td>
+        </tr>
+      </ng-container>
     </ng-template>
+  </p-table>
+</mat-card>
 
-</p-table>
-<div>
-    <p-table [value]="KardexFinal" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-        [paginator]="true" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-        [tableStyle]="{ 'min-width': '50rem' }" [tableStyle]="{ 'min-width': '75rem' }"
-        styleClass="p-datatable-gridlines" *ngIf="!localSeleccionHabilita">
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="width:25%">Fecha</th>
-                <th style="width:25%">Transacción</th>
-                <th style="width:25%">Local</th>
-                <th style="width:25%">Doc.</th>
-                <th style="width:25%">Número</th>
-                <th style="width:25%">Entrada</th>
-                <th style="width:25%">Salida</th>
-                <th style="width:25%">Exist.</th>
-                <th style="width:25%">Venta Total</th>
-                <th style="width:25%">Vta. Unit.</th>
-                <th style="width:25%">Referencias</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-kardexPorCodigo>
-            <tr>
-                <td>Codigo: {{kardexPorCodigo.codigoId}}</td>
-                <td>Producto: {{kardexPorCodigo.nombre}}</td>
-                <td>Ultima Compra: {{kardexPorCodigo.ultimaCompra}}</td>
-                <td>Stock Minimo: {{kardexPorCodigo.stockMin}}</td>
-            </tr>
-            <tr>
-                <td>Precio: {{kardexPorCodigo.precio}}</td>
-                <td>Moneda: {{kardexPorCodigo.moneda}}</td>
-                <td>Unidad: {{kardexPorCodigo.unidad}}</td>
-                <td>Ultima Venta: {{kardexPorCodigo.ultimaVenta}}</td>
-                <td>Stock Minimo: {{kardexPorCodigo.stockMax}}</td>
-            </tr>
-            <tr *ngFor="let kardex of kardexPorCodigo.registroKardex">
-                <td>{{ kardex.fecha}}</td>
-                <td>{{ kardex.transaccionNombre}}</td>
-                <td>{{ kardex.localId }}</td>
-                <td>{{ kardex.tipoDocumentoId }}</td>
-                <td>{{ kardex.documentoId }}</td>
-                <td>{{ kardex.cantidadEntrada }}</td>
-                <td>{{ kardex.cantidadSalida }}</td>
-                <td>{{ kardex.cantidadSalida }}</td>
-                <td>Existencia</td>
-                <td>{{ kardex.valorTotal }}</td>
-                <td>{{ kardex.valorUnitario }}</td>
-                <td>{{ kardex.referencia }}</td>
-
-            </tr>
-
-
-        </ng-template>
-
-    </p-table>
+<mat-card class="cardWithShadow theme-card">
+  <p-table
+    [value]="KardexFinal"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    *ngIf="!localSeleccionHabilita">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 25%">Fecha</th>
+        <th style="width: 25%">Transacción</th>
+        <th style="width: 25%">Local</th>
+        <th style="width: 25%">Doc.</th>
+        <th style="width: 25%">Número</th>
+        <th style="width: 25%">Entrada</th>
+        <th style="width: 25%">Salida</th>
+        <th style="width: 25%">Exist.</th>
+        <th style="width: 25%">Venta Total</th>
+        <th style="width: 25%">Vta. Unit.</th>
+        <th style="width: 25%">Referencias</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-kardexPorCodigo>
+      <tr>
+        <td colspan="1">Codigo: {{ kardexPorCodigo.codigoId }}</td>
+        <td colspan="2">Producto: {{ kardexPorCodigo.nombre }}</td>
+        <td colspan="3">Ultima Compra: {{ kardexPorCodigo.ultimaCompra }}</td>
+        <td colspan="6">Stock Minimo: {{ kardexPorCodigo.stockMin }}</td>
+      </tr>
+      <tr>
+        <td>Precio: {{ kardexPorCodigo.precio }}</td>
+        <td>Moneda: {{ kardexPorCodigo.moneda }}</td>
+        <td>Unidad: {{ kardexPorCodigo.unidad }}</td>
+        <td colspan="3">Ultima Venta: {{ kardexPorCodigo.ultimaVenta }}</td>
+        <td colspan="6">Stock Minimo: {{ kardexPorCodigo.stockMax }}</td>
+      </tr>
+      <tr *ngFor="let kardex of kardexPorCodigo.registroKardex">
+        <td>{{ kardex.fecha }}</td>
+        <td>{{ kardex.transaccionNombre }}</td>
+        <td>{{ kardex.localId }}</td>
+        <td>{{ kardex.tipoDocumentoId }}</td>
+        <td>{{ kardex.documentoId }}</td>
+        <td>{{ kardex.cantidadEntrada }}</td>
+        <td>{{ kardex.cantidadSalida }}</td>
+        <td>{{ kardex.cantidadSalida }}</td>
+        <!--<td>Existencia</td>-->
+        <td>{{ kardex.valorTotal }}</td>
+        <td>{{ kardex.valorUnitario }}</td>
+        <td>{{ kardex.referencia }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</mat-card>
