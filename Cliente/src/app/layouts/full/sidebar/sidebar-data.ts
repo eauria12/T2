@@ -31,7 +31,7 @@ export const navItems: NavItem[] = [
     iconName: 'table-shortcut',
     route: '/kardex-mercaderia',
   },
-
+/*
   {
     displayName: 'Comprobantes Electrónicos',
     iconName: 'file-invoice',
@@ -44,7 +44,7 @@ export const navItems: NavItem[] = [
     route: '/listado-facturas-entregas-pendientes',
   },
  
-  /*{
+  {
     displayName: 'Badge',
     iconName: 'rosette',
     route: '/ui-components/badge',
