@@ -170,7 +170,8 @@ export class ListaPreciosExistenciaComponent {
   }
 
   handleLineasSeleccionadas(seleccionadoTabla: string) {
-    if (seleccionadoTabla == "LLANTAS" || seleccionadoTabla == "REENCAUCHE") {
+    
+    if (seleccionadoTabla == "REENCAUCHE") {
       this.vistaAtabla=[this.headerLantasOReencauche,this.labelslantasOReencauche]
     } else if (seleccionadoTabla.includes("LUBRICANTES")) {
       this.vistaAtabla=[this.headervistaAllLubricantes,this.labelsvistaAllLubricantes]
