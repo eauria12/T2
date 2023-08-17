@@ -8,7 +8,7 @@ import { MatSelectionList } from '@angular/material/list';
 export class ComprobantesElectronicosComponent {
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   @ViewChild('nivel') nivelList: MatSelectionList;
-  selected: string | null = null; // Variable para almacenar el valor seleccionado
+  selected: string | null = null; 
   selectedValue: String;
   datedesde: Date;
   datehasta: Date;
@@ -18,8 +18,6 @@ export class ComprobantesElectronicosComponent {
   }
   onSelectedValue(value: String) {
     this.selectedValue = value;
-    //console.log(this.selectedValue);imprime al instante
-
   }
 
   buscarLocales() {
@@ -28,11 +26,7 @@ export class ComprobantesElectronicosComponent {
       console.log(this.datedesde);
       console.log(this.datehasta);
       console.log(this.selectedValue);
-
-     
     }
   }
-
-
   
 }
