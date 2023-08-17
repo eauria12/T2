@@ -9,7 +9,7 @@ import { MatSelectionList } from '@angular/material/list';
 export class ListadoFacturasEntregasPendientesComponent {
   typesOfNivel: string[] = ['Nacional', 'Zona', 'Local'];
   @ViewChild('nivel') nivelList: MatSelectionList;
-  selected: string | null = null; // Variable para almacenar el valor seleccionado
+  selected: string | null = null; 
   selectedValue: String;
   fechaDesde: Date;
   fechaHasta: Date;
@@ -19,7 +19,7 @@ export class ListadoFacturasEntregasPendientesComponent {
   }
   onSelectedValue(value: String) {
     this.selectedValue = value;
-    //console.log(this.selectedValue);imprime al instante
+    
 
   }
 
@@ -34,21 +34,5 @@ export class ListadoFacturasEntregasPendientesComponent {
     }
   }
 
-/*
-  presentacion: string[] = ['Saldos Consolidados', 'Saldos por Local'];
-  lineArticulo: string[] = ['Por Código', 'Por línea'];
-  zona: string[] = ['Nacional', 'Zona Centro-Norte', 'Zona Sur'];
-  acceso: boolean = false
-
-  localId:string | null;
-  constructor(private LocalIdService: LocalIdService) { }
-
-  mostrarLocalId(): void {
-    this.localId=this.LocalIdService.getLocalId();
-    console.log("imprimmiendo en otra pagina");
-
-    console.log(this.localId);
-  }
-*/
   
 }

@@ -18,7 +18,7 @@ export class ListaPreciosExistenciaComponent {
   lineasDisponibles: String = "";
   lineasSeleccionadas: any[] = [];
   mostrarListaLineas: boolean = false;
-  selected: string; // Variable para almacenar el valor seleccionado
+  selected: string; 
   inventario!: string;
   loading: boolean = true;
   activityValues: number[] = [10, 25, 50];
@@ -58,7 +58,7 @@ export class ListaPreciosExistenciaComponent {
     "CÓDIGO SAIA", "LÍNEA",
     "FAMILIA", "DISEÑO", "MEDIDA", "ARO", "MARCA", "APLICACIÓN", "LETRA",
     "IC", "IV", "PR", "PAÍS ORIGEN", "CÓDIGO PROVEEDOR", "P.V.P. INCL.IVA", "INVENTARIO NACIONAL"
-  ]//se verifica cuando se tenga los datos
+  ]
 
   headervistaAllLubricantes = [
     "CÓDIGO SAIA", "LÍNEA",
@@ -114,7 +114,6 @@ export class ListaPreciosExistenciaComponent {
 
 
   async ngOnInit() {
-    //Implementación de alerta x usuario sin autorización
     this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio).catch((error) => { this.autorizado = true });
     if (this.autorizado) {
       this.showAlert("USUARIO NO AUTORIZADO");
@@ -126,11 +125,10 @@ export class ListaPreciosExistenciaComponent {
 
   }
 
-  //Implementación de alerta x usuario sin autorización
   showAlert(label: string) {
     Swal.fire({
       title: label,
-      icon: 'warning', // Puedes usar 'success', 'error', 'warning', 'info', 'question' u otros íconos personalizados
+      icon: 'warning', 
       timer: 1500
 
     });
@@ -150,7 +148,7 @@ export class ListaPreciosExistenciaComponent {
   }
 
 
-  buscarExistencias() {//button method
+  buscarExistencias() {
     this.showAlertLoading("Cargando datos...")
     if (this.selected != null) {
       this.cargarTabla();
@@ -171,9 +169,8 @@ export class ListaPreciosExistenciaComponent {
     }
   }
 
-
   handleLineasSeleccionadas(seleccionadoTabla: string) {
-
+    
     if (seleccionadoTabla == "REENCAUCHE") {
       this.vistaAtabla=[this.headerLantasOReencauche,this.labelslantasOReencauche]
     } else if (seleccionadoTabla.includes("LUBRICANTES")) {
