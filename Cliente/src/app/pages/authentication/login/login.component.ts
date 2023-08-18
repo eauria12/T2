@@ -26,16 +26,13 @@ export class AppSideLoginComponent {
     this.authService.login(this.usuarioId, this.clave,1,this.localId,"",this.usuarioId)
       .pipe(
         tap((response) => {
-          const token = response.result; // Ajusta el acceso al token según la respuesta de la API
+          const token = response.result; 
           this.authService.setToken(token);
-          //guarda el local
           this.localIdService.setLocalId(response.agencia.id);
-          // Redirige al usuario a la siguiente página
           this.router.navigate(['/saldo-inventario']);
 
         }),
         catchError(error => {
-          // Manejar el error de inicio de sesión
           this.errorMessage = 'Las credenciales son incorrectas. Por favor, intenta nuevamente.';
           return of(null);
         })

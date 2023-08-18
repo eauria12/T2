@@ -26,9 +26,9 @@ export class ObtenerSaldosInventarioService {
     return this.peticionesAsync.realizarPostAsincronoSeguro(bodyenvio, urlSaldosInventario);
   }
 
-  async getSaldosInventarioCodigoSafe(codigosEscogidos: number[], formatoPresentacion: String) {
+  async getSaldosInventarioCodigoSafe(codigosEscogidos: number[], formatoPresentacion: String,LocalesEscogidos: number[]) {
     const bodyenvio = {
-      "locales": "",
+      "locales": this.StringLocales(LocalesEscogidos),
       "lineas": "",
       "formatoNivel": "N",
       "formatoLineaArticulo": "A",
