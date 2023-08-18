@@ -57,12 +57,10 @@ export class TablasComponent {
       this.codigos = [...this.codigosEscogidos];
       this.locales = [...this.localesMostrar];
       this.formato = this.formatoPresentacion;
-      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioCodigoSafe(this.locales, this.formato)
+      this.SaldosInventario = await this.obtenerSaldos.getSaldosInventarioCodigoSafe(this.codigos, this.formato,this.locales)
       if (this.locales.length == 0 || this.SaldosInventario == null) {
-        console.log(" fallo 1 codigosVisualizar")
         this.DatosMostrar = false;
       } else {
-        console.log("Visualizar por Codigo")
         this.DatosMostrar = true;
         if (this.formato == "L") {
           this.SaldosInventarioSeparadoLocal = this.agruparSaldosPorLocal(this.SaldosInventario);
