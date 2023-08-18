@@ -17,6 +17,7 @@ export class KardexMercaderiaComponent {
   @ViewChild('present') presentacionList: MatSelectionList;
   @ViewChild('lineArt') lineArt: MatSelectionList;
   
+  protected autorizado: boolean = false;
   protected buscarClicked: boolean = false;
   fechaInicio: Date = new Date(1900, 1, 1);
   fechaFin: Date = new Date(2200, 31, 12);
@@ -48,14 +49,21 @@ export class KardexMercaderiaComponent {
   
 
   async ngOnInit() {
+    this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio).catch((error) => { this.autorizado = true });
+    console.log(this.listaPermisos);
+    console.log(this.autorizado);
+    if (this.autorizado || this.listaPermisos.length == 0) {
+      this.showAlert("USUARIO NO AUTORIZADO");
+      this.autorizado = true;
+    } else {
     this.localesDisponibles = await this.permisos.localesDisponibles(this.codigoServicio);
-    this.listaPermisos = await this.permisos.getPermisosSafe(this.codigoServicio);
     this.opcionesNivel = await this.permisos.permisosNivel(this.codigoServicio);
     this.permisoCostoUnitario = await this.permisos.permisoCostoUnitario(this.codigoServicio);
     this.lineasDisponibles = await this.permisos.lineasDisponibles(this.codigoServicio);
     this.acceso = true;
     this.localId = this.LocalIdService.getLocalId();
     this.zonaId = await this.obtenerLocal.getLocalZona(this.localId);
+    }
   }
 
   handleLocalesSeleccionados(locales: any[]) {
@@ -123,6 +131,15 @@ export class KardexMercaderiaComponent {
 
   limpiar(){
     window.location.href="/saldo-inventario";
+  }
+
+  showAlert(label: string) {
+    Swal.fire({
+      title: label,
+      icon: 'warning', 
+      timer: 1500
+
+    });
   }
 
   imprimirTabla() {
