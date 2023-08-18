@@ -17,13 +17,13 @@ export class AppSideLoginComponent {
   empresaId:1;
   localId:number;
   equipoIP:"";
-  equipoNombre:"RALCIVAR";
+  equipoNombre:string;
   acceso: boolean = false;
   constructor(private authService: AuthService, private router: Router,private localIdService: LocalIdService) { }
 
 
   onSubmit(): void {
-    this.authService.login(this.usuarioId, this.clave,1,this.localId,"","RALCIVAR")
+    this.authService.login(this.usuarioId, this.clave,1,this.localId,"",this.usuarioId)
       .pipe(
         tap((response) => {
           const token = response.result; // Ajusta el acceso al token según la respuesta de la API
