@@ -24,14 +24,44 @@ _Roberto Alcívar García_
 _Eliana Lilibeth Auria Perez_  
 _Kevin Paul Valle Soledispa_  
 > **date and time**: 16/06/23 16:30  
--  [Meeting 3](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Mails/Client%20Acceptance%20Form.jpeg).  
-> **Name file**: Client Acceptance Form  
+-  [Meeting 3](https://github.com/eauria12/T2/blob/master/Communications/Mails/Inquiry%20about%20the%20API.pdf).  
+> **Name file**: Inquiry about the API  
+> **Description**:  Status of API.  
+> **File type**: PDF  
+> **Participants**:  
+_Roberto Alcívar García_  
+_Viviana Stephania Muñoz Carranza_  
+_Kevin Paul Valle Soledispa_    
+> **date and time**: 08/06/23 16:30  
+-  [Meeting 4](https://github.com/eauria12/T2/blob/master/Communications/Mails/Meeting%204.pdf).  
+> **Name file**: Prototype demostration  
+> **Description**:  First Presentation of project progress.  
+> **File type**: PDF  
+> **Participants**:  
+_Roberto Alcívar García_   
+_Eliana Lilibeth Auria Perez_  
+_Carlos Alejandro Loor Barragan_   
+_Kevin Paul Valle Soledispa_    
+> **date and time**: 26/06/23 16:30  
+-  [Meeting 5](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Mails/Client%20Acceptance%20Form.jpeg).  
+> **Name file**: Client Acceptance Letter  
 > **Description**:  After the sprint retrospective, we according to mail the acceptance form to be signed.  
 > **File type**: JPEG  
 > **Participants**:  
 _Roberto Alcívar García_    
 _Kevin Paul Valle Soledispa_    
 > **date and time**: 27/06/23 16:30  
+-  [Meeting 6](https://github.com/eauria12/T2/blob/master/Communications/Mails/Meeting%205.pdf).  
+> **Name file**: Client Acceptance Letter  
+> **Description**:  Second Presentation of project progress.  
+> **File type**: PDF  
+> **Participants**:  
+_Roberto Alcívar García_    
+_Eliana Lilibeth Auria Perez_  
+_Carlos Alejandro Loor Barragan_  
+_Viviana Stephania Muñoz Carranza_  
+_Kevin Paul Valle Soledispa_    
+> **date and time**: 17/07/23 16:30 
 
 ## Whatsapp  
 -  [Chat's](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Whatsapp/WhatsApp%20Chat%20with%20Stocktaking%20-%20Grupo%20%232.txt).  
@@ -54,6 +84,17 @@ _Eliana Lilibeth Auria Perez_
 _Kevin Paul Valle Soledispa_  
 _Carlos Alejandro Loor Barragan_  
 > **date and time**: 27/06/23 16:00   
+-  [Folder](https://github.com/eauria12/T2/tree/master/Communications/Whatsapp/Chat's).
+> **Name file**: DD-MM-YYYY   
+> **Description**: Communications between Stocktaking members and cliente about API and meetings doubts.    
+> **File type**: TXT  
+> **Participants**:  
+_Roberto Alcívar García_  
+_Eliana Lilibeth Auria Perez_  
+_Viviana Stephania Muñoz Carranza_  
+_Kevin Paul Valle Soledispa_  
+_Carlos Alejandro Loor Barragan_  
+> **date and time**: 2023    
 
 ## Zoom meeting's  
 -  [Meeting 2](https://github.com/eauria12/Stocktaking-G2/blob/cliente-servidor/Communications/Zoom%20meeting's/Meeting%202.jpeg).  
@@ -65,3 +106,14 @@ _Roberto Alcívar García_
 _Eliana Lilibeth Auria Perez_  
 _Kevin Paul Valle Soledispa_  
 > **date and time**: 16/06/23 16:30  
+-  [Folder](https://github.com/eauria12/T2/tree/master/Communications/Zoom%20meeting's/Zoom%20link%20sprint%20retrospective).  
+> **Name file**: Zoom retrospectives  
+> **Description**:  Meetings images.  
+> **File type**: PNG  
+> **Participants**:  
+_Roberto Alcívar García_  
+_Eliana Lilibeth Auria Perez_  
+_Viviana Stephania Muñoz Carranza_  
+_Kevin Paul Valle Soledispa_  
+_Carlos Alejandro Loor Barragan_ 
+> **date and time**: 2023 
