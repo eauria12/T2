@@ -1,0 +1,10 @@
+8/9/23, 11:32 in the morning - SAIA Roberto Alcívar: Good morning.
+8/9/23, 11:32 in the morning - SAIA Roberto Alcívar: This API will return the article details for an invoice that either has or doesn't have the "SERIE" field assigned, where the captured QR value will be stored.
+8/9/23, 11:33 in the morning - SAIA Roberto Alcívar: This is the information returned by the API.
+8/9/23, 11:35 in the morning - SAIA Roberto Alcívar: This is the API for updating the invoice with the QR value (Field highlighted in yellow).
+8/9/23, 11:36 in the morning - SAIA Roberto Alcívar: If the transaction is successful, it will return the following message.
+8/9/23, 11:38 in the morning - SAIA Roberto Alcívar: If the transaction encounters an error while saving, it will display a message.
+8/9/23, 11:39 in the morning - SAIA Roberto Alcívar: This API returns all the articles of an invoice that do not have a serial number assigned.
+8/9/23, 11:39 in the morning - SAIA Roberto Alcívar: Let me know if you need anything else with full confidence.
+8/9/23, 11:40 in the morning - SAIA Roberto Alcívar: I have only enabled a few invoices for this exercise.
+8/9/23, 11:53 in the morning - Kevin Valle 🐝: Good morning. Thank you very much.

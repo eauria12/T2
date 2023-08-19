@@ -122,7 +122,7 @@ export class TablaKardexComponent {
     stock: string
   ): boolean {
     if (!LocalesEscogidos.length) {
-      this.MostrarAlerta("No hay Locales");
+      this.MostrarAlerta("No hay Locales\n Selccione local/es");
       return false;
     }
     if (!codigoDesde || !codigoHasta) {

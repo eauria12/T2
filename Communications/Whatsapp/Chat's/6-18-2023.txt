@@ -1,0 +1,125 @@
+6/18/23, 5:16 in the afternoon - Espol Carlos Loor: <Media omitted>
+
+6/18/23, 5:17 in the afternoon - Espol Carlos Loor: My question is, how are the 'fechaDesde' and 'fechaHasta' parameters sent, through the body, the header, or as parameters?
+
+6/18/23, 5:38 in the afternoon - SAIA Roberto Alcívar: How are you, good afternoon.
+
+6/18/23, 5:39 in the afternoon - SAIA Roberto Alcívar: Before opening the "Inventory Balance" interface, it must validate if the user has access, for which it must call the URL 
+GET: http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/080509
+The code 080509 — corresponds to access to the "Inventory Balances" report.
+
+6/18/23, 5:40 in the afternoon - SAIA Roberto Alcívar: Each transaction is assigned an access code.
+
+6/18/23, 5:40 in the afternoon - SAIA Roberto Alcívar: CODES TO USE FOR VALIDATING EACH TRANSACTION
+[080509] - Inventory Balances
+[080506] - Price and Inventory List
+[080507] - Goods Kardex
+[080508] - Goods Ledger
+[080611] - Invoices with Pending Deliveries
+[080612] - Dispatch Order
+[080613] - Delivery Notes and Dispatch Orders
+[040607] - Electronic Documents
+
+6/18/23, 5:42 in the afternoon - SAIA Roberto Alcívar: When invoking this URL 
+GET: http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/080509
+internally it validates the user and the location from which the session was initiated.
+
+6/18/23, 5:42 in the afternoon - SAIA Roberto Alcívar: GET: http://oasysweb.saia.com.ec/andina/api/seguridad/nivel/080509
+it only indicates whether you can access the transaction or not.
+
+6/18/23, 5:43 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/18/23, 5:44 in the afternoon - Espol Carlos Loor: If I may, I used the code 080506
+
+6/18/23, 5:44 in the afternoon - Espol Carlos Loor: and it doesn't give me access to anything.
+
+6/18/23, 5:45 in the afternoon - Espol Carlos Loor: Or, I apologize if I am not understanding correctly.
+
+6/18/23, 5:45 PM - SAIA Roberto Alcívar: 080506 - this corresponds to the price and inventory list.
+
+6/18/23, 5:45 PM - Espol Carlos Loor: Exactly, and this gives me the following result:
+
+[
+    {
+        "localId": 80,
+        "nivelId": "080506",
+        "nombre": "LISTA DE PRECIOS Y EXISTENCIAS",
+        "verificaFecha": false,
+        "fechaDesde": "1900-01-01T00:00:00",
+        "fechaHasta": "1900-01-01T00:00:00",
+        "lineas": "",
+        "locales": ""
+    },
+    {
+        "localId": 80,
+        "nivelId": "08050604",
+        "nombre": "REFRESCAR LISTA DE PRECIOS Y EXISTENCIAS",
+        "verificaFecha": false,
+        "fechaDesde": "1900-01-01T00:00:00",
+        "fechaHasta": "1900-01-01T00:00:00",
+        "lineas": "",
+        "locales": ""
+    },
+    {
+        "localId": 80,
+        "nivelId": "08050608",
+        "nombre": "IMPRIMIR ",
+        "verificaFecha": false,
+        "fechaDesde": "1900-01-01T00:00:00",
+        "fechaHasta": "1900-01-01T00:00:00",
+        "lineas": "",
+        "locales": ""
+    },
+    {
+        "localId": 80,
+        "nivelId": "08050614",
+        "nombre": "EXPORTAR EXCEL",
+        "verificaFecha": false,
+        "fechaDesde": "1900-01-01T00:00:00",
+        "fechaHasta": "1900-01-01T00:00:00",
+        "lineas": "",
+        "locales": ""
+    },
+    {
+        "localId": 80,
+        "nivelId": "08050615",
+        "nombre": "EXPORTAR WORD",
+        "verificaFecha": false,
+        "fechaDesde": "1900-01-01T00:00:00",
+        "fechaHasta": "1900-01-01T00:00:00",
+        "lineas": "",
+        "locales": ""
+    },
+    {
+        "localId": 80,
+        "nivelId": "08050616",
+        "nombre": "EXPORTAR PDF",
+        "verificaFecha": false,
+        "fechaDesde": "1900-01-01T00:00:00",
+        "fechaHasta": "1900-01-01T00:00:00",
+        "lineas": "",
+        "locales": ""
+    }
+]
+
+6/18/23, 5:46 PM - Espol Carlos Loor: However, what I don't understand is whether this should allow me to see the price and inventory list or if it should show me what the registered user can do with it.
+
+6/18/23, 5:45 in the afternoon - SAIA Roberto Alcívar: 080506 is the main level that should be validated for access to the transaction. Within this group, there are sublevels like 08050608 which correspond to whether or not you can print.
+
+6/18/23, 5:48 in the afternoon - SAIA Roberto Alcívar: It won't show anything yet, only what the user can do.
+
+6/18/23, 5:48 in the afternoon - Espol Carlos Loor: Ahhh, ok, thank you very much for the clarification.
+
+6/18/23, 5:48 in the afternoon - SAIA Roberto Alcívar: The data to display is not ready yet. I expect to have it ready by tomorrow.
+
+6/18/23, 5:49 in the afternoon - Espol Carlos Loor: Ok, thank you very much for your help, and sorry for bothering you.
+
+6/18/23, 7:45 in the evening - Espol Eliana: And we hope you had a great day.
+
+6/18/23, 7:48 in the evening - Espol Kevin: On behalf of the entire Stocktaking team, we wish you a great day, Mr. @593985881041.
+
+6/18/23, 7:48 in the evening - SAIA Roberto Alcívar: Thank you very much.
+
+6/18/23, 7:49 in the evening - Espol Carlos Loor: We hope you had a great time with your family and loved ones.
+
+6/18/23, 8:07 in the evening - SAIA Roberto Alcívar: 👍🏻

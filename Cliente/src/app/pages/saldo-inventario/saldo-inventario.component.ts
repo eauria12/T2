@@ -167,6 +167,18 @@ export class SaldoInventarioComponent {
       this.showAlert("Seleccione local/es");
       this.buscarClicked = false;
     }
+
+    if (this.lineasSeleccionadas.length == 0) {
+      this.showAlert("Seleccione linea/s");
+      this.buscarClicked = false;
+    }
+
+    if (this.present.selectedOptions.selected.length == 0) {
+      this.showAlert("Seleccione una presentación");
+      this.buscarClicked = false;
+    }
+
+
     this.buscarClicked = true;
   }
 

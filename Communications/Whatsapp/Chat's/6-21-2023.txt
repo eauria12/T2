@@ -1,0 +1,67 @@
+6/21/23, 1:14 in the afternoon - Espol Kevin: Good afternoon. We hope you are well, @593985881041. We would like to know if the data is ready.
+
+6/21/23, 2:43 in the afternoon - SAIA Roberto Alcívar: How are you? Good afternoon. I've been quite busy this week, organizing my pending tasks. I expect to have the inventory balance ready for you by tomorrow afternoon.
+
+6/21/23, 2:44 in the afternoon - Espol Eliana: Ok, thank you very much.
+
+6/21/23, 2:45 in the afternoon - Espol Eliana: This message was deleted.
+
+6/21/23, 4:34 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 4:34 in the afternoon - SAIA Roberto Alcívar: I have already made the inventory balance query.
+
+6/21/23, 4:35 in the afternoon - SAIA Roberto Alcívar: Let me document it in the Word document and I'll send you the details.
+
+6/21/23, 4:35 in the afternoon - SAIA Roberto Alcívar: And I'll send you the details.
+
+6/21/23, 4:44 in the afternoon - SAIA Roberto Alcívar: The Swagger started giving me issues in the application, which is why there's no data showing on the web. I had to uninstall it.
+
+6/21/23, 4:45 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 4:48 in the afternoon - Espol Carlos Loor: Good afternoon, I have a question regarding the API. Based on the code, can we see if the user has access? If the user doesn't have permission, will the code or the operation name not appear, or will it appear with some different attribute?
+
+6/21/23, 4:49 in the afternoon - SAIA Roberto Alcívar: If there's no authorization, the transaction should not appear.
+
+6/21/23, 4:50 in the afternoon - Espol Carlos Loor: Ok, thank you very much.
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: <Media omitted>
+
+6/21/23, 5:02 in the afternoon - SAIA Roberto Alcívar: I'm attaching some examples of how to query inventory balances.
+
+6/21/23, 5:03 in the afternoon - SAIA Roberto Alcívar: Any doubts you have, please let me know.
+
+6/21/23, 5:05 in the afternoon - Espol Carlos Loor: Ok, thank you very much. I will start reviewing the documents.
